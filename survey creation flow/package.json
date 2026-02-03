@@ -1,0 +1,11 @@
+{
+  "name": "survey-creation-flow",
+  "private": true,
+  "scripts": {
+    "start": "serve -l 3003",
+    "dev": "serve -l 3003"
+  },
+  "devDependencies": {
+    "serve": "^14.2.4"
+  }
+}

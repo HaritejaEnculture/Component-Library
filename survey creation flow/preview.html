@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Survey Preview — Enculture</title>
+  <link rel="stylesheet" href="index.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    .enc-preview-page { max-width: 640px; margin: 0 auto; padding: var(--stack-gap-lg); }
+    .enc-preview-progress { font-size: var(--text-sm); color: var(--en-text-muted); margin-bottom: var(--stack-gap-lg); }
+    .enc-preview-question { margin-bottom: var(--stack-gap-lg); }
+    .enc-preview-question-label { font-weight: 600; margin-bottom: var(--stack-gap-sm); display: block; }
+    .enc-preview-options-vertical { display: flex; flex-direction: column; gap: var(--stack-gap-sm); }
+    .enc-preview-options-horizontal { display: flex; flex-wrap: wrap; gap: var(--stack-gap-md); }
+    .enc-preview-actions { display: flex; justify-content: space-between; margin-top: var(--stack-gap-lg); gap: var(--stack-gap-md); }
+    .enc-preview-empty { padding: var(--stack-gap-lg); text-align: center; color: var(--en-text-muted); }
+  </style>
+</head>
+<body>
+  <div class="enc-main-container enc-respondent" style="display: block;">
+    <main class="enc-main" style="padding: var(--stack-gap-lg);">
+      <div id="preview-root">
+        <div class="enc-preview-empty">No survey data. Open preview from the Survey Builder.</div>
+      </div>
+    </main>
+  </div>
+  <script>
+(function () {
+  const PREVIEW_KEY = 'enculture-survey-preview-data';
+
+  function getSurveyData() {
+    try {
+      const raw = sessionStorage.getItem(PREVIEW_KEY);
+      return raw ? JSON.parse(raw) : null;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  function flattenPages(data) {
+    if (!data || !data.pages) return [];
+    return data.pages.map(function (page) {
+      const questions = [];
+      (page.sections || []).forEach(function (sec) {
+        (sec.questions || []).forEach(function (q) {
+          questions.push({
+            id: q.id,
+            questionNumber: q.questionNumber,
+            text: q.text,
+            questionType: q.questionType || 'Single select',
+            responseType: q.responseType || 'Radio button',
+            layout: q.layout || 'Vertical',
+            required: q.properties && q.properties.required,
+            options: q.options || [],
+            instructions: q.instructions
+          });
+        });
+      });
+      return { pageId: page.id, pageName: page.name, instructions: page.instructions, questions: questions };
+    });
+  }
+
+  function renderQuestion(q, pageIndex, questionIndex) {
+    const layoutClass = q.layout === 'Horizontal' ? 'enc-preview-options-horizontal' : 'enc-preview-options-vertical';
+    const req = q.required ? ' <span aria-hidden="true">*</span>' : '';
+    let inputHtml = '';
+
+    var qType = q.questionType;
+    var rType = (q.responseType || '').toLowerCase();
+
+    if (qType === 'Open text') {
+      if (rType === 'date') {
+        inputHtml = '<input type="date" class="enc-input-field" name="q' + q.id + '" id="q' + q.id + '">';
+      } else if (rType === 'numeric') {
+        inputHtml = '<input type="number" class="enc-input-field" name="q' + q.id + '" id="q' + q.id + '" inputmode="numeric">';
+      } else if (rType === 'list') {
+        inputHtml = '<input type="text" class="enc-input-field" name="q' + q.id + '" id="q' + q.id + '" placeholder="List items (one per line)">';
+      } else {
+        inputHtml = '<textarea class="enc-input-field" name="q' + q.id + '" id="q' + q.id + '" rows="3" placeholder="Your answer"></textarea>';
+      }
+    } else if (qType === 'Multiple select') {
+      var isDropdown = rType.indexOf('drop') !== -1;
+      if (isDropdown) {
+        inputHtml = '<select class="enc-input-field" name="q' + q.id + '" id="q' + q.id + '" multiple>' +
+          (q.options || []).map(function (o) {
+            return '<option value="' + (o.value || o.label) + '">' + (o.label || o.value) + '</option>';
+          }).join('') + '</select>';
+      } else {
+        inputHtml = '<div class="' + layoutClass + '" role="group">' +
+          (q.options || []).map(function (o, i) {
+            return '<label class="enc-radio-option"><input type="checkbox" name="q' + q.id + '" value="' + (o.value || o.label) + '"> <span>' + (o.label || o.value) + '</span></label>';
+          }).join('') + '</div>';
+      }
+    } else {
+      var isDrop = rType.indexOf('drop') !== -1;
+      var isNps = rType === 'nps';
+      var isRating = rType.indexOf('rating') !== -1;
+      if (isDrop) {
+        inputHtml = '<select class="enc-input-field" name="q' + q.id + '" id="q' + q.id + '">' +
+          '<option value="">Select...</option>' +
+          (q.options || []).map(function (o) {
+            return '<option value="' + (o.value || o.label) + '">' + (o.label || o.value) + '</option>';
+          }).join('') + '</select>';
+      } else if (isNps) {
+        inputHtml = '<div class="' + layoutClass + '" role="group" aria-label="NPS 0–10">' +
+          Array.from({ length: 11 }, function (_, i) {
+            return '<label class="enc-radio-option"><input type="radio" name="q' + q.id + '" value="' + i + '"> <span>' + i + '</span></label>';
+          }).join('') + '</div>';
+      } else if (isRating && (q.options || []).length) {
+        inputHtml = '<div class="' + layoutClass + '" role="group">' +
+          (q.options || []).map(function (o, i) {
+            return '<label class="enc-radio-option"><input type="radio" name="q' + q.id + '" value="' + (o.value || o.label) + '"> <span>' + (o.label || o.value) + '</span></label>';
+          }).join('') + '</div>';
+      } else {
+        inputHtml = '<div class="' + layoutClass + '" role="group">' +
+          (q.options || []).map(function (o, i) {
+            return '<label class="enc-radio-option"><input type="radio" name="q' + q.id + '" value="' + (o.value || o.label) + '"> <span>' + (o.label || o.value) + '</span></label>';
+          }).join('') + '</div>';
+      }
+    }
+
+    return '<div class="enc-preview-question" data-question-id="' + q.id + '">' +
+      '<label class="enc-preview-question-label" for="q' + q.id + '">' + (q.questionNumber || '') + '. ' + (q.text || '') + req + '</label>' +
+      (q.instructions ? '<p class="enc-text-muted" style="font-size: var(--text-sm); margin-bottom: var(--stack-gap-sm);">' + q.instructions + '</p>' : '') +
+      inputHtml + '</div>';
+  }
+
+  function renderPage(pages, pageIndex) {
+    var page = pages[pageIndex];
+    if (!page) return '';
+    var totalPages = pages.length;
+    var totalQuestions = page.questions.length;
+    var progress = 'Page ' + (pageIndex + 1) + ' of ' + totalPages + (totalQuestions ? ' · ' + totalQuestions + ' question(s)' : '');
+    var questionsHtml = page.questions.map(function (q, i) {
+      return renderQuestion(q, pageIndex, i);
+    }).join('');
+    var prevDisabled = pageIndex === 0 ? ' disabled' : '';
+    var nextLabel = pageIndex === totalPages - 1 ? 'Submit' : 'Next';
+    return '<div class="enc-preview-page">' +
+      '<p class="enc-preview-progress">' + progress + '</p>' +
+      (page.pageName ? '<h2 style="margin-bottom: var(--stack-gap-md);">' + page.pageName + '</h2>' : '') +
+      (page.instructions ? '<p class="enc-text-muted" style="margin-bottom: var(--stack-gap-lg);">' + page.instructions + '</p>' : '') +
+      questionsHtml +
+      '<div class="enc-preview-actions">' +
+      '<button type="button" class="enc-action-secondary" id="preview-prev"' + prevDisabled + '>Previous</button>' +
+      '<button type="button" class="enc-action-primary" id="preview-next">' + nextLabel + '</button>' +
+      '</div></div>';
+  }
+
+  function run() {
+    var data = getSurveyData();
+    var root = document.getElementById('preview-root');
+    if (!root) return;
+    if (!data || !data.pages || !data.pages.length) {
+      root.innerHTML = '<div class="enc-preview-empty">No survey data. Open preview from the Survey Builder.</div>';
+      return;
+    }
+    var pages = flattenPages(data);
+    if (!pages.length) {
+      root.innerHTML = '<div class="enc-preview-empty">No questions in this survey.</div>';
+      return;
+    }
+    var state = { pageIndex: 0 };
+    function render() {
+      root.innerHTML = renderPage(pages, state.pageIndex);
+      var prevBtn = document.getElementById('preview-prev');
+      var nextBtn = document.getElementById('preview-next');
+      if (prevBtn) prevBtn.addEventListener('click', function () {
+        if (state.pageIndex > 0) { state.pageIndex--; render(); }
+      });
+      if (nextBtn) nextBtn.addEventListener('click', function () {
+        if (state.pageIndex < pages.length - 1) { state.pageIndex++; render(); }
+        else { alert('Survey preview submitted.'); }
+      });
+    }
+    render();
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', run);
+  } else {
+    run();
+  }
+})();
+  </script>
+</body>
+</html>

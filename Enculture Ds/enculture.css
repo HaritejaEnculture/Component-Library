@@ -1,0 +1,261 @@
+/*
+===============================================================================
+ENCULTURE DESIGN SYSTEM — RUNTIME CSS (GOVERNED)
+Authority:
+- En-AI_Design_System.md
+- EN-AI_Components_Molecules.md
+- Governance logic rules.md
+
+Role:
+- Semantic anchors only
+- Token-backed primitives only
+- Cursor-compatible
+===============================================================================
+*/
+
+/* ============================================================================
+1. DESIGN TOKENS (EXISTING + REQUIRED BINDINGS)
+============================================================================ */
+
+:root {
+  /* Brand */
+  --en-brand-primary-500: #a147f0;
+
+  /* Neutral */
+  --en-neutral-0: #ffffff;
+  --en-neutral-50: #f9fafb;
+  --en-neutral-200: #e5e7eb;
+  --en-neutral-400: #9ca3af;
+  --en-neutral-500: #6b7280;
+  --en-neutral-800: #1f2937;
+
+  /* Spacing */
+  --en-space-xs: 4px;
+  --en-space-sm: 8px;
+  --en-space-md: 16px;
+  --en-space-lg: 24px;
+
+  /* Radius */
+  --en-radius-md: 8px;
+  --en-radius-lg: 16px;
+  --en-radius-full: 9999px;
+
+  /* Elevation */
+  --en-shadow-sm: 0 2px 4px rgba(0,0,0,0.06);
+  --en-shadow-md: 0 6px 16px rgba(0,0,0,0.08);
+
+  /* Typography scale (En-AI_Design_System.md, EN-AI_Components_Molecules.md) */
+  --en-font-family-base: "Poppins", system-ui, sans-serif;
+  --en-font-size-caption: 12px;
+  --en-font-size-sm: 14px;
+  --en-font-size-md: 16px;
+  --en-font-size-lg: 18px;
+  --en-font-size-h4: 20px;
+  --en-font-size-h3: 32px;
+  --en-font-size-h2: 48px;
+  /* Legacy alias */
+  --en-font-size-xs: 12px;
+
+  /* Icon size tokens (binding only, no usage yet) */
+  --en-icon-size-sm: 16px;
+  --en-icon-size-md: 20px;
+  --en-icon-size-lg: 24px;
+  --en-icon-size-xl: 32px;
+
+  /* Divider token */
+  --en-divider-thickness: 1px;
+}
+
+/* ============================================================================
+2. GLOBAL BASELINE
+============================================================================ */
+
+html,
+body {
+  font-family: var(--en-font-family-base);
+  background: var(--en-neutral-0);
+  color: var(--en-neutral-800);
+}
+
+button,
+input,
+select,
+textarea {
+  font-family: inherit;
+}
+
+/* ============================================================================
+3. SEMANTIC ANCHORS (NO LAYOUT / NO STATES)
+============================================================================ */
+
+/* Structural */
+.enc-header {}
+.enc-sidebar {}
+.enc-main-container {}
+.enc-card {}
+.enc-list-row {}
+
+/* Utility */
+.enc-divider {
+  background-color: var(--en-neutral-200);
+  height: var(--en-divider-thickness);
+}
+
+/* Actions */
+.enc-action-primary {}
+.enc-action-secondary {}
+.enc-icon-button {}
+.enc-toggle {}
+
+/* Metadata */
+.enc-tag {}
+.enc-avatar {}
+
+/* ============================================================================
+4. INPUT PRIMITIVE (SINGLE APPROVED SEMANTIC)
+============================================================================ */
+
+.enc-input-field {
+  width: 100%;
+  font-size: var(--en-font-size-md);
+  border-radius: var(--en-radius-md);
+  border: 1px solid var(--en-neutral-200);
+  background: var(--en-neutral-0);
+  color: var(--en-neutral-800);
+}
+
+.enc-input-field::placeholder {
+  color: var(--en-neutral-500);
+}
+
+.enc-input-field:disabled {
+  background: var(--en-neutral-50);
+  color: var(--en-neutral-400);
+}
+
+/* ============================================================================
+5. RESPONDENT-SCOPED CONSTRAINT (APPROVED)
+============================================================================ */
+
+.enc-respondent {
+  --en-respondent-sidebar-min: 180px;
+}
+
+.enc-respondent .enc-sidebar {
+  min-width: var(--en-respondent-sidebar-min);
+}
+
+/* ============================================================================
+6. DENSITY — COMPACT MODE
+Set [data-density="compact"] on container (e.g. body or #root). No product-level
+compact styling; enculture.css resolves control height, spacing, radius.
+============================================================================ */
+
+[data-density="compact"] {
+  --control-height: 40px;
+  --en-space-xs: 4px;
+  --en-space-sm: 8px;
+  --en-space-md: 12px;
+  --en-space-lg: 16px;
+  --en-radius-md: 6px;
+}
+
+/* ============================================================================
+ADD-ON: Secondary & Reference Color Tokens
+Reason: Remove hex colors from product-level CSS
+============================================================================ */
+
+:root {
+  /* Secondary Teal */
+  --en-teal-50: #e0f2f1;
+  --en-teal-200: #80cbc4;
+  --en-teal-500: #009688;
+
+  /* Reference / Soft Surfaces */
+  --en-ref-surface-soft: #f9f8fd;
+  --en-ref-surface-brand-soft: #8c50ff;
+
+  /* Brand extension (already used by product) */
+  --en-brand-primary-600: #7c2dd1;
+}
+
+
+/* ============================================================================
+ADD-ON: Shadow Tokens
+Reason: Remove rgba() shadows from product CSS
+============================================================================ */
+
+:root {
+  /* Neutral elevation */
+  --en-shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.04);
+  --en-shadow-sm: 0 2px 6px rgba(0, 0, 0, 0.08);
+  --en-shadow-md: 0 6px 16px rgba(0, 0, 0, 0.12);
+
+  /* Brand elevation */
+  --en-shadow-brand-sm: 0 4px 12px rgba(124, 58, 237, 0.15);
+  --en-shadow-brand-md: 0 12px 32px rgba(124, 58, 237, 0.25);
+}
+
+
+/* ============================================================================
+ADD-ON: Translucent Surface Tokens
+Reason: Remove rgba overlays from product CSS
+============================================================================ */
+
+:root {
+  --en-surface-glass-70: rgba(255, 255, 255, 0.7);
+  --en-surface-overlay-08: rgba(0, 0, 0, 0.08);
+}
+
+
+/* ============================================================================
+7. RESPONSIVE TYPOGRAPHY — Font scaling for responsive UI
+Governance: Preserve typography scale hierarchy at all viewport sizes.
+Breakpoints aligned with EncContainer (Sm 720, Md 960, Lg 1200).
+============================================================================ */
+
+/* Tablet and below (≤1024px): slight scale down */
+@media (max-width: 1024px) {
+  :root {
+    --en-font-size-caption: 11px;
+    --en-font-size-sm: 13px;
+    --en-font-size-md: 15px;
+    --en-font-size-lg: 17px;
+    --en-font-size-h4: 19px;
+    --en-font-size-h3: 30px;
+    --en-font-size-h2: 44px;
+    --en-font-size-xs: 11px;
+  }
+}
+
+/* Mobile (≤768px): further scale down */
+@media (max-width: 768px) {
+  :root {
+    --en-font-size-caption: 11px;
+    --en-font-size-sm: 13px;
+    --en-font-size-md: 14px;
+    --en-font-size-lg: 16px;
+    --en-font-size-h4: 18px;
+    --en-font-size-h3: 28px;
+    --en-font-size-h2: 40px;
+    --en-font-size-xs: 11px;
+  }
+}
+
+/* Small mobile (≤480px): minimum readable scale */
+@media (max-width: 480px) {
+  :root {
+    --en-font-size-caption: 10px;
+    --en-font-size-sm: 12px;
+    --en-font-size-md: 14px;
+    --en-font-size-lg: 15px;
+    --en-font-size-h4: 17px;
+    --en-font-size-h3: 24px;
+    --en-font-size-h2: 32px;
+    --en-font-size-xs: 10px;
+  }
+}
+
+/* ============================================================================
+END OF FILE
+============================================================================ */

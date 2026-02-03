@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en" data-density="compact">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enculture - Organization Diagnosis Survey</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Mulish:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../Enculture Ds/enculture.css">
+    <style>
+        /* Flow Specific Overrides & Layout */
+        body {
+            background-color: var(--en-grey-20);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .screen-container {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            /* Align top for long scrolling content */
+            padding: var(--en-space-xl) var(--en-space-md);
+            opacity: 0;
+            animation: fadeIn 0.4s ease-out forwards;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .central-card {
+            background: white;
+            border-radius: var(--en-radius-lg);
+            border: 1px solid var(--en-grey-100);
+            box-shadow: var(--en-shadow-md);
+            width: 100%;
+            max-width: 680px;
+            /* Optimal reading width */
+            padding: var(--en-space-2xl);
+            text-align: center;
+        }
+
+        .survey-layout {
+            width: 100%;
+            max-width: 800px;
+            display: flex;
+            flex-direction: column;
+            gap: var(--en-space-lg);
+        }
+
+        /* Headers */
+        .flow-header {
+            margin-bottom: var(--en-space-xl);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: var(--en-space-sm);
+        }
+
+        .flow-logo {
+            font-weight: 700;
+            color: var(--en-primary-brand-500);
+            margin-bottom: var(--en-space-md);
+        }
+
+        /* Typography Helper Classes */
+        .text-h1 {
+            font-family: var(--font-primary);
+            font-size: var(--text-h3);
+            font-weight: 600;
+            color: var(--en-grey-800);
+        }
+
+        .text-h2 {
+            font-family: var(--font-primary);
+            font-size: var(--text-h4);
+            font-weight: 600;
+            color: var(--en-grey-800);
+        }
+
+        .text-body {
+            font-family: var(--font-secondary);
+            font-size: var(--text-body);
+            color: var(--en-grey-600);
+            line-height: 1.6;
+        }
+
+        .text-muted {
+            color: var(--en-grey-400);
+            font-size: var(--text-sm);
+        }
+
+        /* Utility */
+        .w-full {
+            width: 100%;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        .flex-col {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .gap-md {
+            gap: var(--en-space-md);
+        }
+
+        .gap-lg {
+            gap: var(--en-space-lg);
+        }
+
+        .items-center {
+            align-items: center;
+        }
+
+        .justify-between {
+            justify-content: space-between;
+        }
+
+        .flex-row {
+            display: flex;
+            flex-direction: row;
+        }
+
+        .text-left {
+            text-align: left;
+        }
+
+        /* Survey Question Styles */
+        .question-card {
+            background: white;
+            padding: var(--en-space-lg);
+            border-radius: var(--en-radius-md);
+            border: 1px solid var(--en-grey-100);
+            text-align: left;
+            transition: box-shadow 0.2s ease;
+        }
+
+        .question-card:focus-within {
+            box-shadow: var(--en-shadow-md);
+            border-color: var(--en-primary-brand-200);
+        }
+
+        .q-text {
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-bottom: var(--en-space-md);
+            display: block;
+        }
+
+        .q-options {
+            display: flex;
+            flex-direction: column;
+            gap: var(--en-space-sm);
+        }
+
+        /* Survey Inputs */
+        .radio-option,
+        .checkbox-option {
+            display: flex;
+            align-items: center;
+            gap: var(--en-space-sm);
+            padding: var(--en-space-sm) var(--en-space-md);
+            border: 1px solid var(--en-grey-200);
+            border-radius: var(--en-radius-sm);
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .radio-option:hover,
+        .checkbox-option:hover {
+            background-color: var(--en-grey-20);
+        }
+
+        .radio-option input:checked+span,
+        .checkbox-option input:checked+span {
+            color: var(--en-primary-brand-700);
+            font-weight: 600;
+        }
+
+        .radio-option:has(input:checked),
+        .checkbox-option:has(input:checked) {
+            border-color: var(--en-primary-brand-500);
+            background-color: var(--en-primary-brand-50);
+        }
+
+        /* Sticky Footer */
+        .survey-footer {
+            position: sticky;
+            bottom: 0;
+            background: white;
+            padding: var(--en-space-md) var(--en-space-xl);
+            border-top: 1px solid var(--en-grey-200);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+        }
+
+        /* Progress Bar */
+        .progress-container {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            gap: var(--en-space-md);
+        }
+
+        .progress-track {
+            flex: 1;
+            height: 6px;
+            background: var(--en-grey-100);
+            border-radius: var(--en-radius-full);
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: var(--en-primary-brand-500);
+            transition: width 0.3s ease;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- CONTAINER FOR DYNAMIC SCREENS -->
+    <main id="app-root"></main>
+
+    <!-- LOGIC -->
+    <script>
+        // --- DATA MOCK ---
+        // Generating 30 questions for pagination demo
+        const questionsDB = Array.from({ length: 30 }, (_, i) => {
+            const num = i + 1;
+            let type = 'single';
+            if (num % 5 === 0) type = 'text';
+            else if (num % 4 === 0) type = 'multi';
+            else if (num % 3 === 0) type = 'likert';
+
+            return {
+                id: `q${num}`,
+                text: `Question ${num}: This is a sample responsive survey question to demonstrate layout?`,
+                type: type,
+                options: ['Strongly Disagree', 'Disagree', 'Neutral', 'Agree', 'Strongly Agree']
+            };
+        });
+
+        // --- STATE MANAGEMENT ---
+        const state = {
+            screen: 'INVITATION', // INVITATION | WELCOME | SURVEY | REVIEW | SUBMIT_GATE | CONFIRMATION
+            page: 0,
+            answers: {},
+            totalPages: Math.ceil(questionsDB.length / 10)
+        };
+
+        const root = document.getElementById('app-root');
+
+        // --- RENDERERS ---
+
+        function renderInvitation() { // Screen 1
+            root.innerHTML = `
+                <div class="screen-container">
+                    <div class="central-card">
+                        <div class="flow-header">
+                            <div class="flow-logo">ENCULTURE</div> 
+                            <span class="enc-badge neutral">Organization Diagnosis</span>
+                        </div>
+                        <h1 class="text-h1">Employee Voice Survey</h1>
+                        <p class="text-body" style="margin-top: 16px;">
+                            We want to hear from you. This survey helps us understand your experience to improve our workplace culture.
+                        </p>
+                        
+                        <div style="margin: 32px 0; display: flex; justify-content: center; gap: 24px; color: var(--en-grey-600);">
+                            <span style="display: flex; align-items: center; gap: 8px;">⏱️ 8 min estimate</span>
+                            <span style="display: flex; align-items: center; gap: 8px;">🔒 Anonymous</span>
+                        </div>
+
+                        <button class="enc-btn enc-btn-primary w-full" onclick="navigateTo('WELCOME')">Start Survey</button>
+                        
+                        <p class="text-muted" style="margin-top: 24px;">
+                            Powered by Enculture. Your privacy is protected.
+                        </p>
+                    </div>
+                </div>
+            `;
+        }
+
+        function renderWelcome() { // Screen 3 (Skip 2 for happy path)
+            root.innerHTML = `
+                <div class="screen-container">
+                    <div class="central-card text-left">
+                        <h2 class="text-h1" style="margin-bottom: 24px;">Welcome</h2>
+                        
+                        <div class="flex-col gap-md">
+                            <div class="flex-row gap-md items-center">
+                                <div style="background: var(--en-teal-50); padding: 8px; border-radius: 50%;">🛡️</div>
+                                <div>
+                                    <h3 class="text-h2" style="font-size: 16px;">Strictly Anonymous</h3>
+                                    <p class="text-body text-sm">Your individual responses cannot be traced back to you.</p>
+                                </div>
+                            </div>
+                            <div class="flex-row gap-md items-center">
+                                <div style="background: var(--en-primary-brand-50); padding: 8px; border-radius: 50%;">📝</div>
+                                <div>
+                                    <h3 class="text-h2" style="font-size: 16px;">30 Questions</h3>
+                                    <p class="text-body text-sm">Organized into 3 pages. Takes about 8 minutes.</p>
+                                </div>
+                            </div>
+                            <div class="flex-row gap-md items-center">
+                                <div style="background: var(--en-grey-100); padding: 8px; border-radius: 50%;">💾</div>
+                                <div>
+                                    <h3 class="text-h2" style="font-size: 16px;">Auto-Save</h3>
+                                    <p class="text-body text-sm">Take your time. Your progress is saved automatically.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div style="margin-top: 32px;">
+                            <button class="enc-btn enc-btn-primary w-full" onclick="navigateTo('SURVEY')">Begin Survey</button>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        function renderSurveyPage() { // Screen 4
+            const startIndex = state.page * 10;
+            const endIndex = Math.min(startIndex + 10, questionsDB.length);
+            const pageQuestions = questionsDB.slice(startIndex, endIndex);
+
+            const progressPercent = ((state.page) / state.totalPages) * 100;
+
+            let questionsHtml = pageQuestions.map(q => {
+                let inputHtml = '';
+                if (q.type === 'single' || q.type === 'likert') {
+                    inputHtml = q.options.map((opt, idx) => `
+                        <label class="radio-option">
+                            <input type="radio" name="${q.id}" value="${opt}" ${state.answers[q.id] === opt ? 'checked' : ''} onchange="saveAnswer('${q.id}', '${opt}')">
+                            <span>${opt}</span>
+                        </label>
+                    `).join('');
+                } else if (q.type === 'multi') {
+                    inputHtml = q.options.map((opt, idx) => `
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="${q.id}" value="${opt}" onchange="saveAnswer('${q.id}', this.value, true)">
+                            <span>${opt}</span>
+                        </label>
+                    `).join(''); // Simplified multi check logic for demo
+                } else if (q.type === 'text') {
+                    inputHtml = `<textarea class="enc-input" rows="3" placeholder="Type your answer here..." onblur="saveAnswer('${q.id}', this.value)">${state.answers[q.id] || ''}</textarea>`;
+                }
+
+                return `
+                    <div class="question-card" id="${q.id}">
+                        <label class="q-text">${q.text}</label>
+                        <div class="q-options">${inputHtml}</div>
+                    </div>
+                `;
+            }).join('');
+
+            root.innerHTML = `
+                <div style="width: 100%; display: flex; justify-content: center; padding-bottom: 80px;">
+                    <div class="survey-layout">
+                        <!-- Header -->
+                        <div style="background: white; padding: 16px 24px; border-radius: var(--en-radius-md); border: 1px solid var(--en-grey-100);">
+                            <div class="flex-row justify-between items-center" style="margin-bottom: 8px;">
+                                <span class="text-h2" style="font-size: 18px;">Organization Diagnosis</span>
+                                <span class="text-muted">Page ${state.page + 1} of ${state.totalPages}</span>
+                            </div>
+                            <div class="progress-container">
+                                <div class="progress-track">
+                                    <div class="progress-fill" style="width: ${progressPercent}%"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Questions -->
+                        ${questionsHtml}
+                    </div>
+                </div>
+
+                <!-- Footer -->
+                <div class="survey-footer">
+                    <div>
+                        ${state.page > 0 ? `<button class="enc-btn enc-btn-secondary" onclick="prevPage()">Back</button>` : '<div></div>'}
+                    </div>
+                    <div class="text-muted text-sm">Autosaved</div>
+                    <button class="enc-btn enc-btn-primary" onclick="nextPage()">
+                        ${state.page === state.totalPages - 1 ? 'Review Responses' : 'Next Page'}
+                    </button>
+                </div>
+            `;
+
+            window.scrollTo(0, 0);
+        }
+
+        function renderReview() { // Screen 5
+            const filledCount = Object.keys(state.answers).length;
+            const totalCount = questionsDB.length;
+
+            root.innerHTML = `
+                <div class="screen-container">
+                    <div class="central-card text-left">
+                        <h2 class="text-h1">Review Responses</h2>
+                        <p class="text-body" style="margin-bottom: 24px;">
+                            You have answered <strong>${filledCount}</strong> out of <strong>${totalCount}</strong> questions.
+                        </p>
+
+                        <div style="background: var(--en-grey-20); padding: 16px; border-radius: 8px; border: 1px solid var(--en-grey-200); margin-bottom: 32px;">
+                            <ul style="padding-left: 20px; color: var(--en-grey-600);">
+                                <li>Page 1: Completed</li>
+                                <li>Page 2: Completed</li>
+                                <li>Page 3: Completed</li>
+                            </ul>
+                        </div>
+
+                        <div class="flex-row gap-lg">
+                            <button class="enc-btn enc-btn-secondary w-full" onclick="state.page = 0; navigateTo('SURVEY')">Edit Answers</button>
+                            <button class="enc-btn enc-btn-primary w-full" onclick="navigateTo('SUBMIT_GATE')">Proceed to Submit</button>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        function renderSubmissionGate() { // Screen 6
+            root.innerHTML = `
+                <div class="screen-container" style="align-items: center;">
+                    <div class="central-card">
+                        <h2 class="text-h1" style="margin-bottom: 16px;">Ready to submit?</h2>
+                        <p class="text-body" style="margin-bottom: 32px;">
+                            Once submitted, your responses will be securely recorded and cannot be changed.
+                        </p>
+                        <div class="flex-col gap-md">
+                            <button class="enc-btn enc-btn-primary w-full" onclick="navigateTo('CONFIRMATION')">Submit Survey</button>
+                            <button class="enc-btn enc-btn-secondary w-full" onclick="navigateTo('REVIEW')">Go Back</button>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        function renderConfirmation() { // Screen 7
+            root.innerHTML = `
+                <div class="screen-container" style="align-items: center;">
+                    <div class="central-card">
+                        <div style="font-size: 64px; margin-bottom: 16px; color: var(--en-success-500);">✓</div>
+                        <h2 class="text-h1" style="margin-bottom: 16px;">Thank You</h2>
+                        <p class="text-body" style="margin-bottom: 32px;">
+                            Your responses have been securely recorded. Your privacy remains protected.
+                        </p>
+                        <p class="text-muted">You may close this tab now.</p>
+                    </div>
+                </div>
+            `;
+        }
+
+        // --- ACTIONS ---
+
+        function navigateTo(screenName) {
+            state.screen = screenName;
+            render();
+        }
+
+        function nextPage() {
+            if (state.page < state.totalPages - 1) {
+                state.page++;
+                render();
+            } else {
+                navigateTo('REVIEW');
+            }
+        }
+
+        function prevPage() {
+            if (state.page > 0) {
+                state.page--;
+                render();
+            }
+        }
+
+        function saveAnswer(id, val) {
+            state.answers[id] = val;
+            // In a real app, debounce send to server here
+        }
+
+        function render() {
+            switch (state.screen) {
+                case 'INVITATION': renderInvitation(); break;
+                case 'WELCOME': renderWelcome(); break;
+                case 'SURVEY': renderSurveyPage(); break;
+                case 'REVIEW': renderReview(); break;
+                case 'SUBMIT_GATE': renderSubmissionGate(); break;
+                case 'CONFIRMATION': renderConfirmation(); break;
+            }
+        }
+
+        // Init
+        render();
+
+    </script>
+</body>
+
+</html>

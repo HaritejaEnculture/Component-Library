@@ -1,0 +1,39 @@
+/**
+ * Enculture AI Design System - Global Styles
+ * Design tokens are applied via CSS variables from theme.ts
+ */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Roboto+Mono:wght@400;500;600;700&display=swap');
+
+:root {
+  /* Design system tokens are applied via JavaScript in index.tsx */
+  /* All CSS variables are defined in theme.ts and applied via applyTheme() */
+  
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  
+  /* Use design system tokens */
+  font-family: var(--en-font-family-base, 'Poppins', sans-serif);
+  color: var(--text-primary, #16141a);
+  background-color: var(--surface-page, #F3F0F9);
+}
+
+#root {
+  width: 100%;
+  min-height: 100vh;
+}
+

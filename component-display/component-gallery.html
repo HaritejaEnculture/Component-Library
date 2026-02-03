@@ -1,0 +1,880 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Enculture Design System — Component Gallery</title>
+  <link rel="stylesheet" href="../Enculture Ds/enculture.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* ========== Gallery layout (neutral, DS surface) ========== */
+    .gallery-page {
+      background: var(--en-neutral-0);
+      color: var(--en-neutral-800);
+      font-family: var(--en-font-family-base);
+      padding: var(--en-space-lg);
+      max-width: 64rem;
+      margin: 0 auto;
+    }
+    .gallery-title { font-size: var(--en-font-size-h3); margin: 0 0 var(--en-space-xs); font-weight: 600; }
+    .gallery-subtitle { font-size: var(--en-font-size-sm); color: var(--en-neutral-500); margin: 0 0 var(--en-space-lg); }
+    .gallery-section { margin-bottom: var(--en-space-lg); }
+    .gallery-section-heading { font-size: var(--en-font-size-h4); margin: 0 0 var(--en-space-md); font-weight: 600; color: var(--en-neutral-800); }
+    .gallery-component-block { margin-bottom: var(--en-space-lg); }
+    .gallery-component-title { font-size: var(--en-font-size-md); font-weight: 600; margin: 0 0 var(--en-space-xs); }
+    .gallery-component-purpose { font-size: var(--en-font-size-sm); color: var(--en-neutral-500); margin: 0 0 var(--en-space-md); }
+    .gallery-preview { background: var(--en-neutral-50); border: 1px solid var(--en-neutral-200); border-radius: var(--en-radius-md); padding: var(--en-space-md); margin-bottom: var(--en-space-sm); }
+    .gallery-preview-inline { display: flex; flex-wrap: wrap; gap: var(--en-space-md); align-items: center; }
+    .gallery-state-row { margin-bottom: var(--en-space-sm); }
+    .gallery-state-label { font-size: var(--en-font-size-caption); color: var(--en-neutral-500); margin-bottom: var(--en-space-xs); }
+    .gallery-skip-note { font-size: var(--en-font-size-sm); color: var(--en-neutral-500); font-style: italic; padding: var(--en-space-md); border: 1px dashed var(--en-neutral-200); border-radius: var(--en-radius-md); }
+    .gallery-intent-table { width: 100%; border-collapse: collapse; font-size: var(--en-font-size-sm); margin-bottom: var(--en-space-lg); }
+    .gallery-intent-table th, .gallery-intent-table td { text-align: left; padding: var(--en-space-xs) var(--en-space-sm); border: 1px solid var(--en-neutral-200); }
+    .gallery-intent-table th { background: var(--en-neutral-50); font-weight: 600; }
+    .gallery-contract { font-size: var(--en-font-size-sm); padding: var(--en-space-sm); background: var(--en-neutral-50); border: 1px solid var(--en-neutral-200); border-radius: var(--en-radius-md); margin-bottom: var(--en-space-sm); }
+    .gallery-contract p, .gallery-contract ul { margin: 0 0 var(--en-space-xs); }
+    .gallery-contract ul:last-child { margin-bottom: 0; }
+    .gallery-misuse { font-size: var(--en-font-size-sm); color: var(--en-neutral-800); margin-bottom: var(--en-space-sm); }
+    .gallery-misuse strong { display: block; margin-bottom: var(--en-space-xs); }
+    .gallery-misuse ul { margin: 0; padding-left: var(--en-space-lg); }
+    .gallery-snippet { font-size: var(--en-font-size-caption); font-family: ui-monospace, monospace; white-space: pre-wrap; word-break: break-all; padding: var(--en-space-sm); border: 1px solid var(--en-neutral-200); border-radius: var(--en-radius-md); background: var(--en-neutral-0); margin-top: var(--en-space-sm); }
+
+    /* ========== Display bindings (token-only; semantic anchors from enculture.css) ========== */
+    .enc-action-primary {
+      background: var(--en-brand-primary-500);
+      color: var(--en-neutral-0);
+      border: none;
+      padding: var(--en-space-sm) var(--en-space-lg);
+      border-radius: var(--en-radius-md);
+      font-size: var(--en-font-size-sm);
+      font-weight: 600;
+      cursor: pointer;
+    }
+    .enc-action-primary:hover { background: var(--en-brand-primary-600); }
+    .enc-action-primary:focus-visible { outline: 2px solid var(--en-brand-primary-500); outline-offset: 2px; }
+    .enc-action-primary:disabled { opacity: 0.6; cursor: not-allowed; }
+    .enc-action-secondary {
+      background: var(--en-neutral-0);
+      color: var(--en-neutral-800);
+      border: 1px solid var(--en-neutral-200);
+      padding: var(--en-space-sm) var(--en-space-lg);
+      border-radius: var(--en-radius-md);
+      font-size: var(--en-font-size-sm);
+      font-weight: 500;
+      cursor: pointer;
+    }
+    .enc-action-secondary:hover { background: var(--en-neutral-50); border-color: var(--en-neutral-400); }
+    .enc-action-secondary:focus-visible { outline: 2px solid var(--en-brand-primary-500); outline-offset: 2px; }
+    .enc-action-secondary:disabled { opacity: 0.6; cursor: not-allowed; }
+    .enc-card {
+      background: var(--en-neutral-0);
+      border: 1px solid var(--en-neutral-200);
+      border-radius: var(--en-radius-lg);
+      padding: var(--en-space-lg);
+      box-shadow: var(--en-shadow-sm);
+    }
+    .enc-tag {
+      display: inline-block;
+      padding: var(--en-space-xs) var(--en-space-sm);
+      border-radius: var(--en-radius-md);
+      font-size: var(--en-font-size-caption);
+      font-weight: 500;
+      background: var(--en-neutral-50);
+      color: var(--en-neutral-800);
+      border: 1px solid var(--en-neutral-200);
+    }
+    .enc-avatar {
+      width: var(--en-icon-size-xl);
+      height: var(--en-icon-size-xl);
+      border-radius: var(--en-radius-full);
+      background: var(--en-neutral-200);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: var(--en-font-size-sm);
+      color: var(--en-neutral-500);
+      flex-shrink: 0;
+    }
+    .enc-icon-button {
+      width: var(--en-icon-size-lg);
+      height: var(--en-icon-size-lg);
+      min-width: var(--en-icon-size-lg);
+      min-height: var(--en-icon-size-lg);
+      border-radius: var(--en-radius-md);
+      border: 1px solid var(--en-neutral-200);
+      background: var(--en-neutral-0);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      color: var(--en-neutral-800);
+    }
+    .enc-icon-button:hover { background: var(--en-neutral-50); }
+    .enc-icon-button:focus-visible { outline: 2px solid var(--en-brand-primary-500); outline-offset: 2px; }
+    .enc-icon-button:disabled { opacity: 0.6; cursor: not-allowed; }
+    .enc-list-row {
+      padding: var(--en-space-sm) var(--en-space-md);
+      border-radius: var(--en-radius-md);
+      border: 1px solid var(--en-neutral-200);
+      margin-bottom: var(--en-space-xs);
+      display: flex;
+      align-items: center;
+      gap: var(--en-space-md);
+      background: var(--en-neutral-0);
+    }
+    .enc-list-row:hover { background: var(--en-neutral-50); }
+    .enc-list-row[aria-selected="true"] { background: var(--en-neutral-50); border-color: var(--en-brand-primary-500); }
+    .enc-list-row.enc-list-row--disabled { opacity: 0.6; pointer-events: none; }
+    .enc-toggle {
+      padding: var(--en-space-xs) var(--en-space-sm);
+      border-radius: var(--en-radius-md);
+      border: 1px solid var(--en-neutral-200);
+      background: var(--en-neutral-0);
+      color: var(--en-neutral-800);
+      font-size: var(--en-font-size-sm);
+      cursor: pointer;
+    }
+    .enc-toggle[aria-checked="true"] { background: var(--en-neutral-200); }
+    .enc-toggle:focus-visible { outline: 2px solid var(--en-brand-primary-500); outline-offset: 2px; }
+    .enc-header {
+      padding: var(--en-space-md) var(--en-space-lg);
+      border-bottom: 1px solid var(--en-neutral-200);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: var(--en-space-md);
+    }
+    .enc-main-container { padding: var(--en-space-lg); }
+    .enc-sidebar {
+      padding: var(--en-space-lg);
+      border-right: 1px solid var(--en-neutral-200);
+      background: var(--en-neutral-50);
+    }
+    .gallery-mini-layout { display: flex; min-height: 120px; }
+    .gallery-mini-layout .enc-sidebar { min-width: 160px; }
+    .gallery-mini-layout .enc-main-container { flex: 1; }
+    .enc-input-field { padding: var(--en-space-sm) var(--en-space-md); }
+    .enc-input-field:focus { outline: 2px solid var(--en-brand-primary-500); outline-offset: 0; }
+    /* Compact density: enculture.css sets --control-height; bind for gallery display */
+    .enc-action-primary { height: var(--control-height, 48px); box-sizing: border-box; }
+    [data-density="compact"] .enc-action-primary { height: var(--control-height); }
+  </style>
+</head>
+<body>
+  <div class="gallery-page">
+    <h1 class="gallery-title">Enculture Design System — Component Gallery</h1>
+    <p class="gallery-subtitle">Single live reference for all Enculture UI components. Dummy data only. Governed by enculture.css, En-AI_Design_System.md, EN-AI_Components_Molecules.md, COMPONENT_REGISTRY.md.</p>
+
+    <!-- ==================== INTENT → COMPONENT INDEX ==================== -->
+    <section class="gallery-section" id="intent-index">
+      <h2 class="gallery-section-heading">Intent → Component Index</h2>
+      <p class="gallery-component-purpose">Use this table to choose the correct component for your intent. Do not improvise with non-DS components.</p>
+      <table class="gallery-intent-table" aria-label="Developer intent to Enculture component mapping">
+        <thead>
+          <tr>
+            <th>Developer intent</th>
+            <th>Recommended component</th>
+            <th>Notes</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Separate sections or content groups visually</td><td>EncDivider</td><td>Decorative; not a layout container</td></tr>
+          <tr><td>Capture text, choice, or selection from user (forms)</td><td>EncInputField</td><td>Single approved input; use on input, textarea, select</td></tr>
+          <tr><td>Show status or category label (read-only)</td><td>EncTag</td><td>Metadata only; not an action</td></tr>
+          <tr><td>Show user or entity identity</td><td>EncAvatar</td><td>Provide aria-label or alt</td></tr>
+          <tr><td>Binary on/off setting (form control)</td><td>EncToggle</td><td>role="switch"; reflect state to assistive tech</td></tr>
+          <tr><td>Primary action (submit, confirm, main CTA)</td><td>EncButton (enc-action-primary)</td><td>Do not use enc-btn or enc-btn-primary</td></tr>
+          <tr><td>Secondary action (cancel, back, secondary CTA)</td><td>EncButton (enc-action-secondary)</td><td>—</td></tr>
+          <tr><td>Icon-only action (add, edit, expand, more)</td><td>EncIconButton</td><td>Accessible label required; Lucide only</td></tr>
+          <tr><td>Group related content in a surface</td><td>EncCard</td><td>Owns padding, radius, elevation</td></tr>
+          <tr><td>Selectable or navigable list row</td><td>EncListRow</td><td>State visuals DS-owned; actions use EncIconButton</td></tr>
+          <tr><td>Show feedback or notification (toast)</td><td>EncToast</td><td>No .enc-* in enculture.css; see EN-AI_Components_Molecules</td></tr>
+          <tr><td>Show multi-step progress (wizard)</td><td>EncStepper</td><td>No .enc-* in enculture.css</td></tr>
+          <tr><td>Start and end date selection</td><td>EncDateRangePicker</td><td>No .enc-* in enculture.css</td></tr>
+          <tr><td>Time value capture</td><td>EncTimeInput</td><td>No .enc-* in enculture.css</td></tr>
+          <tr><td>Empty list or configuration state</td><td>EncEmptyState</td><td>No .enc-* in enculture.css</td></tr>
+          <tr><td>App shell top bar (context, nav, actions)</td><td>EncHeader</td><td>No workflow logic</td></tr>
+          <tr><td>App shell side nav or auxiliary panel</td><td>EncSidebar</td><td>Width from tokens or parent; .enc-respondent for respondent min-width</td></tr>
+          <tr><td>App shell main layout (header + sidebar + canvas)</td><td>EncMainContainer</td><td>Sole owner of page-level layout; no product layout utilities</td></tr>
+          <tr><td>Page or section max-width container</td><td>EncContainer</td><td>No .enc-* in enculture.css; Sm/Md/Lg/Xl</td></tr>
+          <tr><td>Page-level title, description, actions</td><td>EncPageHeader</td><td>No .enc-* in enculture.css</td></tr>
+          <tr><td>Group content with vertical rhythm</td><td>EncSection</td><td>No .enc-* in enculture.css</td></tr>
+          <tr><td>Section title with optional helper and actions</td><td>EncSectionHeader</td><td>No .enc-* in enculture.css; must not compete with EncPageHeader</td></tr>
+          <tr><td>Compact UI (smaller controls, spacing)</td><td>Density (compact)</td><td>Set data-density="compact" on container</td></tr>
+          <tr><td>Survey respondent flow layout</td><td>Enc Respondent scope</td><td>Apply .enc-respondent to respondent shell</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- ==================== ATOMS ==================== -->
+    <section class="gallery-section" id="atoms">
+      <h2 class="gallery-section-heading">Atoms</h2>
+
+      <div class="gallery-component-block">
+        <h3 class="gallery-component-title">EncDivider</h3>
+        <p class="gallery-component-purpose">Visual separation between sections or groups without creating hierarchy.</p>
+        <div class="gallery-contract">
+          <p><strong>Role / Intent:</strong> Visual separation without creating hierarchy.</p>
+          <p><strong>Use when:</strong> Separating sections, lists, or card content.</p>
+          <p><strong>Do NOT use when:</strong> As a layout container; as a decorative line inside charts or analytics.</p>
+          <p><strong>Stable props:</strong> Class <code>enc-divider</code> only (semantic hook).</p>
+          <p><strong>Governance:</strong> Uses border tokens only; must not be used as a layout container.</p>
+        </div>
+        <div class="gallery-misuse">
+          <strong>Do not use for:</strong>
+          <ul>
+            <li>Analytics or dashboard chart dividers (use chart/DS rules for data viz)</li>
+            <li>Layout (e.g. flex/grid spacer)</li>
+            <li>Status or action separator (use EncTag or EncButton for actions)</li>
+          </ul>
+        </div>
+        <div class="gallery-snippet">&lt;hr class="enc-divider"&gt;</div>
+        <div class="gallery-preview">
+          <p class="gallery-state-label">Default</p>
+          <div>Content above</div>
+          <hr class="enc-divider" style="margin: var(--en-space-sm) 0;">
+          <div>Content below</div>
+        </div>
+      </div>
+
+      <div class="gallery-component-block">
+        <h3 class="gallery-component-title">EncInputField</h3>
+        <p class="gallery-component-purpose">Single approved text/input primitive; applies to input, textarea, select where applicable.</p>
+        <div class="gallery-contract">
+          <p><strong>Role / Intent:</strong> Single approved text/input primitive for forms.</p>
+          <p><strong>Use when:</strong> Text, textarea, or select in Survey Creator, Admin, or forms.</p>
+          <p><strong>Do NOT use when:</strong> Custom-styled search that overrides DS; use enc-input (forbidden — use enc-input-field).</p>
+          <p><strong>Stable props:</strong> class <code>enc-input-field</code>; type, placeholder, disabled; aria-label or associated label.</p>
+          <p><strong>Governance:</strong> Placeholder/disabled colors from DS; semantic labels required; no raw colors.</p>
+        </div>
+        <div class="gallery-misuse">
+          <strong>Do not use for:</strong>
+          <ul>
+            <li>Data-visualization or analytics filter inputs with custom styling</li>
+            <li>Dashboard-only inputs that bypass DS semantics</li>
+            <li>Without accessible label (aria-label or &lt;label for&gt;)</li>
+          </ul>
+        </div>
+        <div class="gallery-snippet">&lt;label for="f1"&gt;Label&lt;/label&gt;
+&lt;input type="text" id="f1" class="enc-input-field" aria-label="Label" placeholder="Placeholder"&gt;</div>
+        <div class="gallery-preview">
+          <p class="gallery-state-label">Default (with value)</p>
+          <input type="text" class="enc-input-field" value="Sample question" aria-label="Sample input" style="max-width: 20rem;">
+        </div>
+        <div class="gallery-preview">
+          <p class="gallery-state-label">Placeholder</p>
+          <input type="text" class="enc-input-field" placeholder="Option A" aria-label="Placeholder input" style="max-width: 20rem;">
+        </div>
+        <div class="gallery-preview">
+          <p class="gallery-state-label">Disabled</p>
+          <input type="text" class="enc-input-field" value="Department X" disabled aria-label="Disabled input" style="max-width: 20rem;">
+        </div>
+        <div class="gallery-preview">
+          <p class="gallery-state-label">Textarea variant</p>
+          <textarea class="enc-input-field" rows="3" placeholder="Helper text (Content.Text.Muted)" aria-label="Sample textarea" style="max-width: 20rem; resize: vertical;">Sample multi-line response.</textarea>
+        </div>
+      </div>
+
+      <div class="gallery-component-block">
+        <h3 class="gallery-component-title">EncTag</h3>
+        <p class="gallery-component-purpose">Compact metadata label for status or categorization.</p>
+        <div class="gallery-contract">
+          <p><strong>Role / Intent:</strong> Compact metadata label for status or categorization (read-only).</p>
+          <p><strong>Use when:</strong> Status badges, categories, filters in lists.</p>
+          <p><strong>Do NOT use when:</strong> As a button or action; for chart legends; for primary CTAs.</p>
+          <p><strong>Stable props:</strong> class <code>enc-tag</code>; content (text).</p>
+          <p><strong>Governance:</strong> Status/category only; ensure contrast; no action semantics.</p>
+        </div>
+        <div class="gallery-misuse">
+          <strong>Do not use for:</strong>
+          <ul>
+            <li>Clickable filters or actions (use EncButton or EncIconButton)</li>
+            <li>Analytics or dashboard chart legends (use data-vis rules)</li>
+            <li>Navigation tabs (use appropriate nav component)</li>
+            <li>Status vs action confusion: tag = label only, not trigger</li>
+          </ul>
+        </div>
+        <div class="gallery-snippet">&lt;span class="enc-tag"&gt;Completed&lt;/span&gt;</div>
+        <div class="gallery-preview">
+          <div class="gallery-preview-inline">
+            <span class="enc-tag">Completed</span>
+            <span class="enc-tag">In progress</span>
+            <span class="enc-tag">Pending</span>
+            <span class="enc-tag">Department X</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="gallery-component-block">
+        <h3 class="gallery-component-title">EncAvatar</h3>
+        <p class="gallery-component-purpose">Represents a user or entity visually.</p>
+        <div class="gallery-contract">
+          <p><strong>Role / Intent:</strong> Represents a user or entity visually (identity).</p>
+          <p><strong>Use when:</strong> User profile, lists, headers where identity is shown.</p>
+          <p><strong>Do NOT use when:</strong> As icon for non-identity (e.g. KPI icon); for org logo without identity meaning.</p>
+          <p><strong>Stable props:</strong> class <code>enc-avatar</code>; content (initials) or image; aria-label or alt.</p>
+          <p><strong>Governance:</strong> Provide alt or aria-label for identity.</p>
+        </div>
+        <div class="gallery-misuse">
+          <strong>Do not use for:</strong>
+          <ul>
+            <li>Dashboard KPI or metric icons</li>
+            <li>Chart markers or data-vis elements</li>
+            <li>Generic decorative circles (use only for user/entity identity)</li>
+          </ul>
+        </div>
+        <div class="gallery-snippet">&lt;div class="enc-avatar" aria-label="User Jane Doe"&gt;JD&lt;/div&gt;</div>
+        <div class="gallery-preview">
+          <div class="gallery-preview-inline">
+            <div class="enc-avatar" aria-label="User JD">JD</div>
+            <div class="enc-avatar" aria-label="User MK">MK</div>
+            <div class="enc-avatar" aria-label="User SR">SR</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="gallery-component-block">
+        <h3 class="gallery-component-title">EncToggle</h3>
+        <p class="gallery-component-purpose">Binary on/off form control.</p>
+        <div class="gallery-contract">
+          <p><strong>Role / Intent:</strong> Binary on/off form control.</p>
+          <p><strong>Use when:</strong> Settings, filters, preferences (single on/off).</p>
+          <p><strong>Do NOT use when:</strong> Primary action (use EncButton); multi-option selection (use appropriate control).</p>
+          <p><strong>Stable props:</strong> class <code>enc-toggle</code>; role="switch"; aria-checked; aria-label.</p>
+          <p><strong>Governance:</strong> Focusable; keyboard toggle; reflect state to assistive tech.</p>
+        </div>
+        <div class="gallery-misuse">
+          <strong>Do not use for:</strong>
+          <ul>
+            <li>Submit or primary CTA (use enc-action-primary)</li>
+            <li>Status display only (non-interactive) — use EncTag for read-only status</li>
+            <li>Layout toggle (e.g. sidebar collapse) without form semantics — use EncIconButton if it is an action</li>
+          </ul>
+        </div>
+        <div class="gallery-snippet">&lt;button type="button" class="enc-toggle" role="switch" aria-checked="false" aria-label="Toggle setting"&gt;Off&lt;/button&gt;</div>
+        <div class="gallery-preview">
+          <p class="gallery-state-label">Default (unchecked)</p>
+          <button type="button" class="enc-toggle" role="switch" aria-checked="false" aria-label="Toggle option">Off</button>
+        </div>
+        <div class="gallery-preview">
+          <p class="gallery-state-label">Checked</p>
+          <button type="button" class="enc-toggle" role="switch" aria-checked="true" aria-label="Toggle option">On</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== MOLECULES ==================== -->
+    <section class="gallery-section" id="molecules">
+      <h2 class="gallery-section-heading">Molecules</h2>
+
+      <div class="gallery-component-block">
+        <h3 class="gallery-component-title">EncButton (enc-action-primary / enc-action-secondary)</h3>
+        <p class="gallery-component-purpose">Primary/secondary action button. States: default, hover, focus, disabled. Size variants per DS: Lg, Sm, Mini (not bound in enculture.css; shown: default).</p>
+        <div class="gallery-contract">
+          <p><strong>Role / Intent:</strong> Primary or secondary action button.</p>
+          <p><strong>Use when:</strong> Main CTA (primary); secondary actions like Cancel, Back (secondary).</p>
+          <p><strong>Do NOT use when:</strong> Navigation link (use &lt;a&gt;); icon-only (use EncIconButton); toggle (use EncToggle). Do not use enc-btn or enc-btn-primary (forbidden).</p>
+          <p><strong>Stable props:</strong> class <code>enc-action-primary</code> or <code>enc-action-secondary</code>; disabled; visible label.</p>
+          <p><strong>Governance:</strong> enc-btn/enc-btn-primary forbidden; focus visible; disabled not focusable; label required.</p>
+        </div>
+        <div class="gallery-misuse">
+          <strong>Do not use for:</strong>
+          <ul>
+            <li>enc-btn or enc-btn-primary (forbidden; use enc-action-primary/secondary only)</li>
+            <li>Status badge or label (use EncTag)</li>
+            <li>Primary destructive action without confirmation flow</li>
+            <li>Dashboard or analytics-only custom buttons that bypass DS</li>
+          </ul>
+        </div>
+        <div class="gallery-snippet">&lt;button type="button" class="enc-action-primary"&gt;Save&lt;/button&gt;
+&lt;button type="button" class="enc-action-secondary"&gt;Cancel&lt;/button&gt;</div>
+        <div class="gallery-preview">
+          <p class="gallery-state-label">Primary — default</p>
+          <button type="button" class="enc-action-primary">Save</button>
+        </div>
+        <div class="gallery-preview">
+          <p class="gallery-state-label">Primary — disabled</p>
+          <button type="button" class="enc-action-primary" disabled>Save</button>
+        </div>
+        <div class="gallery-preview">
+          <p class="gallery-state-label">Secondary — default</p>
+          <button type="button" class="enc-action-secondary">Cancel</button>
+        </div>
+        <div class="gallery-preview">
+          <p class="gallery-state-label">Secondary — disabled</p>
+          <button type="button" class="enc-action-secondary" disabled>Cancel</button>
+        </div>
+        <div class="gallery-preview">
+          <p class="gallery-state-label">Variants side-by-side</p>
+          <div class="gallery-preview-inline">
+            <button type="button" class="enc-action-primary">Primary</button>
+            <button type="button" class="enc-action-secondary">Secondary</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="gallery-component-block">
+        <h3 class="gallery-component-title">EncIconButton</h3>
+        <p class="gallery-component-purpose">Icon-only action button (Lucide). Accessible label required. Sizes: Icon.Sm, Icon.Md, Icon.Lg.</p>
+        <div class="gallery-contract">
+          <p><strong>Role / Intent:</strong> Icon-only action button.</p>
+          <p><strong>Use when:</strong> Add, Edit, Expand, More, Sidebar toggle, list row actions.</p>
+          <p><strong>Do NOT use when:</strong> Primary CTA (use EncButton with label); when label is essential for clarity.</p>
+          <p><strong>Stable props:</strong> class <code>enc-icon-button</code>; aria-label (required); icon from Lucide only.</p>
+          <p><strong>Governance:</strong> Accessible label required (aria-label or sr-only); icon size from DS; Lucide only.</p>
+        </div>
+        <div class="gallery-misuse">
+          <strong>Do not use for:</strong>
+          <ul>
+            <li>Without aria-label or sr-only (accessibility violation)</li>
+            <li>Primary submit or main CTA (use enc-action-primary with visible label)</li>
+            <li>Custom icons outside Lucide</li>
+            <li>Dashboard chart controls with custom styling</li>
+          </ul>
+        </div>
+        <div class="gallery-snippet">&lt;button type="button" class="enc-icon-button" aria-label="Add item"&gt;&lt;!-- Lucide icon --&gt;&lt;/button&gt;</div>
+        <div class="gallery-preview">
+          <div class="gallery-preview-inline">
+            <button type="button" class="enc-icon-button" aria-label="Add">+</button>
+            <button type="button" class="enc-icon-button" aria-label="Edit">✎</button>
+            <button type="button" class="enc-icon-button" aria-label="More">⋯</button>
+            <button type="button" class="enc-icon-button" disabled aria-label="Disabled">+</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="gallery-component-block">
+        <h3 class="gallery-component-title">EncCard</h3>
+        <p class="gallery-component-purpose">Primary content surface for grouping related information; owns padding, radius, elevation.</p>
+        <div class="gallery-contract">
+          <p><strong>Role / Intent:</strong> Primary content surface for grouping related information.</p>
+          <p><strong>Use when:</strong> Dashboards, insights, survey creator, admin panels (grouping content).</p>
+          <p><strong>Do NOT use when:</strong> As a single-action button or clickable container for one action (use EncButton); for modal content without card semantics.</p>
+          <p><strong>Stable props:</strong> class <code>enc-card</code>; content slot.</p>
+          <p><strong>Governance:</strong> Owns padding, radius, elevation; ensure heading hierarchy if card has title; no layout beyond internal stacking.</p>
+        </div>
+        <div class="gallery-misuse">
+          <strong>Do not use for:</strong>
+          <ul>
+            <li>Chart containers with custom chart styling (use DS tokens for card; chart rules for data viz)</li>
+            <li>Layout grid cell without card semantics (card = content surface, not layout primitive)</li>
+            <li>Analytics KPI tile as card without DS enc-card class</li>
+          </ul>
+        </div>
+        <div class="gallery-snippet">&lt;div class="enc-card"&gt;
+  &lt;h3&gt;Title&lt;/h3&gt;
+  &lt;p&gt;Content.&lt;/p&gt;
+&lt;/div&gt;</div>
+        <div class="gallery-preview">
+          <div class="enc-card" style="max-width: 20rem;">
+            <p style="margin: 0 0 var(--en-space-xs); font-weight: 600;">Sample card title</p>
+            <p style="margin: 0; font-size: var(--en-font-size-sm); color: var(--en-neutral-500);">Dummy content for preview. Department X, Option A.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="gallery-component-block">
+        <h3 class="gallery-component-title">EncListRow</h3>
+        <p class="gallery-component-purpose">Selectable or navigable row. States: default, hover, selected, disabled.</p>
+        <div class="gallery-contract">
+          <p><strong>Role / Intent:</strong> Selectable or navigable row in lists.</p>
+          <p><strong>Use when:</strong> Pages, sections, questions lists (Survey Creator); admin lists.</p>
+          <p><strong>Do NOT use when:</strong> Single-action button; table header row; dashboard KPI row.</p>
+          <p><strong>Stable props:</strong> class <code>enc-list-row</code>; aria-selected; disabled state; row actions must use EncIconButton.</p>
+          <p><strong>Governance:</strong> State visuals DS-owned; product may signal intent (selected, disabled); no utility-based state styling.</p>
+        </div>
+        <div class="gallery-misuse">
+          <strong>Do not use for:</strong>
+          <ul>
+            <li>Analytics or dashboard table rows with custom styling (use enc-list-row + DS tokens)</li>
+            <li>Navigation breadcrumb (use appropriate nav component)</li>
+            <li>Layout misuse: list row is for list content, not generic flex row</li>
+            <li>Row actions with EncButton (use EncIconButton for row actions)</li>
+          </ul>
+        </div>
+        <div class="gallery-snippet">&lt;div class="enc-list-row" aria-selected="false"&gt;
+  &lt;span&gt;Primary label&lt;/span&gt;
+  &lt;span class="enc-tag"&gt;Status&lt;/span&gt;
+&lt;/div&gt;</div>
+        <div class="gallery-preview">
+          <p class="gallery-state-label">Default</p>
+          <div class="enc-list-row">
+            <span>Sample question</span>
+            <span class="enc-tag">Option A</span>
+          </div>
+          <p class="gallery-state-label">Selected (aria-selected="true")</p>
+          <div class="enc-list-row" aria-selected="true">
+            <span>Selected row</span>
+            <span class="enc-tag">Active</span>
+          </div>
+          <p class="gallery-state-label">Disabled</p>
+          <div class="enc-list-row enc-list-row--disabled">
+            <span>Disabled row</span>
+            <span class="enc-tag">N/A</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="gallery-component-block">
+        <h3 class="gallery-component-title">EncToast</h3>
+        <p class="gallery-component-purpose">Feedback/notification (Shadcn Toast). Variants: Success, Warning, Error, Info.</p>
+        <div class="gallery-contract">
+          <p><strong>Role / Intent:</strong> Feedback/notification (toast).</p>
+          <p><strong>Use when:</strong> Success, warning, error, info messages; auto-dismiss 4–6s.</p>
+          <p><strong>Do NOT use when:</strong> Blocking modal; persistent banner; inline validation (use form-level).</p>
+          <p><strong>Stable props:</strong> Variant (Success/Warning/Error/Info); token-only colors; Z-Index 1600.</p>
+          <p><strong>Governance:</strong> Token-only colors; no custom positioning outside DS rules.</p>
+        </div>
+        <div class="gallery-misuse">
+          <strong>Do not use for:</strong>
+          <ul>
+            <li>Analytics or dashboard custom notifications that bypass DS tokens</li>
+            <li>Critical blocking errors (use modal or inline)</li>
+            <li>Status display instead of action feedback</li>
+          </ul>
+        </div>
+        <div class="gallery-snippet">No .enc-* in enculture.css. See EN-AI_Components_Molecules.md EncToast; use production Shadcn Toast with DS tokens.</div>
+        <p class="gallery-skip-note">Component exists but preview not available (no .enc-* semantic in enculture.css).</p>
+      </div>
+
+      <div class="gallery-component-block">
+        <h3 class="gallery-component-title">EncStepper</h3>
+        <p class="gallery-component-purpose">Linear progress across multi-step flows. States: default, active, completed.</p>
+        <div class="gallery-contract">
+          <p><strong>Role / Intent:</strong> Linear progress across multi-step flows (survey creation, onboarding, configuration).</p>
+          <p><strong>Use when:</strong> Wizard or step flow; steps indicate progress only.</p>
+          <p><strong>Do NOT use when:</strong> Non-linear navigation; validation gating at component level (handled at flow level).</p>
+          <p><strong>Stable props:</strong> Steps; states default, active, completed; token-only colors.</p>
+          <p><strong>Governance:</strong> All colors resolve to Enculture tokens; no raw spacing/radius/color.</p>
+        </div>
+        <div class="gallery-misuse">
+          <strong>Do not use for:</strong>
+          <ul>
+            <li>Dashboard or analytics progress bars (use data-vis rules)</li>
+            <li>Tab-like navigation (stepper = progress, not tab switch)</li>
+            <li>Layout misuse: stepper is for flow progress, not page structure</li>
+          </ul>
+        </div>
+        <div class="gallery-snippet">No .enc-* in enculture.css. See EN-AI_Components_Molecules.md EncStepper; use production component with DS tokens.</div>
+        <p class="gallery-skip-note">Component exists but preview not available (no .enc-* semantic in enculture.css).</p>
+      </div>
+
+      <div class="gallery-component-block">
+        <h3 class="gallery-component-title">EncDateRangePicker</h3>
+        <p class="gallery-component-purpose">Start and end date selection.</p>
+        <div class="gallery-contract">
+          <p><strong>Role / Intent:</strong> Start and end date selection.</p>
+          <p><strong>Use when:</strong> Scheduling, filters (date range).</p>
+          <p><strong>Do NOT use when:</strong> Single date only (use appropriate single-date control); custom dashboard date picker that overrides DS.</p>
+          <p><strong>Stable props:</strong> Start/end inputs; native or Shadcn-backed; validation at form/flow level.</p>
+          <p><strong>Governance:</strong> Use enc-input-field semantics for inputs; validation at form or flow level.</p>
+        </div>
+        <div class="gallery-misuse">
+          <strong>Do not use for:</strong>
+          <ul>
+            <li>Analytics date filter with custom styling (use EncInputField + DS tokens)</li>
+            <li>Dashboard-only date control that bypasses DS</li>
+          </ul>
+        </div>
+        <div class="gallery-snippet">No .enc-* in enculture.css. See EN-AI_Components_Molecules.md EncDateRangePicker; use enc-input-field for inputs.</div>
+        <p class="gallery-skip-note">Component exists but preview not available (no .enc-* semantic in enculture.css).</p>
+      </div>
+
+      <div class="gallery-component-block">
+        <h3 class="gallery-component-title">EncTimeInput</h3>
+        <p class="gallery-component-purpose">Time value capture for scheduling.</p>
+        <div class="gallery-contract">
+          <p><strong>Role / Intent:</strong> Time value capture for scheduling.</p>
+          <p><strong>Use when:</strong> Scheduling contexts (time of day).</p>
+          <p><strong>Do NOT use when:</strong> Duration in hours/minutes (different control); custom time picker that overrides DS.</p>
+          <p><strong>Stable props:</strong> Consistent time format; disabled/error per form governance.</p>
+          <p><strong>Governance:</strong> Disabled and error states follow form governance.</p>
+        </div>
+        <div class="gallery-misuse">
+          <strong>Do not use for:</strong>
+          <ul>
+            <li>Dashboard or analytics time filters with custom styling</li>
+          </ul>
+        </div>
+        <div class="gallery-snippet">No .enc-* in enculture.css. See EN-AI_Components_Molecules.md EncTimeInput; use consistent time format and DS tokens.</div>
+        <p class="gallery-skip-note">Component exists but preview not available (no .enc-* semantic in enculture.css).</p>
+      </div>
+
+      <div class="gallery-component-block">
+        <h3 class="gallery-component-title">EncEmptyState</h3>
+        <p class="gallery-component-purpose">Communicates absence of data or configuration; icon + message + optional action.</p>
+        <div class="gallery-contract">
+          <p><strong>Role / Intent:</strong> Communicates absence of data or configuration.</p>
+          <p><strong>Use when:</strong> Empty lists, dashboards, config; icon + message + optional action.</p>
+          <p><strong>Do NOT use when:</strong> Error state (unless explicitly defined); loading state.</p>
+          <p><strong>Stable props:</strong> Icon (Icon System); message; optional action (EncButton).</p>
+          <p><strong>Governance:</strong> Icons per Icon System; do not imply error unless defined.</p>
+        </div>
+        <div class="gallery-misuse">
+          <strong>Do not use for:</strong>
+          <ul>
+            <li>Error state (use error messaging component)</li>
+            <li>Dashboard empty with custom styling (use DS tokens)</li>
+            <li>Implying error when it is simply empty</li>
+          </ul>
+        </div>
+        <div class="gallery-snippet">No .enc-* in enculture.css. See EN-AI_Components_Molecules.md EncEmptyState; icon + message + optional enc-action-primary.</div>
+        <p class="gallery-skip-note">Component exists but preview not available (no .enc-* semantic in enculture.css).</p>
+      </div>
+    </section>
+
+    <!-- ==================== ORGANISMS ==================== -->
+    <section class="gallery-section" id="organisms">
+      <h2 class="gallery-section-heading">Organisms</h2>
+
+      <div class="gallery-component-block">
+        <h3 class="gallery-component-title">EncHeader</h3>
+        <p class="gallery-component-purpose">Top-level structural container; hosts context, navigation, high-level actions.</p>
+        <div class="gallery-contract">
+          <p><strong>Role / Intent:</strong> Top-level structural container for app shell; hosts context, nav, high-level actions.</p>
+          <p><strong>Use when:</strong> Survey Builder, Respondent, Admin, Dashboards app shell header.</p>
+          <p><strong>Do NOT use when:</strong> Page-level header within content (use EncPageHeader); section header (use EncSectionHeader).</p>
+          <p><strong>Stable props:</strong> class <code>enc-header</code>; layout is component-owned.</p>
+          <p><strong>Governance:</strong> Z-layer above main, below modals; no workflow logic; DS tokens only.</p>
+        </div>
+        <div class="gallery-misuse">
+          <strong>Do not use for:</strong>
+          <ul>
+            <li>Dashboard-specific filters in header without DS semantics</li>
+            <li>Section divider or in-page header (use EncPageHeader/EncSectionHeader)</li>
+            <li>Layout misuse: header is app shell, not content section</li>
+          </ul>
+        </div>
+        <div class="gallery-snippet">&lt;header class="enc-header"&gt;
+  &lt;div&gt;Title / context&lt;/div&gt;
+  &lt;button type="button" class="enc-action-primary"&gt;Action&lt;/button&gt;
+&lt;/header&gt;</div>
+        <div class="gallery-preview">
+          <header class="enc-header">
+            <div>
+              <p style="margin: 0; font-weight: 600;">Survey Creator</p>
+              <p style="margin: var(--en-space-xs) 0 0; font-size: var(--en-font-size-sm); color: var(--en-neutral-500);">Component Gallery</p>
+            </div>
+            <div class="gallery-preview-inline">
+              <button type="button" class="enc-action-secondary">Sign in</button>
+              <button type="button" class="enc-action-primary">Get started</button>
+            </div>
+          </header>
+        </div>
+      </div>
+
+      <div class="gallery-component-block">
+        <h3 class="gallery-component-title">EncSidebar</h3>
+        <p class="gallery-component-purpose">Secondary navigation or auxiliary panel container.</p>
+        <div class="gallery-contract">
+          <p><strong>Role / Intent:</strong> Secondary navigation or auxiliary panel container.</p>
+          <p><strong>Use when:</strong> Dashboards, Survey Creator, Respondent (left or right sidebar).</p>
+          <p><strong>Do NOT use when:</strong> Main content area; inline form sidebar (use layout within main).</p>
+          <p><strong>Stable props:</strong> class <code>enc-sidebar</code>; width from tokens or parent; .enc-respondent sets min-width for respondent.</p>
+          <p><strong>Governance:</strong> Independent scroll; no inline sizing in product code; width scope-driven.</p>
+        </div>
+        <div class="gallery-misuse">
+          <strong>Do not use for:</strong>
+          <ul>
+            <li>Dashboard chart legend panel with custom styling (use DS tokens)</li>
+            <li>Layout misuse: sidebar is nav/auxiliary, not main content</li>
+          </ul>
+        </div>
+        <div class="gallery-snippet">&lt;div class="enc-sidebar"&gt;
+  &lt;nav&gt;...&lt;/nav&gt;
+&lt;/div&gt;</div>
+        <div class="gallery-preview">
+          <div class="enc-sidebar" style="min-width: 12rem;">
+            <p style="margin: 0 0 var(--en-space-sm); font-weight: 600;">Nav</p>
+            <p style="margin: 0; font-size: var(--en-font-size-sm); color: var(--en-neutral-500);">Dashboard</p>
+            <p style="margin: 0; font-size: var(--en-font-size-sm); color: var(--en-neutral-500);">Surveys</p>
+            <p style="margin: 0; font-size: var(--en-font-size-sm); color: var(--en-neutral-500);">Settings</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="gallery-component-block">
+        <h3 class="gallery-component-title">EncMainContainer</h3>
+        <p class="gallery-component-purpose">Primary page layout wrapper; arranges header, sidebars, main canvas.</p>
+        <div class="gallery-contract">
+          <p><strong>Role / Intent:</strong> Primary page layout wrapper; arranges header, sidebars, main canvas.</p>
+          <p><strong>Use when:</strong> All app shells (sole owner of page-level layout).</p>
+          <p><strong>Do NOT use when:</strong> Content max-width only (use EncContainer); modal content.</p>
+          <p><strong>Stable props:</strong> class <code>enc-main-container</code>; grid/flex logic inside component only.</p>
+          <p><strong>Governance:</strong> Product MUST NOT define grid-template-columns, flex-*, or column width utilities for page layout; EncMainContainer owns it.</p>
+        </div>
+        <div class="gallery-misuse">
+          <strong>Do not use for:</strong>
+          <ul>
+            <li>Product-level grid/flex for page layout (belongs inside EncMainContainer)</li>
+            <li>Layout misuse: main container owns layout; do not duplicate with Tailwind/utility layout</li>
+          </ul>
+        </div>
+        <div class="gallery-snippet">&lt;main class="enc-main-container"&gt;
+  &lt;!-- Content; layout (header + sidebar + main) owned by this component --&gt;
+&lt;/main&gt;</div>
+        <div class="gallery-preview">
+          <div class="gallery-mini-layout">
+            <div class="enc-sidebar" style="min-width: 10rem;">Sidebar</div>
+            <main class="enc-main-container">Main content area (dummy)</main>
+          </div>
+        </div>
+      </div>
+
+      <div class="gallery-component-block">
+        <h3 class="gallery-component-title">EncContainer</h3>
+        <p class="gallery-component-purpose">Layout container with max-width and padding/gap. Sm, Md, Lg, Xl.</p>
+        <div class="gallery-contract">
+          <p><strong>Role / Intent:</strong> Layout container with max-width and padding/gap.</p>
+          <p><strong>Use when:</strong> Page or section layout; Sm (720px), Md (960px), Lg (1200px), Xl (1440px).</p>
+          <p><strong>Do NOT use when:</strong> App shell layout (use EncMainContainer); modal content.</p>
+          <p><strong>Stable props:</strong> Max-width variant; padding {Global20}; gap {Global20}.</p>
+          <p><strong>Governance:</strong> No .enc-* in enculture.css; see EN-AI_Components_Molecules EncContainer.</p>
+        </div>
+        <div class="gallery-misuse">
+          <strong>Do not use for:</strong>
+          <ul>
+            <li>App shell (header + sidebar + main) — use EncMainContainer</li>
+            <li>Layout misuse: container = content width, not page structure</li>
+          </ul>
+        </div>
+        <div class="gallery-snippet">No .enc-* in enculture.css. See EN-AI_Components_Molecules EncContainer; max-width Sm/Md/Lg/Xl, padding and gap from DS.</div>
+        <p class="gallery-skip-note">Component exists but preview not available (no .enc-* semantic in enculture.css).</p>
+      </div>
+
+      <div class="gallery-component-block">
+        <h3 class="gallery-component-title">EncPageHeader</h3>
+        <p class="gallery-component-purpose">Page-level header: title, optional description, actions.</p>
+        <div class="gallery-contract">
+          <p><strong>Role / Intent:</strong> Page-level header with title, optional description, actions.</p>
+          <p><strong>Use when:</strong> Survey Creator, Admin, Respondent page title + actions.</p>
+          <p><strong>Do NOT use when:</strong> App shell header (use EncHeader); section header (use EncSectionHeader).</p>
+          <p><strong>Stable props:</strong> Title (required); subtitle/helper optional; action slot (EncButton/EncIconButton).</p>
+          <p><strong>Governance:</strong> No custom spacing outside layout tokens; actions must use EncButton or EncIconButton.</p>
+        </div>
+        <div class="gallery-misuse">
+          <strong>Do not use for:</strong>
+          <ul>
+            <li>App shell top bar (use EncHeader)</li>
+            <li>Section title within page (use EncSectionHeader; must not compete with EncPageHeader hierarchy)</li>
+          </ul>
+        </div>
+        <div class="gallery-snippet">No .enc-* in enculture.css. See EN-AI_Components_Molecules EncPageHeader; title required, actions = EncButton/EncIconButton.</div>
+        <p class="gallery-skip-note">Component exists but preview not available (no .enc-* semantic in enculture.css).</p>
+      </div>
+
+      <div class="gallery-component-block">
+        <h3 class="gallery-component-title">EncSection</h3>
+        <p class="gallery-component-purpose">Groups related content; controls vertical rhythm.</p>
+        <div class="gallery-contract">
+          <p><strong>Role / Intent:</strong> Groups related content; controls vertical rhythm.</p>
+          <p><strong>Use when:</strong> All flows; section container with optional EncSectionHeader and content slot.</p>
+          <p><strong>Do NOT use when:</strong> As page layout (use EncContainer/EncMainContainer); for card (use EncCard).</p>
+          <p><strong>Stable props:</strong> Section container; spacing only.</p>
+          <p><strong>Governance:</strong> No visual beyond background and spacing tokens.</p>
+        </div>
+        <div class="gallery-misuse">
+          <strong>Do not use for:</strong>
+          <ul>
+            <li>Layout misuse: section = grouping and rhythm, not grid/flex structure</li>
+          </ul>
+        </div>
+        <div class="gallery-snippet">No .enc-* in enculture.css. See EN-AI_Components_Molecules EncSection; spacing only, no extra visual.</div>
+        <p class="gallery-skip-note">Component exists but preview not available (no .enc-* semantic in enculture.css).</p>
+      </div>
+
+      <div class="gallery-component-block">
+        <h3 class="gallery-component-title">EncSectionHeader</h3>
+        <p class="gallery-component-purpose">Section title, optional helper, optional action slot.</p>
+        <div class="gallery-contract">
+          <p><strong>Role / Intent:</strong> Section title with optional helper and action slot.</p>
+          <p><strong>Use when:</strong> Survey Creator, Admin section titles.</p>
+          <p><strong>Do NOT use when:</strong> Page-level title (use EncPageHeader); must not compete with EncPageHeader hierarchy.</p>
+          <p><strong>Stable props:</strong> Section title; optional helper; optional action (EncButton/EncIconButton).</p>
+          <p><strong>Governance:</strong> Must not compete with EncPageHeader hierarchy.</p>
+        </div>
+        <div class="gallery-misuse">
+          <strong>Do not use for:</strong>
+          <ul>
+            <li>Page-level header (use EncPageHeader)</li>
+            <li>Competing with EncPageHeader (section &lt; page in hierarchy)</li>
+          </ul>
+        </div>
+        <div class="gallery-snippet">No .enc-* in enculture.css. See EN-AI_Components_Molecules EncSectionHeader; do not compete with EncPageHeader.</div>
+        <p class="gallery-skip-note">Component exists but preview not available (no .enc-* semantic in enculture.css).</p>
+      </div>
+    </section>
+
+    <!-- ==================== SYSTEM ==================== -->
+    <section class="gallery-section" id="system">
+      <h2 class="gallery-section-heading">System</h2>
+
+      <div class="gallery-component-block">
+        <h3 class="gallery-component-title">Density (Compact)</h3>
+        <p class="gallery-component-purpose">Set [data-density="compact"] on container. Overrides control height, spacing, radius.</p>
+        <div class="gallery-contract">
+          <p><strong>Role / Intent:</strong> Override control height, spacing, radius for compact UI.</p>
+          <p><strong>Use when:</strong> Optional app-wide or per-view compact mode.</p>
+          <p><strong>Do NOT use when:</strong> Product-level compact styling (enculture.css resolves it); do not add custom compact styles in product.</p>
+          <p><strong>Stable props:</strong> data-density="compact" on container (e.g. body, #root).</p>
+          <p><strong>Governance:</strong> No product-level compact styling; enculture.css resolves control height, spacing, radius.</p>
+        </div>
+        <div class="gallery-misuse">
+          <strong>Do not use for:</strong>
+          <ul>
+            <li>Product-level compact CSS (DS owns density)</li>
+            <li>Dashboard or analytics-only density (use on container, not per-component)</li>
+          </ul>
+        </div>
+        <div class="gallery-snippet">&lt;div id="root" data-density="compact"&gt;
+  &lt;!-- App content --&gt;
+&lt;/div&gt;</div>
+        <div class="gallery-preview">
+          <p class="gallery-state-label">Default (comfortable)</p>
+          <button type="button" class="enc-action-primary">Default density</button>
+        </div>
+        <div class="gallery-preview" data-density="compact">
+          <p class="gallery-state-label">Compact (data-density="compact" on wrapper)</p>
+          <button type="button" class="enc-action-primary">Compact density</button>
+        </div>
+      </div>
+
+      <div class="gallery-component-block">
+        <h3 class="gallery-component-title">Enc Respondent scope</h3>
+        <p class="gallery-component-purpose">Apply .enc-respondent to respondent shell; sets sidebar min-width (e.g. 180px).</p>
+        <div class="gallery-contract">
+          <p><strong>Role / Intent:</strong> Respondent-specific constraint; sets sidebar min-width.</p>
+          <p><strong>Use when:</strong> Survey Respondent shell only.</p>
+          <p><strong>Do NOT use when:</strong> Survey Creator, Admin, or Dashboards (different scope).</p>
+          <p><strong>Stable props:</strong> class <code>enc-respondent</code> on respondent shell; .enc-respondent .enc-sidebar gets min-width.</p>
+          <p><strong>Governance:</strong> Apply .enc-respondent to respondent shell only; enculture.css defines --en-respondent-sidebar-min.</p>
+        </div>
+        <div class="gallery-misuse">
+          <strong>Do not use for:</strong>
+          <ul>
+            <li>Creator or Admin shell (enc-respondent is respondent-only)</li>
+            <li>Layout misuse: respondent scope = sidebar min-width, not general layout</li>
+          </ul>
+        </div>
+        <div class="gallery-snippet">&lt;div class="enc-respondent"&gt;
+  &lt;div class="enc-sidebar"&gt;...&lt;/div&gt;
+  &lt;main class="enc-main-container"&gt;...&lt;/main&gt;
+&lt;/div&gt;</div>
+        <div class="gallery-preview">
+          <div class="enc-respondent gallery-mini-layout" style="border: 1px solid var(--en-neutral-200); border-radius: var(--en-radius-md); overflow: hidden;">
+            <div class="enc-sidebar">Respondent sidebar (min-width from .enc-respondent)</div>
+            <main class="enc-main-container">Respondent main</main>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer style="margin-top: var(--en-space-lg); padding-top: var(--en-space-md); border-top: 1px solid var(--en-neutral-200); font-size: var(--en-font-size-caption); color: var(--en-neutral-500);">
+      <p>Enculture Design System — Component Gallery. Source of truth: enculture.css, En-AI_Design_System.md, EN-AI_Components_Molecules.md, COMPONENT_REGISTRY.md. Dummy data only; no API or production data.</p>
+    </footer>
+  </div>
+</body>
+</html>

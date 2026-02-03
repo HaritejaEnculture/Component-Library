@@ -1,0 +1,165 @@
+/* 
+   Enculture Design System - Adoption Layer 
+   Context: User Management (Compact Density)
+*/
+
+:root {
+  /* ---------------- BRAND COLORS (PURPLE) ---------------- */
+  --en-primary-brand-50: #faf5ff;
+  --en-primary-brand-100: #f3e8ff;
+  --en-primary-brand-500: #a246f0;
+  --en-primary-brand-700: #7e22ce;
+
+  /* ---------------- NEUTRALS (GREY SCALE) ---------------- */
+  --en-grey-0: #ffffff;
+  --en-grey-20: #f8fafb;
+  --en-grey-100: #f0f4f5;
+  --en-grey-200: #d5dbde;
+  --en-grey-300: #a1a6a8;
+  --en-grey-400: #73787a;
+  --en-grey-500: #505355;
+  --en-grey-600: #383b3c;
+  --en-grey-800: #18191a;
+
+  /* ---------------- SEMANTIC STATES ---------------- */
+  --en-success-100: #e5fff1;
+  --en-success-500: #0fa251;
+  --en-error-100: #ffdbe2;
+  --en-error-500: #c0334d;
+
+  /* ---------------- DENSITY: COMPACT (MANDATORY) ---------------- */
+  --en-density-control-height: 40px;
+  --en-density-space-sm: 8px;
+  --en-density-space-md: 12px;
+  --en-density-space-lg: 16px;
+  --en-density-radius: 6px;
+
+  /* ---------------- TYPOGRAPHY ---------------- */
+  --font-primary: 'Poppins', sans-serif;
+  --font-secondary: 'Mulish', sans-serif;
+}
+
+/* Base Typography Application */
+html,
+body {
+  font-family: var(--font-primary);
+}
+
+/* 
+   ---------------- COMPONENT REF: BUTTONS ---------------- 
+   Replaces: .btn-primary, .action-btn-secondary 
+*/
+.enc-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--en-density-space-sm);
+  height: var(--en-density-control-height);
+  padding: 0 var(--en-density-space-lg);
+  /* 16px padding on sides */
+  font-family: var(--font-primary);
+  font-size: 14px;
+  font-weight: 500;
+  border-radius: var(--en-density-radius);
+  transition: all 0.2s ease;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.enc-btn-primary {
+  background-color: var(--en-primary-brand-500);
+  color: white;
+  border: 1px solid var(--en-primary-brand-500);
+}
+
+.enc-btn-primary:hover {
+  background-color: var(--en-primary-brand-700);
+  border-color: var(--en-primary-brand-700);
+}
+
+.enc-btn-secondary {
+  background-color: var(--en-grey-0);
+  color: var(--en-grey-800);
+  border: 1px solid var(--en-grey-200);
+}
+
+.enc-btn-secondary:hover {
+  background-color: var(--en-grey-20);
+  border-color: var(--en-grey-300);
+}
+
+.enc-btn-icon-only {
+  width: var(--en-density-control-height);
+  padding: 0;
+}
+
+/* 
+   ---------------- COMPONENT REF: INPUTS ---------------- 
+   Replaces: .search-input, input styling 
+*/
+.enc-input {
+  height: var(--en-density-control-height);
+  padding: 0 var(--en-density-space-md);
+  border: 1px solid var(--en-grey-200);
+  border-radius: var(--en-density-radius);
+  font-family: var(--font-primary);
+  font-size: 14px;
+  color: var(--en-grey-800);
+  outline: none;
+  transition: border-color 0.2s;
+  background-color: var(--en-grey-0);
+}
+
+.enc-input:focus {
+  border-color: var(--en-primary-brand-500);
+  box-shadow: 0 0 0 2px var(--en-primary-brand-100);
+}
+
+/* 
+   ---------------- COMPONENT REF: BADGES ---------------- 
+   Replaces: .status-badge 
+*/
+.enc-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 8px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 500;
+  text-transform: capitalize;
+}
+
+.enc-badge-success {
+  background-color: var(--en-success-100);
+  color: var(--en-success-500);
+}
+
+/* Ensure status-badge overrides default styling if needed or rely on cascade */
+.status-badge.active {
+  background-color: var(--en-success-100);
+  color: var(--en-success-500);
+}
+
+/* 
+   ---------------- COMPONENT REF: ICONS ---------------- 
+   Refactors SVG icons to use standard sizing
+*/
+.enc-icon-sm {
+  width: 16px;
+  height: 16px;
+}
+
+.enc-icon-md {
+  width: 20px;
+  height: 20px;
+}
+
+/* 
+   ---------------- PRE-BUILT SIDEBAR UTILS ----------------
+   Helper classes to use inside the embedded sidebar styles
+*/
+.enc-bg-glass {
+  background: var(--en-grey-0);
+  /* Fallback/Override from Glass to Clean DS */
+  border-right: 1px solid var(--en-grey-200);
+}

@@ -1,0 +1,39 @@
+---
+description: Enculture DS — README_AI.md contract; enculture.css runtime source of truth. Use semantics only; no primitives.
+alwaysApply: true
+---
+
+# Enculture Semantics — Hardcoded Rule
+
+**Governed by [Enculture Ds/README_AI.md](Enculture Ds/README_AI.md) (AI Usage Contract).**  
+**`Enculture Ds/enculture.css`** is the **runtime** source of truth. Treat it as a hardcoded rule.
+
+## Source-of-truth order (read in sequence; earlier wins on conflict)
+
+1. **enculture.css** — Runtime semantics only. No primitives.
+2. **En-AI_Design_System.md** — Governance, intent, non‑negotiable rules.
+3. **EN-AI_Components_Molecules.md** — Components that exist. If not listed, it **DOES NOT EXIST**.
+4. **En-AI_Respondent_Protocol.md** (if applicable) — Respondent‑facing rules.
+
+## Rules
+
+1. **Use only semantic classes and tokens defined in enculture.css.**
+2. **Follow enculture semantics exactly:** Do not duplicate or override enculture.css definitions for buttons, inputs, survey, or text. Use `enc-action-primary` / `enc-action-secondary`, `enc-input-field`, `enc-survey-*`, `enc-text-*`; rely on enculture.css for styling.
+3. **Do not use primitives:** no raw spacing (px/rem), colors (hex/rgba), radius, or layout properties unless they map to a token.
+4. **Tokens (use these):** `--en-*`, `--control-height`, `--control-radius`, `--control-padding-x`, `--control-padding-y`, `--stack-gap-xs|sm|md|lg`, `--page-padding`, `--font-primary`, `--text-*`.
+5. **Button semantics:** `enc-action-primary`, `enc-action-secondary` only (not enc-btn / enc-btn-primary).
+6. **Input semantics:** `enc-input-field` (not enc-input).
+7. **Survey semantics:** `enc-survey-question`, `enc-survey-question-label`, `enc-survey-question-helper`, `enc-survey-cta`.
+8. **Text semantics:** `enc-text-muted`, `enc-text-error`, `enc-text-success`.
+9. **Structure:** `enc-page`, `enc-section` use `--page-padding`, `--stack-gap-*`.
+10. **Density:** Set `[data-density="compact"]` on container (e.g. `#root`). Do not add product-level compact styling; enculture.css resolves it.
+
+## If something is missing
+
+- **Do not improvise** with primitives or new layout.
+- **Blocked:** Respond: *"Blocked: Required Enculture Design System semantic is missing. Action required from DS owner."*
+- Otherwise, flag in DS_RULE_CROSSCHECK_GAPS; use closest semantic or ask.
+
+## Plan of action
+
+See **Survey UI [PLAN_OF_ACTION.md](respondent flow/enculture survey UI/PLAN_OF_ACTION.md)** for the ordered plan. Always check **Enculture Ds/enculture.css** and **README_AI.md** before adding or changing UI styles.

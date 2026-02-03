@@ -1,0 +1,18 @@
+{
+  "mcpServers": {
+    "shadcn": {
+      "command": "npx",
+      "args": ["-y", "shadcn@latest", "mcp"],
+      "env": {}
+    },
+    "figma-desktop": {
+      "url": "http://127.0.0.1:3845/mcp",
+      "description": "Figma Desktop MCP Server - Enable in Figma Dev Mode"
+    },
+    "figma-remote": {
+      "url": "https://mcp.figma.com/mcp",
+      "description": "Figma Remote MCP Server - Alternative to desktop server"
+    }
+  }
+}
+

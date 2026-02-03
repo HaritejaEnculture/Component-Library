@@ -1,0 +1,31 @@
+# Enculture Design System Rules
+
+You are an expert developer working with the Enculture DS (Atomic Design). 
+Always prioritize local Atom definitions over generic implementations.
+
+## Core Directives
+- **Check Atoms First:** Before generating any UI code, scan the `https://www.figma.com/design/1FKpdsbIp8L4XiE3zzK9qd/En-AI--Design-system?node-id=121-2467&t=nAJOLdLLgpIT9UOH-1` , `https://www.figma.com/design/oGWSkOR4R3LVAfN7WyqMHi/EN-AI-components--Molecules--?node-id=842-51942&t=6GEeXEsFyziE8RqU-1` (component tokens) directory.
+- **MCP Integration:** When fetching external documentation or libraries via MCP, you MUST wrap or adapt the output to fit Enculture DS Atom structures.
+- **Naming Convention:** Always use the `Enc` prefix (or your specific naming convention) for components to ensure consistency.
+- **Style Isolation:** Do not use global CSS or inline styles if an Atom exists that handles that specific layout or decorative property.
+
+## Coding Standards
+- Use TypeScript strictly; no `any` types for Atom props.
+- Ensure all new components are registered in the local index for discoverability.
+- Always use design system tokens (`var(--*)`) instead of hardcoded values.
+- Reference `lib/component-tokens.ts` for component-specific tokens.
+- Follow Atomic Design principles (Atoms → Molecules → Organisms).
+
+## MCP Servers
+- **shadcn MCP**: ✅ Configured - Use to browse/install base components
+- **Figma MCP**: ⚠️ Setup required - Use to extract design tokens and component variables
+  - Desktop: Enable in Figma Dev Mode → MCP Server
+  - Remote: https://mcp.figma.com/mcp
+- **MCP Workflow**: Extract from Figma → Map to DS → Build with shadcn → Adapt to Enculture DS
+
+## Design System References
+- Main Design System: https://www.figma.com/design/1FKpdsbIp8L4XiE3zzK9qd/En-AI--Design-system?node-id=121-2467&t=nAJOLdLLgpIT9UOH-1
+- Component Tokens: https://www.figma.com/design/oGWSkOR4R3LVAfN7WyqMHi/EN-AI-components--Molecules--?node-id=842-51942&t=6GEeXEsFyziE8RqU-1
+
+See `CORE_RULES.md` for complete guidelines and `MCP_SETUP.md` for MCP server configuration.
+

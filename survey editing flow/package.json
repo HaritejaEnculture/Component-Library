@@ -1,0 +1,11 @@
+{
+  "name": "survey-editing-flow",
+  "private": true,
+  "scripts": {
+    "start": "npx serve -l 5172",
+    "dev": "npx serve -l 5172"
+  },
+  "devDependencies": {
+    "serve": "^14.2.4"
+  }
+}
