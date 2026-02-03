@@ -1,0 +1,159 @@
+
+
+================================================================================
+ENCULTURE RESPONDENT SURVEY SCHEMA — PROTOCOL GOVERNED (V1.0)
+================================================================================
+
+{
+  "protocol": {
+    "name": "Enculture Respondent Protocol",
+    "version": "v1.0",
+    "mode": "RESPONDENT_ONLY",
+    "governance": "STRICT",
+    "design_system": "Enculture DS (Governed)",
+    "ui_generation": "FORBIDDEN",
+    "component_invention": "FORBIDDEN",
+    "tone_policy": "CALM_NEUTRAL_SAFE",
+    "privacy_policy": "ANONYMITY_FIRST"
+  },
+
+  "survey": {
+    "survey_id": "enc_org_diagnosis_v1",
+    "survey_name": "Organization Diagnosis Survey",
+    "organization_name": "<ORG_NAME>",
+    "purpose": "Understand employee experience to improve workplace culture.",
+    "estimated_time_minutes": 8,
+    "max_questions": 100,
+    "questions_per_page": 10,
+
+    "anonymity": {
+      "is_anonymous": true,
+      "stores_identifiers": false,
+      "tracking": "DISABLED",
+      "anonymity_copy": "Your responses are anonymous and cannot be traced back to you."
+    },
+
+    "states": [
+      "NOT_STARTED",
+      "IN_PROGRESS",
+      "SUBMITTED",
+      "LOCKED",
+      "CLOSED"
+    ],
+
+    "navigation_rules": {
+      "linear": true,
+      "allow_back": true,
+      "autosave": true,
+      "submit_once": true,
+      "force_completion_language": "DISALLOWED"
+    }
+  },
+
+  "page": {
+    "constraints": {
+      "max_questions": 10,
+      "min_questions": 1,
+      "branching": "DISABLED"
+    },
+
+    "progress": {
+      "visibility": "MANDATORY",
+      "interactive": false,
+      "format": "Page X of Y · A of 10 answered"
+    }
+  },
+
+  "question_base": {
+    "required": true,
+    "bias_controls": {
+      "leading_language": false,
+      "emotion_loaded_words": false,
+      "judgment_terms": false
+    },
+    "accessibility": {
+      "aria_required": true
+    }
+  },
+
+  "question_types": {
+    "single_choice": {
+      "options": [
+        { "label": "Strongly disagree", "value": 1 },
+        { "label": "Disagree", "value": 2 },
+        { "label": "Neutral", "value": 3 },
+        { "label": "Agree", "value": 4 },
+        { "label": "Strongly agree", "value": 5 }
+      ]
+    },
+
+    "multiple_choice": {
+      "max_selections": 3,
+      "enforcement": "SOFT"
+    },
+
+    "likert_scale": {
+      "min": 1,
+      "max": 5
+    },
+
+    "open_text": {
+      "max_characters": 500,
+      "helper_text": "Avoid names or identifying details.",
+      "analysis_rules": {
+        "sentiment_scoring": "DISABLED",
+        "entity_extraction": "DISABLED",
+        "real_time_flags": "DISABLED"
+      }
+    }
+  },
+
+  "interaction_rules": {
+    "unlock_order": "SEQUENTIAL",
+    "auto_focus_next": true,
+    "scrolling": "ALLOWED",
+    "page_completion_gate": "REQUIRED_ONLY"
+  },
+
+  "autosave": {
+    "trigger": "ON_ANSWER",
+    "visibility": "INVISIBLE",
+    "resume_supported": true
+  },
+
+  "review": {
+    "enabled": true,
+    "mode": "READ_ONLY",
+    "edit_allowed": true
+  },
+
+  "submission": {
+    "confirmation_required": true,
+    "double_submit_protection": true,
+    "confirmation_copy": "Once submitted, responses cannot be changed."
+  },
+
+  "completion": {
+    "message": "Thank you for completing the survey.",
+    "anonymity_reminder": true,
+    "next_steps": "You may close this tab.",
+    "results_visibility": "FORBIDDEN"
+  },
+
+  "antigravity_prohibitions": [
+    "UI_GENERATION",
+    "COMPONENT_INVENTION",
+    "SENTIMENT_INFERENCE_AT_INPUT",
+    "GAMIFICATION",
+    "ADMIN_LANGUAGE",
+    "PROGRESS_PSYCHOLOGY",
+    "EMOJIS",
+    "CHARTS",
+    "SCORES",
+    "PAGE_OVERFLOW"
+  ]
+}
+
+================================================================================
+END OF FILE
+================================================================================

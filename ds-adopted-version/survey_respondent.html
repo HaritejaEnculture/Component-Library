@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="en" data-density="compact">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enculture - Survey Respondent</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Mulish:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../Enculture Ds/enculture.css">
+    <style>
+        /* --- Layout & Dashboard Specific Styles --- */
+        body {
+            background-color: var(--en-grey-20);
+            min-height: 100vh;
+        }
+
+        .survey-taking-dashboard {
+            display: flex;
+            justify-content: center;
+            padding: var(--en-space-xl) var(--en-space-md);
+        }
+
+        .survey-dashboard-content {
+            width: 100%;
+            max-width: 800px;
+            /* Or appropriate max-width */
+            display: flex;
+            flex-direction: column;
+            gap: var(--en-space-xl);
+        }
+
+        /* Greetings Card */
+        .survey-greetings-card {
+            text-align: center;
+        }
+
+        .survey-greetings-title {
+            font-size: var(--text-h3);
+            font-weight: 600;
+            color: var(--en-grey-800);
+            margin-bottom: var(--en-space-sm);
+        }
+
+        .survey-greetings-subtitle {
+            font-size: var(--text-body);
+            color: var(--en-grey-500);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Tabs */
+        .survey-tabs-container {
+            display: flex;
+            justify-content: center;
+            gap: var(--en-space-md);
+            margin-bottom: var(--en-space-lg);
+        }
+
+        .survey-tab {
+            padding: var(--en-space-sm) var(--en-space-lg);
+            border-radius: var(--en-radius-full);
+            border: 1px solid transparent;
+            /* default */
+            background-color: transparent;
+            color: var(--en-grey-500);
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .survey-tab.active {
+            background-color: var(--en-primary-brand-500);
+            color: white;
+        }
+
+        /* Cards Container */
+        .survey-card-container {
+            background: white;
+            border-radius: var(--en-radius-lg);
+            padding: var(--en-space-xl);
+            box-shadow: var(--en-shadow-sm);
+            border: 1px solid var(--en-grey-100);
+        }
+
+        .survey-card-header {
+            display: flex;
+            align-items: center;
+            gap: var(--en-space-md);
+            margin-bottom: var(--en-space-lg);
+        }
+
+        .survey-card-title {
+            font-size: var(--text-h4);
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: var(--en-space-sm);
+        }
+
+        .survey-card-subtitle {
+            color: var(--en-grey-500);
+            font-size: var(--text-sm);
+            margin-top: var(--en-space-xs);
+        }
+
+        /* Survey Item List */
+        .survey-items-list {
+            display: flex;
+            flex-direction: column;
+            gap: var(--en-space-md);
+        }
+
+        .survey-item {
+            border: 1px solid var(--en-grey-100);
+            border-radius: var(--en-radius-md);
+            padding: var(--en-space-md);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: box-shadow 0.2s ease;
+        }
+
+        .survey-item:hover {
+            box-shadow: var(--en-shadow-md);
+        }
+
+        .survey-item-info h3 {
+            font-size: var(--text-body);
+            font-weight: 600;
+            margin-bottom: var(--en-space-xs);
+        }
+
+        .survey-item-meta {
+            font-size: var(--text-caption);
+            color: var(--en-grey-500);
+            display: flex;
+            gap: var(--en-space-sm);
+            align-items: center;
+        }
+
+        .progress-bar-bg {
+            height: 4px;
+            background-color: var(--en-grey-100);
+            border-radius: var(--en-radius-full);
+            width: 100px;
+            overflow: hidden;
+        }
+
+        .progress-bar-fill {
+            height: 100%;
+            background-color: var(--en-success-500);
+            /* Or brand based on status */
+        }
+
+        /* Modal Overlay */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .modal-overlay.open {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .modal-content {
+            background: white;
+            width: 90%;
+            max-width: 900px;
+            height: 90vh;
+            border-radius: var(--en-radius-lg);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            box-shadow: var(--en-shadow-ceo);
+        }
+
+        .modal-header {
+            padding: var(--en-space-md) var(--en-space-lg);
+            border-bottom: 1px solid var(--en-grey-100);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .modal-body {
+            flex: 1;
+            overflow-y: auto;
+            padding: var(--en-space-xl);
+            background-color: var(--en-grey-20);
+        }
+
+        .modal-footer {
+            padding: var(--en-space-md) var(--en-space-lg);
+            border-top: 1px solid var(--en-grey-100);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: white;
+        }
+
+        /* Dev Controls */
+        #dev-controls {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: white;
+            border: 1px solid var(--en-grey-200);
+            padding: var(--en-space-md);
+            border-radius: var(--en-radius-md);
+            box-shadow: var(--en-shadow-ceo);
+            z-index: 9999;
+            width: 300px;
+        }
+
+        #dev-controls h3 {
+            font-size: var(--text-sm);
+            font-weight: 700;
+            margin-bottom: var(--en-space-sm);
+            color: var(--en-primary-brand-500);
+        }
+
+        .control-group {
+            margin-bottom: var(--en-space-sm);
+        }
+
+        .control-group label {
+            display: block;
+            font-size: var(--text-caption);
+            margin-bottom: 4px;
+            font-weight: 600;
+        }
+
+        .control-group select,
+        .control-group input {
+            width: 100%;
+            padding: 4px;
+            border: 1px solid var(--en-grey-200);
+            border-radius: 4px;
+        }
+
+        /* Question Rendering Areas */
+        .question-card {
+            background: white;
+            border: 1px solid var(--en-grey-100);
+            border-radius: var(--en-radius-md);
+            padding: var(--en-space-lg);
+            margin-bottom: var(--en-space-md);
+        }
+
+        .question-title {
+            font-size: var(--text-body);
+            font-weight: 600;
+            margin-bottom: var(--en-space-xs);
+        }
+
+        .question-desc {
+            font-size: var(--text-sm);
+            color: var(--en-grey-500);
+            margin-bottom: var(--en-space-md);
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Main Dashboard -->
+    <div id="survey-dashboard" class="survey-taking-dashboard">
+        <div class="survey-dashboard-content">
+
+            <!-- Greetings -->
+            <div class="survey-greetings-card">
+                <h1 class="survey-greetings-title">Good to see you, Hariteja 👋</h1>
+                <p class="survey-greetings-subtitle">Jump in to complete your pending surveys, track participation
+                    activity, or dive into the results.</p>
+            </div>
+
+            <!-- Tabs -->
+            <div class="survey-tabs-container">
+                <button class="survey-tab active">Take your surveys</button>
+                <button class="survey-tab">Analyze your surveys</button>
+            </div>
+
+            <!-- Cards List -->
+            <div class="survey-card-container">
+                <div class="survey-card-header">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        style="color: var(--en-primary-brand-500);">
+                        <path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"></path>
+                        <polyline points="14 2 14 8 20 8"></polyline>
+                        <line x1="16" x2="8" y1="13" y2="13"></line>
+                        <line x1="16" x2="8" y1="17" y2="17"></line>
+                        <line x1="10" x2="8" y1="9" y2="9"></line>
+                    </svg>
+                    <div>
+                        <h2 class="survey-card-title">Take your surveys</h2>
+                        <p class="survey-card-subtitle">Pending and in-progress surveys.</p>
+                    </div>
+                </div>
+
+                <div class="survey-items-list">
+                    <!-- Item 1 -->
+                    <div class="survey-item">
+                        <div class="survey-item-info">
+                            <h3 style="display: flex; align-items: center; gap: 8px;">
+                                NIMSPL Naman Culture Survey 2026
+                                <span class="enc-badge status-success">Completed</span>
+                            </h3>
+                            <div class="survey-item-meta">
+                                <span>Due 23/01/2026</span> • <span>60 min</span>
+                            </div>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 16px;">
+                            <div class="progress-bar-bg">
+                                <div class="progress-bar-fill" style="width: 100%;"></div>
+                            </div>
+                            <button class="enc-btn enc-btn-secondary"
+                                onclick="openSurveyModal('survey-1')">View</button>
+                        </div>
+                    </div>
+
+                    <!-- Item 2 -->
+                    <div class="survey-item">
+                        <div class="survey-item-info">
+                            <h3 style="display: flex; align-items: center; gap: 8px;">
+                                Perpetual Test 10
+                                <span class="enc-badge status-warning">Pending</span>
+                            </h3>
+                            <div class="survey-item-meta">
+                                <span>Due 22/04/2026</span> • <span>60 min</span>
+                            </div>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 16px;">
+                            <div class="progress-bar-bg">
+                                <div class="progress-bar-fill" style="width: 0%;"></div>
+                            </div>
+                            <button class="enc-btn enc-btn-primary" onclick="openSurveyModal('survey-2')">Start</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Survey Modal -->
+    <div id="survey-modal" class="modal-overlay">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div style="display: flex; align-items: center; gap: 12px;">
+                    <!-- Logo Placeholder -->
+                    <svg height="24" viewBox="0 0 100 24" fill="#333">
+                        <rect width="20" height="20" fill="#a246f0" />
+                    </svg>
+                    <h2 style="font-size: var(--text-body); font-weight: 600;">Perpetual Test 10</h2>
+                </div>
+                <button class="enc-btn enc-btn-secondary" style="border: none; padding: 4px;"
+                    onclick="closeSurveyModal()">✕</button>
+            </div>
+
+            <!-- Progress Bar Strip -->
+            <div style="height: 4px; width: 100%; background: var(--en-grey-100);">
+                <div style="height: 100%; width: 30%; background: var(--en-primary-brand-500);"></div>
+            </div>
+
+            <div class="modal-body" id="modal-body-content">
+                <!-- Dynamic Content Will Be Injected Here -->
+                <div class="question-card">
+                    <div class="question-header">
+                        <p class="question-title" id="demo-q-title">Question Text Placeholder</p>
+                        <p class="question-desc" id="demo-q-desc">Description or instructions for the question.</p>
+                    </div>
+                    <div id="demo-q-input-area">
+                        <!-- Input rendered here -->
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button class="enc-btn enc-btn-secondary">Previous</button>
+                <button class="enc-btn enc-btn-primary">Next</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Dev Controls -->
+    <div id="dev-controls">
+        <h3>Enculture Dev Panel</h3>
+        <p style="font-size: 11px; color: #666; margin-bottom: 10px;">Select a question type to dynamically render it in
+            the modal.</p>
+
+        <div class="control-group">
+            <label>Question Type</label>
+            <select id="control-q-type" onchange="renderDemoQuestion()">
+                <option value="rating-scale">Rating Scale (Slider 1-10)</option>
+                <option value="rating-stars">Rating Stars</option>
+                <option value="text-short">Text Input (Short)</option>
+                <option value="text-long">Text Input (Long)</option>
+                <option value="single-select">Single Select (Radio)</option>
+                <option value="multi-select">Multi Select (Checkbox)</option>
+                <option value="likert">Likert Matrix (Radio)</option>
+                <option value="likert-stars">Likert Matrix (Stars)</option>
+                <option value="dropdown">Dropdown</option>
+                <option value="number">Number Input</option>
+                <option value="date">Date Input</option>
+            </select>
+        </div>
+
+        <div class="control-group">
+            <button class="enc-btn enc-btn-secondary" style="width: 100%;" onclick="openSurveyModal('demo')">Re-Open
+                Modal</button>
+        </div>
+    </div>
+
+    <script>
+        // Modal Logic
+        function openSurveyModal(id) {
+            document.getElementById('survey-modal').classList.add('open');
+            renderDemoQuestion(); // Initial Render
+        }
+
+        function closeSurveyModal() {
+            document.getElementById('survey-modal').classList.remove('open');
+        }
+
+        // Question Rendering Logic
+        function renderDemoQuestion() {
+            const type = document.getElementById('control-q-type').value;
+            const container = document.getElementById('demo-q-input-area');
+            const title = document.getElementById('demo-q-title');
+            const desc = document.getElementById('demo-q-desc');
+
+            container.innerHTML = ''; // Clear current
+
+            // Default Text
+            title.textContent = "Sample Question Title";
+            desc.textContent = "Please provide your answer below.";
+
+            // Render based on type
+            switch (type) {
+                case 'rating-scale':
+                    title.textContent = "How would you rate your experience?";
+                    desc.textContent = "1 being lowest, 10 being highest.";
+                    container.innerHTML = `
+                        <div style="display: flex; align-items: center; gap: 10px;">
+                            <span>1</span>
+                            <input type="range" min="1" max="10" value="5" class="enc-input" style="padding:0;">
+                            <span>10</span>
+                        </div>
+                        <div style="text-align: center; margin-top: 5px; font-weight: bold; color: var(--en-primary-brand-500);">5</div>
+                    `;
+                    break;
+                case 'rating-stars':
+                    title.textContent = "Rate the quality of the service";
+                    let stars = '';
+                    for (let i = 0; i < 5; i++) stars += '<span style="font-size: 24px; color: #FFD700; cursor: pointer;">★</span>';
+                    container.innerHTML = `<div>${stars}</div>`;
+                    break;
+                case 'text-short':
+                    title.textContent = "What is your name?";
+                    container.innerHTML = `<input type="text" class="enc-input" placeholder="Type your answer here...">`;
+                    break;
+                case 'text-long':
+                    title.textContent = "Describe your feedback in detail";
+                    container.innerHTML = `<textarea class="enc-input" style="height: 120px; padding-top: 8px;" placeholder="Type your answer here..."></textarea>`;
+                    break;
+                case 'single-select':
+                    title.textContent = "Select your department";
+                    container.innerHTML = `
+                        <div style="display: flex; flex-direction: column; gap: 8px;">
+                            <label style="display: flex; gap: 8px; align-items: center;"><input type="radio" name="ss" checked> Engineering</label>
+                            <label style="display: flex; gap: 8px; align-items: center;"><input type="radio" name="ss"> Design</label>
+                            <label style="display: flex; gap: 8px; align-items: center;"><input type="radio" name="ss"> Product</label>
+                        </div>
+                    `;
+                    break;
+                case 'multi-select':
+                    title.textContent = "Which tools do you use daily?";
+                    container.innerHTML = `
+                        <div style="display: flex; flex-direction: column; gap: 8px;">
+                            <label style="display: flex; gap: 8px; align-items: center;"><input type="checkbox" checked> Slack</label>
+                            <label style="display: flex; gap: 8px; align-items: center;"><input type="checkbox"> Jira</label>
+                            <label style="display: flex; gap: 8px; align-items: center;"><input type="checkbox"> Figma</label>
+                        </div>
+                    `;
+                    break;
+                case 'dropdown':
+                    title.textContent = "Select your country";
+                    container.innerHTML = `
+                        <select class="enc-input">
+                            <option>India</option>
+                            <option>USA</option>
+                            <option>UK</option>
+                            <option>Other</option>
+                        </select>
+                    `;
+                    break;
+                case 'number':
+                    title.textContent = "How many years of experience do you have?";
+                    container.innerHTML = `<input type="number" class="enc-input" placeholder="e.g. 5">`;
+                    break;
+                case 'date':
+                    title.textContent = "When did you join?";
+                    container.innerHTML = `<input type="date" class="enc-input">`;
+                    break;
+                case 'likert':
+                    title.textContent = "Rate the following aspects (Radio)";
+                    container.innerHTML = `
+                        <table style="width: 100%; border-collapse: collapse;">
+                            <thead>
+                                <tr style="border-bottom: 1px solid #eee;">
+                                    <th style="text-align: left; padding: 8px;">Aspect</th>
+                                    <th style="text-align: center;">Poor</th>
+                                    <th style="text-align: center;">Fair</th>
+                                    <th style="text-align: center;">Good</th>
+                                    <th style="text-align: center;">Excellent</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td style="padding: 12px 0;">Work Life Balance</td>
+                                    <td style="text-align: center;"><input type="radio" name="l1"></td>
+                                    <td style="text-align: center;"><input type="radio" name="l1"></td>
+                                    <td style="text-align: center;"><input type="radio" name="l1"></td>
+                                    <td style="text-align: center;"><input type="radio" name="l1"></td>
+                                </tr>
+                                <tr style="background: #f9f9f9;">
+                                    <td style="padding: 12px 0;">Office Environment</td>
+                                    <td style="text-align: center;"><input type="radio" name="l2"></td>
+                                    <td style="text-align: center;"><input type="radio" name="l2"></td>
+                                    <td style="text-align: center;"><input type="radio" name="l2"></td>
+                                    <td style="text-align: center;"><input type="radio" name="l2"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    `;
+                    break;
+                case 'likert-stars':
+                    title.textContent = "Rate the following aspects (Stars)";
+                    // Helper to make stars
+                    const makeStars = (name) => `
+                        <div style="display: flex; justify-content: center; color: #FFD700;">
+                            <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                        </div>
+                    `;
+                    container.innerHTML = `
+                        <table style="width: 100%; border-collapse: collapse;">
+                             <thead>
+                                <tr style="border-bottom: 1px solid #eee;">
+                                    <th style="text-align: left; padding: 8px;">Aspect</th>
+                                    <th style="text-align: center;">Rating</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td style="padding: 12px 0;">Manager Support</td>
+                                    <td style="text-align: center;">${makeStars('s1')}</td>
+                                </tr>
+                                <tr style="background: #f9f9f9;">
+                                    <td style="padding: 12px 0;">Team Collaboration</td>
+                                    <td style="text-align: center;">${makeStars('s2')}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    `;
+                    break;
+            }
+        }
+    </script>
+</body>
+
+</html>

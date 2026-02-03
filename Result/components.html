@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enculture Design System Index</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Mulish:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <!-- Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        :root {
+            /* --- FORMAL DS TOKENS (Source: En-AI_Design_System.md) --- */
+
+            /* PRIMARY BRAND */
+            --en-primary-brand-50: #faf5ff;
+            --en-primary-brand-100: #f3e8ff;
+            --en-primary-brand-300: #d8b4fe;
+            --en-primary-brand-500: #a246f0;
+            --en-primary-brand-700: #7e22ce;
+
+            /* GRAYSCALE (System.EnThemeGray) */
+            --en-grey-0: #ffffff;
+            --en-grey-100: #f0f4f5;
+            --en-grey-200: #d5dbde;
+            --en-grey-300: #a1a6a8;
+            --en-grey-400: #73787a;
+            --en-grey-500: #505355;
+            --en-grey-600: #383b3c;
+            /* Text Mapping */
+            --en-gray-700: #2b2d2e;
+            /* Primary Text */
+            --en-gray-800: #18191a;
+            /* Heading Text */
+
+            /* SEMANTIC FEEDBACK */
+            --en-success-500: #0fa251;
+            --en-error-500: #c0334d;
+            --en-info-100: #e5f2ff;
+            --en-sentiment-neutral: #ffc624;
+
+            /* PASTEL HEATMAP (Rev 6) */
+            --en-pastel-green-300: #A7F3D0;
+            --en-pastel-green-500: #34D399;
+            --en-pastel-yellow-300: #FDE68A;
+            --en-pastel-yellow-500: #F59E0B;
+            --en-pastel-pink-300: #F9A8D4;
+            --en-pastel-pink-500: #EC4899;
+
+            /* SPACING (Density: Comfortable) */
+            --en-space-xs: 4px;
+            --en-space-sm: 8px;
+            /* Used for Mini padding */
+            --en-space-md: 16px;
+            /* Used for Sm padding */
+            --en-space-lg: 24px;
+            /* Used for Lg padding */
+            --en-space-xl: 32px;
+
+            /* CONTROL HEIGHTS (Density: Comfortable) */
+            --en-control-height-lg: 48px;
+            --en-control-height-sm: 40px;
+            --en-control-height-mini: 32px;
+
+            /* RADIUS */
+            --en-radius-md: 8px;
+            --en-radius-lg: 16px;
+            --en-radius-full: 9999px;
+
+            /* SHADOW */
+            --en-shadow-ceo: 0 12px 32px 0 rgba(124, 58, 237, 0.08);
+
+            /* ALIASES (Concept Bridging) */
+            --en-surface-default: var(--en-grey-0);
+            --en-text-primary: var(--en-gray-700);
+            --en-text-heading: var(--en-gray-800);
+            --en-text-secondary: var(--en-grey-600);
+            --en-text-muted: var(--en-grey-400);
+            --en-text-on-primary: #ffffff;
+
+            --en-ring-width: 2px;
+            --en-ring-offset: 2px;
+            --en-ring-color: var(--en-primary-brand-500);
+            --en-ring-glow: var(--en-primary-brand-100);
+        }
+
+        /* RESET */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--en-grey-100);
+            color: var(--en-text-primary);
+            padding: 64px;
+            line-height: 1.4;
+        }
+
+        /* GLOBAL UTILITIES */
+        .ds-index-header {
+            margin-bottom: 64px;
+            border-bottom: 1px solid var(--en-grey-300);
+            padding-bottom: 32px;
+        }
+
+        .ds-section {
+            margin-bottom: 64px;
+        }
+
+        .ds-section-title {
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--en-grey-400);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 24px;
+            border-left: 4px solid var(--en-primary-brand-500);
+            padding-left: 12px;
+        }
+
+        .ds-component-wrapper {
+            background: var(--en-surface-default);
+            border: 1px solid var(--en-grey-200);
+            border-radius: var(--en-radius-lg);
+            padding: 48px;
+            display: flex;
+            align-items: flex-start;
+            gap: 32px;
+            flex-wrap: wrap;
+        }
+
+        /* FOCUS GOVERNANCE */
+        *:focus-visible {
+            outline: var(--en-ring-width) solid var(--en-ring-color);
+            outline-offset: var(--en-ring-offset);
+            box-shadow: 0 0 0 calc(var(--en-ring-offset) + var(--en-ring-width)) var(--en-ring-glow);
+        }
+
+        /* --- COMPONENTS --- */
+
+        /* 1. EncButton */
+        .enc-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: var(--en-radius-md);
+            font-weight: 600;
+            cursor: pointer;
+            border: 1px solid transparent;
+            font-family: inherit;
+            transition: all 0.2s;
+        }
+
+        .enc-btn-primary {
+            background: var(--en-primary-brand-500);
+            color: var(--en-text-on-primary);
+        }
+
+        .enc-btn-secondary {
+            background: var(--en-grey-100);
+            color: var(--en-text-primary);
+            border-color: var(--en-grey-200);
+        }
+
+        .enc-btn-lg {
+            height: var(--en-control-height-lg);
+            padding: 0 20px;
+            font-size: 16px;
+        }
+
+        /* Source: Lg padding spaceLg (20px approx per blueprint 11) */
+        .enc-btn-sm {
+            height: var(--en-control-height-sm);
+            padding: 0 var(--en-space-md);
+            font-size: 14px;
+        }
+
+        .enc-btn-mini {
+            height: var(--en-control-height-mini);
+            padding: 0 var(--en-space-sm);
+            font-size: 12px;
+        }
+
+        .enc-btn:disabled {
+            opacity: 0.5;
+            filter: grayscale(1);
+            cursor: not-allowed;
+        }
+
+        /* 2. EncIconButton */
+        .enc-icon-btn {
+            width: var(--en-control-height-sm);
+            height: var(--en-control-height-sm);
+            border-radius: var(--en-radius-md);
+            background: var(--en-grey-100);
+            border: 1px solid var(--en-grey-200);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            color: var(--en-text-primary);
+        }
+
+        /* 3. EncInput */
+        .enc-input {
+            width: 240px;
+            height: var(--en-control-height-sm);
+            border-radius: var(--en-radius-md);
+            border: 1px solid var(--en-grey-300);
+            padding: 0 var(--en-space-md);
+            font-family: inherit;
+            font-size: 14px;
+        }
+
+        .enc-input::placeholder {
+            color: var(--en-grey-500);
+        }
+
+        .enc-input:disabled {
+            background: var(--en-grey-100);
+            color: var(--en-grey-400);
+        }
+
+        /* 4. EncPageHeader */
+        .enc-page-header {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* 5. EncSection */
+        .enc-section-container {
+            width: 100%;
+            padding: var(--en-space-lg);
+            border: 1px dashed var(--en-grey-300);
+            border-radius: var(--en-radius-lg);
+        }
+
+        .enc-section-header-comp {
+            margin-bottom: var(--en-space-md);
+        }
+
+        /* 6. EncDivider */
+        .enc-divider {
+            width: 100%;
+            height: 1px;
+            background: var(--en-grey-200);
+            margin: var(--en-space-md) 0;
+        }
+
+        /* 7. EncListRow */
+        .enc-list-row {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: var(--en-space-md);
+            border: 1px solid var(--en-grey-200);
+            border-radius: var(--en-radius-md);
+        }
+
+        /* 8. EncBadge */
+        .enc-badge {
+            display: inline-flex;
+            padding: 2px 8px;
+            border-radius: var(--en-radius-full);
+            font-size: 10px;
+            font-weight: 800;
+            text-transform: uppercase;
+        }
+
+        /* 9. EncToast */
+        .enc-toast {
+            display: flex;
+            align-items: center;
+            gap: var(--en-space-md);
+            padding: var(--en-space-md);
+            border-radius: var(--en-radius-md);
+            background: var(--en-surface-default);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            border-left: 4px solid;
+            width: 320px;
+        }
+
+        /* 10. EncEmptyState */
+        .enc-empty-state {
+            text-align: center;
+            color: var(--en-text-secondary);
+            width: 100%;
+        }
+
+        /* 11. EncStepper */
+        .enc-stepper {
+            display: flex;
+            align-items: center;
+            gap: var(--en-space-sm);
+        }
+
+        .enc-step {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+        .step-num {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 11px;
+        }
+
+        /* 12. EncCardGlass */
+        .enc-card-glass {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--en-grey-200);
+            border-radius: var(--en-radius-lg);
+            box-shadow: var(--en-shadow-ceo);
+            padding: 24px;
+            width: 320px;
+        }
+
+        /* 13. Heatmaps */
+        .heatmap-cell {
+            flex: 1;
+            height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 12px;
+        }
+
+        .compliance-banner {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 8px 12px;
+            border: 1px solid #fecaca;
+            background: #fef2f2;
+            border-radius: var(--en-radius-md);
+            margin-top: 16px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header class="ds-index-header">
+        <h1 style="font-size: 32px; font-weight: 700; color: var(--en-gray-800);">Enculture Design System Index</h1>
+        <p style="color: var(--en-grey-400);">Canonical Component Registry • Comfortable Density (Default)</p>
+    </header>
+
+    <!-- 1. EncButton -->
+    <div class="ds-section">
+        <h2 class="ds-section-title">1. EncButton & EncIconButton</h2>
+        <div class="ds-component-wrapper">
+            <button class="enc-btn enc-btn-primary enc-btn-lg">Primary Lg</button>
+            <button class="enc-btn enc-btn-secondary enc-btn-sm">Secondary Sm</button>
+            <button class="enc-btn enc-btn-primary enc-btn-mini">Mini</button>
+            <button class="enc-btn enc-btn-primary enc-btn-sm" disabled>Disabled</button>
+            <button class="enc-icon-btn"><i data-lucide="settings" style="width: 20px;"></i></button>
+        </div>
+    </div>
+
+    <!-- 2. EncInput -->
+    <div class="ds-section">
+        <h2 class="ds-section-title">2. Form Inputs</h2>
+        <div class="ds-component-wrapper">
+            <input type="text" class="enc-input" placeholder="EncInput (Default)">
+            <input type="text" class="enc-input" disabled value="EncInput (Disabled)">
+            <div style="display: flex; gap: 8px; align-items: center;">
+                <input type="date" class="enc-input" style="width: 160px;">
+                <i data-lucide="arrow-right" style="width: 16px; color: var(--en-grey-300);"></i>
+                <input type="date" class="enc-input" style="width: 160px;">
+            </div>
+            <input type="time" class="enc-input" style="width: 120px;">
+        </div>
+    </div>
+
+    <!-- 3. Layout Modules -->
+    <div class="ds-section">
+        <h2 class="ds-section-title">3. Layout Modules</h2>
+        <div class="ds-component-wrapper" style="display: block;">
+
+            <!-- EncPageHeader -->
+            <div class="enc-page-header" style="margin-bottom: 32px;">
+                <div>
+                    <h1 style="font-size: 24px; font-weight: 700; color: var(--en-gray-800);">EncPageHeader</h1>
+                    <p style="color: var(--en-text-secondary); font-size: 14px;">Canonical page title block</p>
+                </div>
+                <button class="enc-btn enc-btn-primary enc-btn-sm">Header Action</button>
+            </div>
+
+            <!-- EncSection -->
+            <div class="enc-section-container">
+                <div class="enc-section-header-comp">
+                    <h3 style="font-size: 18px; font-weight: 700; color: var(--en-gray-800);">EncSectionHeader</h3>
+                    <p style="font-size: 12px; color: var(--en-text-muted);">Optional section subtitle</p>
+                </div>
+                <p style="color: var(--en-text-secondary); font-size: 14px; margin-bottom: 16px;">This content resides
+                    within an <strong>EncSection</strong> container.</p>
+                <div class="enc-divider"></div>
+                <p style="color: var(--en-text-muted); font-size: 12px;">Content below EncDivider</p>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- 4. Data Display -->
+    <div class="ds-section">
+        <h2 class="ds-section-title">4. Data Display</h2>
+        <div class="ds-component-wrapper" style="display: block;">
+            <div class="enc-list-row" style="margin-bottom: 16px;">
+                <span style="font-weight: 600; font-size: 14px;">EncListRow Item</span>
+                <span class="enc-badge" style="background: var(--en-success-500); color: white;">Published</span>
+            </div>
+            <div class="enc-list-row">
+                <span style="font-weight: 600; font-size: 14px;">EncListRow Item</span>
+                <span class="enc-badge"
+                    style="background: var(--en-grey-200); color: var(--en-text-secondary);">Draft</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- 5. Feedback -->
+    <div class="ds-section">
+        <h2 class="ds-section-title">5. Feedback & Empty States</h2>
+        <div class="ds-component-wrapper">
+            <div style="display: flex; flex-direction: column; gap: 16px;">
+                <div class="enc-toast" style="border-color: var(--en-success-500);"><i data-lucide="check-circle"
+                        style="color: var(--en-success-500); width: 16px;"></i> <span style="font-size: 13px;">Success
+                        Toast</span></div>
+                <div class="enc-toast" style="border-color: var(--en-error-500);"><i data-lucide="x-circle"
+                        style="color: var(--en-error-500); width: 16px;"></i> <span style="font-size: 13px;">Error
+                        Toast</span></div>
+            </div>
+            <div class="enc-empty-state">
+                <i data-lucide="inbox"
+                    style="width: 48px; height: 48px; color: var(--en-grey-300); margin-bottom: 16px;"></i>
+                <h4 style="font-weight: 700; margin-bottom: 8px;">EncEmptyState</h4>
+                <p style="font-size: 13px;">Canonical empty state representation.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 6. Navigation -->
+    <div class="ds-section">
+        <h2 class="ds-section-title">6. Navigation</h2>
+        <div class="ds-component-wrapper">
+            <div class="enc-stepper">
+                <div class="enc-step" style="color: var(--en-primary-brand-500);">
+                    <div class="step-num" style="background: var(--en-primary-brand-300); color: white;"><i
+                            data-lucide="check" style="width: 12px;"></i></div>
+                    <span>Done</span>
+                </div>
+                <div style="width: 32px; height: 2px; background: var(--en-primary-brand-300);"></div>
+                <div class="enc-step" style="color: var(--en-gray-700);">
+                    <div class="step-num" style="background: var(--en-primary-brand-500); color: white;">2</div>
+                    <span>Active</span>
+                </div>
+                <div style="width: 32px; height: 2px; background: var(--en-grey-200);"></div>
+                <div class="enc-step" style="color: var(--en-text-muted);">
+                    <div class="step-num" style="border: 2px solid var(--en-grey-200);">3</div>
+                    <span>Pending</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 7. Utility -->
+    <div class="ds-section">
+        <h2 class="ds-section-title">7. Utility</h2>
+        <div class="ds-component-wrapper">
+            <div class="enc-card-glass">
+                <h4 style="font-weight: 700; margin-bottom: 8px;">EncCard (Glass)</h4>
+                <p style="font-size: 13px; color: var(--en-text-secondary);">Governed glassmorphism variant using
+                    {Shadow.CEO} and backdrop blur.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 8. Sentiment Heatmaps -->
+    <div class="ds-section">
+        <h2 class="ds-section-title">8. Sentiment Heatmap System</h2>
+        <div class="ds-component-wrapper" style="display: block;">
+
+            <!-- Heatmap A -->
+            <div style="margin-bottom: 32px;">
+                <h4 style="font-size: 12px; margin-bottom: 12px; color: var(--en-text-muted);">Heatmap A: 3-Step (NPS)
+                </h4>
+                <div style="display: flex; gap: 4px; max-width: 400px;">
+                    <div class="heatmap-cell"
+                        style="background: var(--en-success-500); color: white; border-radius: 8px;">Positive</div>
+                    <div class="heatmap-cell"
+                        style="background: var(--en-sentiment-neutral); color: var(--en-gray-700); border-radius: 8px;">
+                        Neutral</div>
+                    <div class="heatmap-cell"
+                        style="background: var(--en-error-500); color: white; border-radius: 8px;">Negative</div>
+                </div>
+            </div>
+
+            <!-- Heatmap B -->
+            <div>
+                <h4 style="font-size: 12px; margin-bottom: 12px; color: var(--en-text-muted);">Heatmap B: 6-Tier
+                    (Pastel)</h4>
+                <div style="display: flex; gap: 2px; border-radius: 12px; overflow: hidden; margin-bottom: 12px;">
+                    <div class="heatmap-cell" style="background: var(--en-pastel-green-500); color: white;">T1</div>
+                    <div class="heatmap-cell"
+                        style="background: var(--en-pastel-green-300); color: var(--en-gray-700);">T2</div>
+                    <div class="heatmap-cell"
+                        style="background: var(--en-pastel-yellow-300); color: var(--en-gray-700);">T3</div>
+                    <div class="heatmap-cell"
+                        style="background: var(--en-pastel-yellow-500); color: var(--en-gray-700);">T4</div>
+                    <div class="heatmap-cell" style="background: var(--en-pastel-pink-300); color: var(--en-gray-700);">
+                        T5</div>
+                    <div class="heatmap-cell" style="background: var(--en-pastel-pink-500); color: white;">T6</div>
+                </div>
+
+                <!-- Compliance Banner -->
+                <div class="compliance-banner">
+                    <span
+                        style="background: var(--en-error-500); color: white; font-size: 9px; font-weight: 900; padding: 2px 6px; border-radius: 4px;">DS
+                        COMPLIANCE</span>
+                    <span style="font-size: 11px; font-weight: 600; color: var(--en-error-500);">Contrast Rules Applied:
+                        T1/T6 (Dark) on White, T4/T3 (Light) on Gray-700.</span>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script>lucide.createIcons();</script>
+</body>
+
+</html>

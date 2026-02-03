@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enculture Audit: Update 2 (Strict Governance)</title>
+    <style>
+        :root {
+            /* --- VIBE ICONS & COLORS --- */
+            --vibe-primary: #8b5cf6;
+            --vibe-rogue-dark: #392A48;
+            --vibe-bg-light: #f3f4f6;
+            --vibe-radius-pill: 9999px;
+            --vibe-radius-btn: 12px;
+            --vibe-radius-card: 20px;
+
+            /* --- UPDATED DS TOKENS (Update 2) --- */
+            /* Brand Primitives */
+            --en-brand-50: #f5f3ff;
+            --en-brand-100: #ede9fe;
+            --en-brand-300: #c4b5fd;
+            --en-brand-500: #8b5cf6;
+            --en-brand-600: #7c3aed;
+            --en-brand-700: #6d28d9;
+            --en-brand-800: #5b21b6;
+            --en-brand-900: #2e1065;
+
+            /* Neutral Gray */
+            --en-natural-white: #ffffff;
+            --en-natural-50: #fafafa;
+            --en-natural-100: #f5f5f5;
+            --en-natural-300: #d4d4d4;
+
+            /* Theme Grays (Tinted) */
+            --en-theme-50: #faf5ff;
+            --en-theme-100: #e7e1f2;
+            --en-theme-200: #e7e2f3;
+            --en-theme-300: #d4cfe3;
+            --en-theme-400: #b1acc4;
+            --en-theme-600: #6a647a;
+            --en-theme-900: #16141a;
+
+            /* Semantics */
+            --en-bg-page: var(--en-theme-50);
+            --en-action-primary-bg: var(--en-brand-600);
+            --en-action-primary-border: var(--en-brand-500);
+            --en-action-secondary-border: var(--en-theme-400);
+
+            /* Radius Scale */
+            --en-radius-sm: 4px;
+            --en-radius-md: 8px;
+            --en-radius-lg: 16px;
+            --en-radius-full: 9999px;
+
+            /* Heatmap & eNPS */
+            --en-heatmap-excellent: #064e3b;
+            --en-heatmap-good: #10b981;
+            --en-enps-promoter: #10b981;
+            --en-enps-passive: #f59e0b;
+            --en-enps-detractor: #f43f5e;
+        }
+
+        body {
+            font-family: 'Inter', system-ui, sans-serif;
+            background-color: #f1f5f9;
+            color: #0f172a;
+            padding: 40px;
+            line-height: 1.5;
+        }
+
+        .container {
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            background: white;
+            padding: 40px;
+            border-radius: 24px;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
+        }
+
+        h1 {
+            margin: 0 0 10px 0;
+            color: #1e293b;
+            font-size: 2.2rem;
+            letter-spacing: -0.025em;
+        }
+
+        .subtitle {
+            color: #64748b;
+            font-size: 1.1rem;
+        }
+
+        .governance-banner {
+            background: #1e293b;
+            color: white;
+            padding: 20px 30px;
+            border-radius: 12px;
+            margin-bottom: 40px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.2);
+        }
+
+        .gov-tag {
+            background: #8b5cf6;
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 800;
+            text-transform: uppercase;
+        }
+
+        /* LIVE PREVIEW BOX */
+        .live-preview {
+            background: #ffffff;
+            border: 1px dashed #cbd5e1;
+            border-radius: 8px;
+            padding: 24px;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-image: radial-gradient(#e2e8f0 1px, transparent 1px);
+            background-size: 16px 16px;
+        }
+
+        /* Comparison Grid */
+        .comparison-row {
+            display: grid;
+            grid-template-columns: 280px 1fr 1fr;
+            gap: 40px;
+            background: white;
+            padding: 40px;
+            border-radius: 24px;
+            margin-bottom: 40px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+            align-items: start;
+        }
+
+        .comp-info h3 {
+            margin: 0 0 8px 0;
+            font-size: 1.25rem;
+            color: #0f172a;
+        }
+
+        /* --- CHAOS MAP STYLES --- */
+        .chaos-map-container {
+            display: grid;
+            gap: 24px;
+            margin-bottom: 48px;
+        }
+
+        .chaos-row {
+            display: grid;
+            grid-template-columns: 1fr 80px 1fr;
+            align-items: center;
+            background: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 16px;
+            padding: 20px;
+        }
+
+        .chaos-cluster {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            justify-content: center;
+            padding: 16px;
+            background: #f8fafc;
+            border-radius: 12px;
+            border: 1px dashed #cbd5e1;
+        }
+
+        .chaos-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .chaos-swatch {
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .chaos-label {
+            font-size: 9px;
+            color: #64748b;
+            font-family: monospace;
+            text-align: center;
+        }
+
+        .chaos-arrow {
+            text-align: center;
+            color: #94a3b8;
+            font-weight: 800;
+            font-size: 10px;
+        }
+
+        .ds-target {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 16px;
+            background: #f5f3ff;
+            border-radius: 12px;
+            border: 2px solid #7c3aed;
+        }
+
+        .chaos-title {
+            font-size: 13px;
+            font-weight: 700;
+            color: #1e293b;
+            margin-bottom: 12px;
+            grid-column: 1 / -1;
+        }
+
+        /* Status Badges */
+        .status-pill {
+            padding: 4px 10px;
+            border-radius: 99px;
+            font-size: 11px;
+            font-weight: 700;
+            display: inline-block;
+            margin-top: 8px;
+        }
+
+        .status-pill.missing {
+            background: #fef2f2;
+            color: #b91c1c;
+            border: 1px solid #fecaca;
+        }
+
+        .status-pill.diff {
+            background: #fffbeb;
+            color: #b45309;
+            border: 1px solid #fef3c7;
+        }
+
+        .status-pill.documented {
+            background: #f0fdf4;
+            color: #166534;
+            border: 1px solid #dcfce7;
+        }
+
+        .status-pill.blocked {
+            background: #1e293b;
+            color: white;
+        }
+
+        .panel {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 16px;
+            padding: 24px;
+            position: relative;
+            min-height: 140px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .label {
+            position: absolute;
+            top: -12px;
+            left: 20px;
+            background: white;
+            padding: 2px 10px;
+            border-radius: 4px;
+            font-size: 10px;
+            font-weight: 800;
+            text-transform: uppercase;
+            border: 1px solid #e2e8f0;
+        }
+
+        .vibe .label {
+            color: #8b5cf6;
+        }
+
+        .ds .label {
+            color: #166534;
+        }
+
+        /* TABS */
+        .tab-nav {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 30px;
+            background: white;
+            padding: 10px 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+        }
+
+        .tab-btn {
+            background: none;
+            border: none;
+            padding: 15px 4px;
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: #64748b;
+            cursor: pointer;
+            border-bottom: 3px solid transparent;
+            transition: all 0.2s;
+        }
+
+        .tab-btn.active {
+            color: #7c3aed;
+            border-bottom-color: #7c3aed;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        /* CODE SECTIONS */
+        .audit-grid {
+            display: grid;
+            gap: 32px;
+        }
+
+        .component-section {
+            background: white;
+            border-radius: 16px;
+            border: 1px solid #e2e8f0;
+            overflow: hidden;
+        }
+
+        .comp-header {
+            padding: 16px 24px;
+            background: #f8fafc;
+            border-bottom: 1px solid #e2e8f0;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .comp-body {
+            padding: 24px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+        }
+
+        .code-block {
+            background: #1e293b;
+            color: #e2e8f0;
+            padding: 16px;
+            border-radius: 8px;
+            font-family: monospace;
+            font-size: 12px;
+            overflow-x: auto;
+        }
+
+        .token-hl {
+            color: #a78bfa;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <header>
+            <span class="scan-badge" style="background: #f5f3ff; color: #7c3aed; border: 1px solid #c4b5fd;">Audit
+                Update 2 [20 Jan 2026]</span>
+            <h1>Component Audit</h1>
+            <div class="subtitle">Strict Design Governance & AI Mandates</div>
+        </header>
+
+        <!-- NEW GOVERNANCE BANNER -->
+        <div class="governance-banner">
+            <div style="font-size: 2rem;">🛡️</div>
+            <div>
+                <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 4px;">
+                    <span class="gov-tag">MANDATORY</span>
+                    <strong style="font-size: 1.1rem;">AI Governance Mandate Added</strong>
+                </div>
+                <p style="margin: 0; font-size: 0.9rem; opacity: 0.9;">
+                    AI tools are <strong>FORBIDDEN</strong> from inventing styles. If a component is missing in the DS
+                    (like Steppers), it MUST be flagged and not implemented.
+                </p>
+            </div>
+        </div>
+
+        <!-- TABS NAV -->
+        <div class="tab-nav">
+            <button class="tab-btn active" onclick="switchTab('visual')">1. Visual Overview</button>
+            <button class="tab-btn" onclick="switchTab('code')">2. Component Code Standards</button>
+        </div>
+
+        <!-- TAB 1: VISUAL OVERVIEW -->
+        <div id="tab-visual" class="tab-content active">
+
+            <!-- GAP ANALYSIS HUB -->
+            <h2 style="margin-bottom: 24px; color: #1e293b; display: flex; align-items: center; gap: 10px;">
+                Gap Analysis: Component Readiness
+            </h2>
+
+            <div class="chaos-map-container">
+
+                <!-- Row 1: Brand Color (Action BG) -->
+                <div class="chaos-row">
+                    <div class="chaos-title">Action Background (Primary)</div>
+                    <div class="chaos-cluster">
+                        <div class="chaos-item">
+                            <div class="chaos-swatch" style="background: #392A48;"></div>
+                            <div class="chaos-label">#392A48<br>(Rogue)</div>
+                        </div>
+                        <div class="chaos-item">
+                            <div class="chaos-swatch" style="background: #8b5cf6;"></div>
+                            <div class="chaos-label">#8b5cf6<br>(Brand-500)</div>
+                        </div>
+                    </div>
+                    <div class="chaos-arrow">➔</div>
+                    <div class="ds-target">
+                        <div class="chaos-item">
+                            <div class="chaos-swatch" style="background: var(--en-brand-600);"></div>
+                            <div class="chaos-label">--en-brand-600<br>(#7c3aed)</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Row 2: Progress/Steppers (Missing Section) -->
+                <div class="chaos-row" style="background: #1e293b; color: white; border: none;">
+                    <div class="chaos-title" style="color: #cbd5e1;">Multi-Step Interaction</div>
+                    <div class="chaos-cluster" style="background: rgba(255,255,255,0.05); border-color: #475569;">
+                        <div class="chaos-item">
+                            <div style="display: flex; gap: 4px; align-items: center;">
+                                <div
+                                    style="width: 16px; height: 16px; background: #392A48; border-radius: 50%; border: 1px solid #fff;">
+                                </div>
+                                <div style="width: 16px; height: 1px; background: #fff;"></div>
+                                <div style="width: 16px; height: 16px; background: grey; border-radius: 50%;"></div>
+                            </div>
+                            <div class="chaos-label" style="color: #94a3b8;">Vibe Stepper</div>
+                        </div>
+                    </div>
+                    <div class="chaos-arrow" style="color: white;">🛑 BLOCK</div>
+                    <div class="ds-target" style="background: #0f172a; border-color: #ef4444;">
+                        <div class="chaos-item">
+                            <div style="font-size: 1.5rem;">⚠️</div>
+                            <div class="chaos-label" style="color: #ef4444; font-weight: bold;">DO NOT IMPLEMENT</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Row 3: New Documented Drafts -->
+                <div class="chaos-row" style="background: #f0fdf4; border-color: #bbf7d0;">
+                    <div class="chaos-title">New Documentation (Blueprints)</div>
+                    <div class="chaos-cluster"
+                        style="background: white; width: 100%; border-style: solid; border-color: #dcfce7;">
+
+                        <!-- Toast -->
+                        <div class="chaos-item">
+                            <div
+                                style="width: 60px; height: 18px; background: var(--en-brand-600); border-radius: 4px; color: white; font-size: 8px; display: flex; align-items: center; justify-content: center;">
+                                Toast Success</div>
+                            <div class="chaos-label">EncToast</div>
+                            <span class="status-pill documented">ADDED TO DS</span>
+                        </div>
+
+                        <!-- Card Glass -->
+                        <div class="chaos-item">
+                            <div
+                                style="width: 40px; height: 40px; background: var(--en-theme-50); border: 1px solid var(--en-theme-200); border-radius: 16px; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
+                            </div>
+                            <div class="chaos-label">EncCard Glass</div>
+                            <span class="status-pill documented">ADDED TO DS</span>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+            <h3 style="margin-bottom: 24px; color: #1e293b; border-bottom: 1px solid #e2e8f0; padding-bottom:12px;">
+                Component Comparisons</h3>
+
+            <!-- PRIMARY BUTTON -->
+            <div class="comparison-row">
+                <div class="comp-info">
+                    <h3>EncButton (Primary)</h3>
+                    <p><strong>Status:</strong> Correcting</p>
+                    <span class="status-pill diff">TOKEN UPDATE</span>
+                    <p style="margin-top:12px">Primary buttons are moving from Brand-500 (#8b5cf6) to **Brand-600**
+                        (#7c3aed) for better contrast and depth.</p>
+                </div>
+                <div class="panel vibe">
+                    <span class="label">Current (Vibe)</span>
+                    <div style="text-align:center;"><button
+                            style="background:#392A48; color:white; padding:10px 24px; border-radius:8px; border:none; font-weight:600;">Save
+                            Changes</button></div>
+                    <div class="specs">Used: #392A48 (Rogue)</div>
+                </div>
+                <div class="panel ds">
+                    <span class="label">Standard (Update 2)</span>
+                    <div style="text-align:center;"><button
+                            style="background:var(--en-brand-600); color:white; padding:10px 24px; border-radius:8px; border:1px solid var(--en-brand-500); font-weight:600; box-shadow: 0 1px 2px rgba(0,0,0,0.05);">Save
+                            Changes</button></div>
+                    <div class="specs">Target: var(--en-brand-600)</div>
+                </div>
+            </div>
+
+            <!-- HEATMAP -->
+            <div class="comparison-row">
+                <div class="comp-info">
+                    <h3>Heatmap & Data Viz</h3>
+                    <p><strong>Status:</strong> New Standard</p>
+                    <span class="status-pill documented">DOCUMENTED</span>
+                    <p style="margin-top:12px">Heatmap colors are now standardized to specific Green/Yellow/Red steps.
+                    </p>
+                </div>
+                <div class="panel vibe">
+                    <span class="label">Custom Implementations</span>
+                    <div style="display:flex; gap:4px; justify-content:center;">
+                        <div style="width:30px; height:30px; background:#166534; border-radius:4px;"></div>
+                        <div style="width:30px; height:30px; background:#4ade80; border-radius:4px;"></div>
+                        <div style="width:30px; height:30px; background:#fca5a5; border-radius:4px;"></div>
+                    </div>
+                </div>
+                <div class="panel ds">
+                    <span class="label">DS HEATMAP</span>
+                    <div style="display:flex; gap:4px; justify-content:center;">
+                        <div
+                            style="width:30px; height:30px; background:var(--en-heatmap-excellent); border-radius:2px;">
+                        </div>
+                        <div style="width:30px; height:30px; background:var(--en-heatmap-good); border-radius:2px;">
+                        </div>
+                        <div style="width:30px; height:30px; background:var(--en-heatmap-critical); border-radius:2px;">
+                        </div>
+                    </div>
+                    <div class="specs">Tokens: --en-heatmap-excellent, etc.</div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- TAB 2: COMPONENT CODE STANDARDS -->
+        <div id="tab-code" class="tab-content">
+            <div class="audit-grid">
+
+                <!-- 1. EncButton - Primary -->
+                <div class="component-section">
+                    <div class="comp-header">
+                        <div class="comp-title">EncButton - Primary (V2)</div>
+                        <div class="comp-badge" style="background: #f0f9ff; color: #0369a1; border-color: #bae6fd;">
+                            Blueprint Updated</div>
+                    </div>
+                    <div class="comp-body">
+                        <div class="analysis">
+                            <h4>Compliance Rules</h4>
+                            <ul class="drift-list" style="list-style:none; padding:0;">
+                                <li><strong>Background:</strong> <span class="token-hl">--en-brand-600</span> (#7c3aed).
+                                </li>
+                                <li><strong>Border:</strong> <span class="token-hl">--en-brand-500</span> (#8b5cf6).
+                                </li>
+                                <li><strong>Hover:</strong> <span class="token-hl">--en-brand-800</span>.</li>
+                            </ul>
+                        </div>
+                        <div class="fix">
+                            <h4>Standardized Code</h4>
+                            <div class="live-preview">
+                                <button
+                                    style="padding:10px 20px; border-radius:8px; background:var(--en-brand-600); color:white; border:1px solid var(--en-brand-500); cursor:pointer; font-weight:600;">
+                                    Confirm Action
+                                </button>
+                            </div>
+                            <div class="code-block">
+                                &lt;button class="bg-[var(--en-brand-600)] border border-[var(--en-brand-500)]
+                                text-white px-5 py-2.5 rounded-[8px] font-semibold
+                                hover:bg-[var(--en-brand-800)] transition-colors"&gt;
+                                Confirm Action
+                                &lt;/button&gt;</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2. EncToast -->
+                <div class="component-section">
+                    <div class="comp-header">
+                        <div class="comp-title">EncToast - Success</div>
+                        <div class="comp-badge" style="background:#f0fdf4; color:#166534; border-color:#dcfce7;">New
+                            Specification</div>
+                    </div>
+                    <div class="comp-body">
+                        <div class="analysis">
+                            <h4>Compliance Rules</h4>
+                            <ul class="drift-list" style="list-style:none; padding:0;">
+                                <li><strong>Z-Index:</strong> 1600 (Mandatory Overlay).</li>
+                                <li><strong>Color:</strong> <span class="token-hl">--en-success-500</span> for variants.
+                                </li>
+                                <li><strong>Dismiss:</strong> 4-6 seconds auto-dismiss.</li>
+                            </ul>
+                        </div>
+                        <div class="fix">
+                            <h4>Standardized Code</h4>
+                            <div class="live-preview">
+                                <div
+                                    style="padding:12px 20px; background:white; border:1px solid #e2e8f0; border-left:4px solid var(--en-success-500); border-radius:8px; display:flex; align-items:center; gap:12px; box-shadow:0 10px 15px -3px rgba(0,0,0,0.1);">
+                                    <span style="color:var(--en-success-500); font-weight:bold;">✓</span>
+                                    <span style="font-size:14px; color:var(--en-theme-900);">User successfully
+                                        imported.</span>
+                                </div>
+                            </div>
+                            <div class="code-block">
+                                &lt;!-- Base Template --&gt;
+                                &lt;div class="z-[1600] bg-white border-l-4 border-[var(--en-success-500)]
+                                shadow-xl rounded-lg p-4 flex items-center gap-3"&gt;
+                                &lt;Icon Success /&gt;
+                                &lt;span class="text-[var(--en-theme-900)] text-sm"&gt;...&lt;/span&gt;
+                                &lt;/div&gt;</div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+    <!-- TAB LOGIC -->
+    <script>
+        function switchTab(tabId) {
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+            document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
+            document.getElementById('tab-' + tabId).classList.add('active');
+            event.target.classList.add('active');
+        }
+    </script>
+</body>
+
+</html>
