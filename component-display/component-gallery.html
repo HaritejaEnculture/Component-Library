@@ -614,44 +614,18 @@
     }
   </style>
 </head>
-<body data-density="compact">
-  <div class="enc-main-container">
+<body>
+  <div class="gallery-page">
     <p class="gallery-back-nav"><a href="index.html" class="gallery-back-link">← Back to Component Index</a></p>
     <h1 class="gallery-title">Enculture Design System — Component Gallery</h1>
     <p class="gallery-subtitle">Single live reference for all Enculture UI components. Dummy data only. Governed by enculture.css, En-AI_Design_System.md, EN-AI_Components_Molecules.md, COMPONENT_REGISTRY.md.</p>
-    <nav class="gallery-back-nav gallery-preview-inline gallery-nav-inline" aria-label="Section jump">
+    <nav class="gallery-back-nav gallery-preview-inline" style="margin-bottom: var(--en-space-md);" aria-label="Section jump">
       <a href="#intent-index" class="gallery-back-link">Intent Index</a>
       <a href="#atoms" class="gallery-back-link">Atoms</a>
       <a href="#molecules" class="gallery-back-link">Molecules</a>
       <a href="#organisms" class="gallery-back-link">Organisms</a>
       <a href="#system" class="gallery-back-link">System</a>
     </nav>
-
-    <!-- ==================== SEARCH & FILTER ==================== -->
-    <div class="enc-card gallery-search-filter">
-      <div class="gallery-search-row">
-        <div class="gallery-type-filter">
-          <label for="component-type" class="gallery-combo-label gallery-label-bold">Filter by type</label>
-          <select id="component-type" class="enc-input-field gallery-input-spacing" aria-label="Filter by component type">
-            <option value="">All types</option>
-            <option value="atoms">Atoms</option>
-            <option value="molecules">Molecules</option>
-            <option value="organisms">Organisms</option>
-            <option value="system">System</option>
-            <option value="design-tokens">Design Tokens</option>
-          </select>
-        </div>
-        <div class="gallery-search-box">
-          <label for="component-search" class="gallery-combo-label gallery-label-bold">Search components</label>
-          <input type="text" id="component-search" class="enc-input-field gallery-input-spacing" placeholder="Type to search (e.g. EncButton, tag, input)..." aria-label="Search components" autocomplete="off">
-          <div id="search-suggestions" class="gallery-search-suggestions" role="listbox" aria-label="Component search suggestions"></div>
-        </div>
-        <div class="gallery-search-actions">
-          <button type="button" id="search-button" class="enc-action-primary" aria-label="Search">Search</button>
-          <button type="button" id="clear-search" class="enc-action-secondary gallery-clear-hidden" aria-label="Clear search">Clear</button>
-        </div>
-      </div>
-    </div>
 
     <!-- ==================== INTENT → COMPONENT INDEX ==================== -->
     <section class="gallery-section" id="intent-index">
@@ -740,8 +714,7 @@
           <p><strong>Use when:</strong> Text, textarea, or select in Survey Creator, Admin, or forms.</p>
           <p><strong>Do NOT use when:</strong> Custom-styled search that overrides DS; use enc-input (forbidden — use enc-input-field).</p>
           <p><strong>Stable props:</strong> class <code>enc-input-field</code>; type, placeholder, disabled; aria-label or associated label.</p>
-          <p><strong>Size enforcement:</strong> Input height is controlled by Enculture density tokens only: <code>--en-density-control-height</code> (comfortable, 48px) and <code>--en-density-compact-control-height</code> (compact, 40px). Product code MUST NOT set custom heights, use Shadcn size props, Tailwind <code>h-*</code>/<code>py-*</code>, or per-input sizing. Search inputs are NOT special — they use the same height as EncInput.</p>
-          <p><strong>Governance:</strong> Placeholder/disabled colors from DS; semantic labels required; no raw colors; height, padding, and radius MUST resolve from Enculture density tokens (see Input size enforcement CANONICAL).</p>
+          <p><strong>Governance:</strong> Placeholder/disabled colors from DS; semantic labels required; no raw colors.</p>
           <p><strong>Success states:</strong> Valid/unchanged input uses default styling; success feedback (e.g. "Saved") use EncToast (Success) or helper text; error state per form governance (not implied by EncInputField alone).</p>
         </div>
         <div class="gallery-misuse">
@@ -781,25 +754,29 @@
           <p class="gallery-combo-label">No radius</p>
           <div class="gallery-combo-radius-none"><input type="text" class="enc-input-field gallery-input-small" value="Sample" aria-label="Sample"></div>
         </div>
+        <div class="gallery-preview">
+          <p class="gallery-combo-label">Combinations — Radius (default md, lg, full, none)</p>
+          <p class="gallery-combo-label">Default (md)</p>
+          <input type="text" class="enc-input-field" value="Sample" aria-label="Sample" style="max-width: 12rem;">
+          <p class="gallery-combo-label">Large (lg)</p>
+          <div class="gallery-combo-radius-lg"><input type="text" class="enc-input-field" value="Sample" aria-label="Sample" style="max-width: 12rem;"></div>
+          <p class="gallery-combo-label">Full (pill)</p>
+          <div class="gallery-combo-radius-full"><input type="text" class="enc-input-field" value="Sample" aria-label="Sample" style="max-width: 12rem;"></div>
+          <p class="gallery-combo-label">No radius</p>
+          <div class="gallery-combo-radius-none"><input type="text" class="enc-input-field" value="Sample" aria-label="Sample" style="max-width: 12rem;"></div>
+        </div>
       </div>
 
       <div class="gallery-component-block" data-component-name="EncTag" data-component-type="atoms">
         <h3 class="gallery-component-title">EncTag</h3>
         <p class="gallery-component-purpose">Governed metadata label for status, sentiment, lifecycle, or categorical metadata.</p>
         <div class="gallery-contract">
-          <p><strong>Role / Intent:</strong> Non-interactive metadata label. EncTag is a governed badge/chip component, not a decorative element.</p>
-          <p><strong>Use when:</strong> You need a compact label to communicate <em>status</em> (e.g. Completed, Draft), <em>sentiment</em> (e.g. Critical), <em>lifecycle</em> (e.g. Archived), or neutral categories (e.g. Department X) in lists, filters, tables, or cards.</p>
-          <p><strong>Do NOT use when:</strong> As a button or clickable filter; for navigation; for chart legends or data-vis color keys; as the only indicator of action or routing.</p>
-          <p><strong>Stable props (semantic):</strong> class <code>enc-tag</code>; label text (short, 1–2 words in Title/Sentence case; no ALL CAPS, no emojis).</p>
-          <p><strong>Stable props (EncTag component API):</strong> <code>variant</code> (<code>status</code> | <code>sentiment</code> | <code>lifecycle</code> | <code>neutral</code>), <code>tone</code> (<code>success</code> | <code>warning</code> | <code>error</code> | <code>neutral</code>), optional <code>icon</code> and <code>iconPosition</code> (<code>left</code> | <code>right</code>), and inherited density (compact / expanded).</p>
-          <p><strong>Color / tone variants (DS-owned):</strong></p>
-          <ul>
-            <li><strong>tone=&quot;success&quot;</strong> → <code>--en-success-*</code>. Use for positive outcomes and completed states (e.g. <em>Completed</em>, <em>Delivered</em>).</li>
-            <li><strong>tone=&quot;warning&quot;</strong> → <code>--en-sentiment-neutral</code>. Use for neutral/warning sentiment that requires attention but is not an error (e.g. <em>At risk</em>, <em>Action needed</em>).</li>
-            <li><strong>tone=&quot;error&quot;</strong> → <code>--en-error-*</code>. Use for negative or critical sentiment (e.g. <em>Critical</em>, <em>Failed</em>).</li>
-            <li><strong>tone=&quot;neutral&quot;</strong> → <code>System.EnThemeGray.*</code>. Use for non-sentiment metadata (e.g. <em>Draft</em>, <em>Archived</em>, categories like <em>Department X</em>).</li>
-          </ul>
-          <p><strong>Governance:</strong> EncTag is flexible in meaning, not in appearance. Custom colors, shadows, sizes, or feature-specific variants are forbidden. Icon-only EncTag is forbidden; any click behavior must be owned by a parent component (links, filters) and must not be baked into EncTag itself.</p>
+          <p><strong>Role / Intent:</strong> Compact metadata label for status or categorization (read-only).</p>
+          <p><strong>Use when:</strong> Status badges, categories, filters in lists.</p>
+          <p><strong>Do NOT use when:</strong> As a button or action; for chart legends; for primary CTAs.</p>
+          <p><strong>Stable props:</strong> class <code>enc-tag</code>; content (text).</p>
+          <p><strong>Governance:</strong> Status/category only; ensure contrast; no action semantics.</p>
+          <p><strong>Success states:</strong> Use for success/status labels (e.g. Completed, In progress, Pending); token-only; do not imply error unless semantically correct.</p>
         </div>
         <div class="gallery-misuse">
           <strong>Do not use for:</strong>
@@ -910,194 +887,6 @@
           <div class="gallery-preview-inline gallery-combo-radius-full"><button type="button" class="enc-toggle" role="switch" aria-checked="false" aria-label="Toggle">Off</button></div>
           <p class="gallery-combo-label">No radius</p>
           <div class="gallery-preview-inline gallery-combo-radius-none"><button type="button" class="enc-toggle" role="switch" aria-checked="false" aria-label="Toggle">Off</button></div>
-        </div>
-      </div>
-
-      <div class="gallery-component-block" data-component-name="EncCheckbox" data-component-type="atoms">
-        <h3 class="gallery-component-title">EncCheckbox</h3>
-        <p class="gallery-component-purpose">Single or multiple selection form control. Used in surveys (MULTIPLE_CHOICE), RBAC permission matrices, bulk selection.</p>
-        <div class="gallery-contract">
-          <p><strong>Role / Intent:</strong> Multiple selection form control.</p>
-          <p><strong>Use when:</strong> Multiple choice questions, permission matrices, bulk selection, filters with multiple options.</p>
-          <p><strong>Do NOT use when:</strong> Single selection (use EncRadio); binary on/off (use EncToggle or EncSwitch).</p>
-          <p><strong>Stable props:</strong> class <code>enc-checkbox</code>; type="checkbox"; checked; disabled; associated &lt;label&gt; or aria-label.</p>
-          <p><strong>Governance:</strong> Keyboard accessible; focus-visible; label association required; checked/indeterminate states.</p>
-        </div>
-        <div class="gallery-misuse">
-          <strong>Do not use for:</strong>
-          <ul>
-            <li>Single selection (use EncRadio)</li>
-            <li>Binary toggle (use EncToggle or EncSwitch)</li>
-            <li>Without accessible label (aria-label or &lt;label for&gt;)</li>
-            <li>Custom styling that overrides DS tokens</li>
-          </ul>
-        </div>
-        <div class="gallery-snippet">&lt;label&gt;
-  &lt;input type="checkbox" class="enc-checkbox" checked aria-label="Option"&gt;
-  Option label
-&lt;/label&gt;</div>
-        <div class="gallery-preview">
-          <p class="gallery-state-label">Default (unchecked)</p>
-          <label class="gallery-form-label">
-            <input type="checkbox" class="enc-checkbox" aria-label="Sample option">
-            <span>Sample option</span>
-          </label>
-        </div>
-        <div class="gallery-preview">
-          <p class="gallery-state-label">Checked</p>
-          <label class="gallery-form-label">
-            <input type="checkbox" class="enc-checkbox" checked aria-label="Selected option">
-            <span>Selected option</span>
-          </label>
-        </div>
-        <div class="gallery-preview">
-          <p class="gallery-state-label">Disabled</p>
-          <label class="gallery-form-label gallery-form-label-disabled">
-            <input type="checkbox" class="enc-checkbox" disabled aria-label="Disabled option">
-            <span>Disabled option</span>
-          </label>
-        </div>
-        <div class="gallery-preview">
-          <p class="gallery-state-label">Multiple options</p>
-          <div class="gallery-form-group">
-            <label class="gallery-form-label">
-              <input type="checkbox" class="enc-checkbox" checked aria-label="Option A">
-              <span>Option A</span>
-            </label>
-            <label class="gallery-form-label">
-              <input type="checkbox" class="enc-checkbox" aria-label="Option B">
-              <span>Option B</span>
-            </label>
-            <label class="gallery-form-label">
-              <input type="checkbox" class="enc-checkbox" checked aria-label="Option C">
-              <span>Option C</span>
-            </label>
-          </div>
-        </div>
-      </div>
-
-      <div class="gallery-component-block" data-component-name="EncRadio" data-component-type="atoms">
-        <h3 class="gallery-component-title">EncRadio</h3>
-        <p class="gallery-component-purpose">Single selection form control. Used in surveys (SINGLE_CHOICE), settings, filters with mutually exclusive options.</p>
-        <div class="gallery-contract">
-          <p><strong>Role / Intent:</strong> Single selection form control.</p>
-          <p><strong>Use when:</strong> Single choice questions, mutually exclusive options, settings with one selection.</p>
-          <p><strong>Do NOT use when:</strong> Multiple selection (use EncCheckbox); binary on/off (use EncToggle or EncSwitch).</p>
-          <p><strong>Stable props:</strong> class <code>enc-radio</code>; type="radio"; name (group); checked; disabled; associated &lt;label&gt; or aria-label.</p>
-          <p><strong>Governance:</strong> Keyboard accessible; focus-visible; label association required; same name for group.</p>
-        </div>
-        <div class="gallery-misuse">
-          <strong>Do not use for:</strong>
-          <ul>
-            <li>Multiple selection (use EncCheckbox)</li>
-            <li>Binary toggle (use EncToggle or EncSwitch)</li>
-            <li>Without name attribute for grouping</li>
-            <li>Without accessible label (aria-label or &lt;label for&gt;)</li>
-          </ul>
-        </div>
-        <div class="gallery-snippet">&lt;label&gt;
-  &lt;input type="radio" class="enc-radio" name="group" checked aria-label="Option"&gt;
-  Option label
-&lt;/label&gt;</div>
-        <div class="gallery-preview">
-          <p class="gallery-state-label">Default (unselected)</p>
-          <label class="gallery-form-label">
-            <input type="radio" class="enc-radio" name="radio-demo-1" aria-label="Sample option">
-            <span>Sample option</span>
-          </label>
-        </div>
-        <div class="gallery-preview">
-          <p class="gallery-state-label">Selected</p>
-          <label class="gallery-form-label">
-            <input type="radio" class="enc-radio" name="radio-demo-2" checked aria-label="Selected option">
-            <span>Selected option</span>
-          </label>
-        </div>
-        <div class="gallery-preview">
-          <p class="gallery-state-label">Disabled</p>
-          <label class="gallery-form-label gallery-form-label-disabled">
-            <input type="radio" class="enc-radio" name="radio-demo-3" disabled aria-label="Disabled option">
-            <span>Disabled option</span>
-          </label>
-        </div>
-        <div class="gallery-preview">
-          <p class="gallery-state-label">Radio group (mutually exclusive)</p>
-          <div class="gallery-form-group">
-            <label class="gallery-form-label">
-              <input type="radio" class="enc-radio" name="radio-group-demo" checked aria-label="Option A">
-              <span>Option A</span>
-            </label>
-            <label class="gallery-form-label">
-              <input type="radio" class="enc-radio" name="radio-group-demo" aria-label="Option B">
-              <span>Option B</span>
-            </label>
-            <label class="gallery-form-label">
-              <input type="radio" class="enc-radio" name="radio-group-demo" aria-label="Option C">
-              <span>Option C</span>
-            </label>
-          </div>
-        </div>
-      </div>
-
-      <div class="gallery-component-block" data-component-name="EncSwitch" data-component-type="atoms">
-        <h3 class="gallery-component-title">EncSwitch</h3>
-        <p class="gallery-component-purpose">Binary on/off form control (switch style). Alternative visual style to EncToggle for settings and preferences.</p>
-        <div class="gallery-contract">
-          <p><strong>Role / Intent:</strong> Binary on/off form control (switch visual style).</p>
-          <p><strong>Use when:</strong> Settings, preferences, feature toggles where switch visual style is preferred over button-style toggle.</p>
-          <p><strong>Do NOT use when:</strong> Primary action (use EncButton); multi-option selection (use appropriate control).</p>
-          <p><strong>Stable props:</strong> class <code>enc-switch</code>; type="checkbox" or role="switch"; checked; aria-label.</p>
-          <p><strong>Governance:</strong> Focusable; keyboard toggle; reflect state to assistive tech.</p>
-        </div>
-        <div class="gallery-misuse">
-          <strong>Do not use for:</strong>
-          <ul>
-            <li>Submit or primary CTA (use enc-action-primary)</li>
-            <li>Status display only (non-interactive) — use EncTag for read-only status</li>
-            <li>Multiple selection (use EncCheckbox)</li>
-          </ul>
-        </div>
-        <div class="gallery-snippet">&lt;label&gt;
-  &lt;input type="checkbox" class="enc-switch" role="switch" checked aria-label="Toggle setting"&gt;
-  Setting label
-&lt;/label&gt;</div>
-        <div class="gallery-preview">
-          <p class="gallery-state-label">Default (off)</p>
-          <label class="gallery-form-label">
-            <input type="checkbox" class="enc-switch" role="switch" aria-label="Toggle setting">
-            <span>Enable notifications</span>
-          </label>
-        </div>
-        <div class="gallery-preview">
-          <p class="gallery-state-label">Checked (on)</p>
-          <label class="gallery-form-label">
-            <input type="checkbox" class="enc-switch" role="switch" checked aria-label="Toggle setting">
-            <span>Enable notifications</span>
-          </label>
-        </div>
-        <div class="gallery-preview">
-          <p class="gallery-state-label">Disabled</p>
-          <label class="gallery-form-label gallery-form-label-disabled">
-            <input type="checkbox" class="enc-switch" role="switch" disabled aria-label="Toggle setting">
-            <span>Enable notifications</span>
-          </label>
-        </div>
-        <div class="gallery-preview">
-          <p class="gallery-state-label">Multiple switches</p>
-          <div class="gallery-form-group gallery-form-group-md">
-            <label class="gallery-form-label">
-              <input type="checkbox" class="enc-switch" role="switch" checked aria-label="Email notifications">
-              <span>Email notifications</span>
-            </label>
-            <label class="gallery-form-label">
-              <input type="checkbox" class="enc-switch" role="switch" aria-label="Push notifications">
-              <span>Push notifications</span>
-            </label>
-            <label class="gallery-form-label">
-              <input type="checkbox" class="enc-switch" role="switch" checked aria-label="SMS notifications">
-              <span>SMS notifications</span>
-            </label>
-          </div>
         </div>
       </div>
     </section>
@@ -1252,11 +1041,11 @@
         <div class="gallery-preview">
           <p class="gallery-combo-label">Combinations — Radius (default lg, md, none)</p>
           <p class="gallery-combo-label">Default (lg)</p>
-          <div class="enc-card gallery-card-small"><p class="gallery-text-no-margin gallery-text-muted">Card</p></div>
+          <div class="enc-card" style="max-width: 16rem; padding: var(--en-space-md);"><p style="margin: 0; font-size: var(--en-font-size-sm);">Card</p></div>
           <p class="gallery-combo-label">Medium (md)</p>
-          <div class="gallery-combo-radius-md"><div class="enc-card gallery-card-small"><p class="gallery-text-no-margin gallery-text-muted">Card</p></div></div>
+          <div class="gallery-combo-radius-md"><div class="enc-card" style="max-width: 16rem; padding: var(--en-space-md);"><p style="margin: 0; font-size: var(--en-font-size-sm);">Card</p></div></div>
           <p class="gallery-combo-label">No radius</p>
-          <div class="gallery-combo-radius-none"><div class="enc-card gallery-card-small"><p class="gallery-text-no-margin gallery-text-muted">Card</p></div></div>
+          <div class="gallery-combo-radius-none"><div class="enc-card" style="max-width: 16rem; padding: var(--en-space-md);"><p style="margin: 0; font-size: var(--en-font-size-sm);">Card</p></div></div>
         </div>
       </div>
 
