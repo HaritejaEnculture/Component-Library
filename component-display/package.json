@@ -1,0 +1,11 @@
+{
+  "name": "enculture-component-gallery",
+  "private": true,
+  "scripts": {
+    "start": "npx serve -l 5171 ..",
+    "dev": "npx serve -l 5171 .."
+  },
+  "devDependencies": {
+    "serve": "^14.2.4"
+  }
+}
