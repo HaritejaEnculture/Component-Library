@@ -40,6 +40,31 @@
     .gallery-misuse strong { display: block; margin-bottom: var(--en-space-xs); }
     .gallery-misuse ul { margin: 0; padding-left: var(--en-space-lg); }
     .gallery-snippet { font-size: var(--en-font-size-caption); font-family: ui-monospace, monospace; white-space: pre-wrap; word-break: break-all; padding: var(--en-space-sm); border: 1px solid var(--en-neutral-200); border-radius: var(--en-radius-md); background: var(--en-neutral-0); margin-top: var(--en-space-sm); }
+    .gallery-back-nav { margin: 0 0 var(--en-space-md); }
+    .gallery-back-link { display: inline-block; padding: var(--en-space-xs) var(--en-space-sm); border-radius: var(--en-radius-md); border: 1px solid var(--en-neutral-200); background: var(--en-neutral-0); color: var(--en-neutral-800); font-size: var(--en-font-size-sm); text-decoration: none; }
+    .gallery-back-link:hover { background: var(--en-neutral-50); }
+    .gallery-combo-label { font-size: var(--en-font-size-caption); color: var(--en-neutral-500); margin-bottom: var(--en-space-xs); }
+    /* Radius combinations (DS tokens: md, lg, full; display-only: none) */
+    .gallery-combo-radius-lg .enc-action-primary, .gallery-combo-radius-lg .enc-action-secondary { border-radius: var(--en-radius-lg); }
+    .gallery-combo-radius-full .enc-action-primary, .gallery-combo-radius-full .enc-action-secondary { border-radius: var(--en-radius-full); }
+    .gallery-combo-radius-none .enc-action-primary, .gallery-combo-radius-none .enc-action-secondary { border-radius: 0; }
+    .gallery-combo-radius-lg .enc-tag { border-radius: var(--en-radius-lg); }
+    .gallery-combo-radius-full .enc-tag { border-radius: var(--en-radius-full); }
+    .gallery-combo-radius-none .enc-tag { border-radius: 0; }
+    .gallery-combo-radius-lg .enc-icon-button { border-radius: var(--en-radius-lg); }
+    .gallery-combo-radius-full .enc-icon-button { border-radius: var(--en-radius-full); }
+    .gallery-combo-radius-none .enc-icon-button { border-radius: 0; }
+    .gallery-combo-radius-md .enc-card { border-radius: var(--en-radius-md); }
+    .gallery-combo-radius-none .enc-card { border-radius: 0; }
+    .gallery-combo-radius-lg .enc-list-row { border-radius: var(--en-radius-lg); }
+    .gallery-combo-radius-full .enc-list-row { border-radius: var(--en-radius-full); }
+    .gallery-combo-radius-none .enc-list-row { border-radius: 0; }
+    .gallery-combo-radius-lg .enc-toggle { border-radius: var(--en-radius-lg); }
+    .gallery-combo-radius-full .enc-toggle { border-radius: var(--en-radius-full); }
+    .gallery-combo-radius-none .enc-toggle { border-radius: 0; }
+    .gallery-combo-radius-lg .enc-input-field { border-radius: var(--en-radius-lg); }
+    .gallery-combo-radius-full .enc-input-field { border-radius: var(--en-radius-full); }
+    .gallery-combo-radius-none .enc-input-field { border-radius: 0; }
 
     /* ========== Display bindings (token-only; semantic anchors from enculture.css) ========== */
     .enc-action-primary {
@@ -165,8 +190,16 @@
 </head>
 <body>
   <div class="gallery-page">
+    <p class="gallery-back-nav"><a href="index.html" class="gallery-back-link">← Back to Component Index</a></p>
     <h1 class="gallery-title">Enculture Design System — Component Gallery</h1>
     <p class="gallery-subtitle">Single live reference for all Enculture UI components. Dummy data only. Governed by enculture.css, En-AI_Design_System.md, EN-AI_Components_Molecules.md, COMPONENT_REGISTRY.md.</p>
+    <nav class="gallery-back-nav gallery-preview-inline" style="margin-bottom: var(--en-space-md);" aria-label="Section jump">
+      <a href="#intent-index" class="gallery-back-link">Intent Index</a>
+      <a href="#atoms" class="gallery-back-link">Atoms</a>
+      <a href="#molecules" class="gallery-back-link">Molecules</a>
+      <a href="#organisms" class="gallery-back-link">Organisms</a>
+      <a href="#system" class="gallery-back-link">System</a>
+    </nav>
 
     <!-- ==================== INTENT → COMPONENT INDEX ==================== -->
     <section class="gallery-section" id="intent-index">
@@ -205,6 +238,8 @@
           <tr><td>Section title with optional helper and actions</td><td>EncSectionHeader</td><td>No .enc-* in enculture.css; must not compete with EncPageHeader</td></tr>
           <tr><td>Compact UI (smaller controls, spacing)</td><td>Density (compact)</td><td>Set data-density="compact" on container</td></tr>
           <tr><td>Survey respondent flow layout</td><td>Enc Respondent scope</td><td>Apply .enc-respondent to respondent shell</td></tr>
+          <tr><td><strong>Destructive action</strong> (delete, remove, irreversible)</td><td>EncButton (enc-action-secondary) + confirmation</td><td><strong>Destruction warning:</strong> Use confirmation (modal/step) before submit; do not use enc-action-primary for destructive without confirmation.</td></tr>
+          <tr><td><strong>Success feedback or state</strong></td><td>EncToast (Success), EncTag (e.g. Completed)</td><td><strong>Success states:</strong> Use Success variant / token; EncTag for status labels (Completed, etc.); do not imply error.</td></tr>
         </tbody>
       </table>
     </section>
@@ -212,6 +247,7 @@
     <!-- ==================== ATOMS ==================== -->
     <section class="gallery-section" id="atoms">
       <h2 class="gallery-section-heading">Atoms</h2>
+      <p class="gallery-back-nav"><a href="#intent-index" class="gallery-back-link">← Back to Intent Index</a></p>
 
       <div class="gallery-component-block">
         <h3 class="gallery-component-title">EncDivider</h3>
@@ -249,6 +285,7 @@
           <p><strong>Do NOT use when:</strong> Custom-styled search that overrides DS; use enc-input (forbidden — use enc-input-field).</p>
           <p><strong>Stable props:</strong> class <code>enc-input-field</code>; type, placeholder, disabled; aria-label or associated label.</p>
           <p><strong>Governance:</strong> Placeholder/disabled colors from DS; semantic labels required; no raw colors.</p>
+          <p><strong>Success states:</strong> Valid/unchanged input uses default styling; success feedback (e.g. "Saved") use EncToast (Success) or helper text; error state per form governance (not implied by EncInputField alone).</p>
         </div>
         <div class="gallery-misuse">
           <strong>Do not use for:</strong>
@@ -276,6 +313,17 @@
           <p class="gallery-state-label">Textarea variant</p>
           <textarea class="enc-input-field" rows="3" placeholder="Helper text (Content.Text.Muted)" aria-label="Sample textarea" style="max-width: 20rem; resize: vertical;">Sample multi-line response.</textarea>
         </div>
+        <div class="gallery-preview">
+          <p class="gallery-combo-label">Combinations — Radius (default md, lg, full, none)</p>
+          <p class="gallery-combo-label">Default (md)</p>
+          <input type="text" class="enc-input-field" value="Sample" aria-label="Sample" style="max-width: 12rem;">
+          <p class="gallery-combo-label">Large (lg)</p>
+          <div class="gallery-combo-radius-lg"><input type="text" class="enc-input-field" value="Sample" aria-label="Sample" style="max-width: 12rem;"></div>
+          <p class="gallery-combo-label">Full (pill)</p>
+          <div class="gallery-combo-radius-full"><input type="text" class="enc-input-field" value="Sample" aria-label="Sample" style="max-width: 12rem;"></div>
+          <p class="gallery-combo-label">No radius</p>
+          <div class="gallery-combo-radius-none"><input type="text" class="enc-input-field" value="Sample" aria-label="Sample" style="max-width: 12rem;"></div>
+        </div>
       </div>
 
       <div class="gallery-component-block">
@@ -287,6 +335,7 @@
           <p><strong>Do NOT use when:</strong> As a button or action; for chart legends; for primary CTAs.</p>
           <p><strong>Stable props:</strong> class <code>enc-tag</code>; content (text).</p>
           <p><strong>Governance:</strong> Status/category only; ensure contrast; no action semantics.</p>
+          <p><strong>Success states:</strong> Use for success/status labels (e.g. Completed, In progress, Pending); token-only; do not imply error unless semantically correct.</p>
         </div>
         <div class="gallery-misuse">
           <strong>Do not use for:</strong>
@@ -305,6 +354,17 @@
             <span class="enc-tag">Pending</span>
             <span class="enc-tag">Department X</span>
           </div>
+        </div>
+        <div class="gallery-preview">
+          <p class="gallery-combo-label">Combinations — Radius (default md, lg, full, none)</p>
+          <p class="gallery-combo-label">Default (md)</p>
+          <div class="gallery-preview-inline"><span class="enc-tag">Tag</span></div>
+          <p class="gallery-combo-label">Large (lg)</p>
+          <div class="gallery-preview-inline gallery-combo-radius-lg"><span class="enc-tag">Tag</span></div>
+          <p class="gallery-combo-label">Full (pill)</p>
+          <div class="gallery-preview-inline gallery-combo-radius-full"><span class="enc-tag">Tag</span></div>
+          <p class="gallery-combo-label">No radius</p>
+          <div class="gallery-preview-inline gallery-combo-radius-none"><span class="enc-tag">Tag</span></div>
         </div>
       </div>
 
@@ -363,12 +423,24 @@
           <p class="gallery-state-label">Checked</p>
           <button type="button" class="enc-toggle" role="switch" aria-checked="true" aria-label="Toggle option">On</button>
         </div>
+        <div class="gallery-preview">
+          <p class="gallery-combo-label">Combinations — Radius (default md, lg, full, none)</p>
+          <p class="gallery-combo-label">Default (md)</p>
+          <div class="gallery-preview-inline"><button type="button" class="enc-toggle" role="switch" aria-checked="false" aria-label="Toggle">Off</button></div>
+          <p class="gallery-combo-label">Large (lg)</p>
+          <div class="gallery-preview-inline gallery-combo-radius-lg"><button type="button" class="enc-toggle" role="switch" aria-checked="false" aria-label="Toggle">Off</button></div>
+          <p class="gallery-combo-label">Full (pill)</p>
+          <div class="gallery-preview-inline gallery-combo-radius-full"><button type="button" class="enc-toggle" role="switch" aria-checked="false" aria-label="Toggle">Off</button></div>
+          <p class="gallery-combo-label">No radius</p>
+          <div class="gallery-preview-inline gallery-combo-radius-none"><button type="button" class="enc-toggle" role="switch" aria-checked="false" aria-label="Toggle">Off</button></div>
+        </div>
       </div>
     </section>
 
     <!-- ==================== MOLECULES ==================== -->
     <section class="gallery-section" id="molecules">
       <h2 class="gallery-section-heading">Molecules</h2>
+      <p class="gallery-back-nav"><a href="#intent-index" class="gallery-back-link">← Back to Intent Index</a></p>
 
       <div class="gallery-component-block">
         <h3 class="gallery-component-title">EncButton (enc-action-primary / enc-action-secondary)</h3>
@@ -379,6 +451,8 @@
           <p><strong>Do NOT use when:</strong> Navigation link (use &lt;a&gt;); icon-only (use EncIconButton); toggle (use EncToggle). Do not use enc-btn or enc-btn-primary (forbidden).</p>
           <p><strong>Stable props:</strong> class <code>enc-action-primary</code> or <code>enc-action-secondary</code>; disabled; visible label.</p>
           <p><strong>Governance:</strong> enc-btn/enc-btn-primary forbidden; focus visible; disabled not focusable; label required.</p>
+          <p><strong>Destruction warning:</strong> For destructive actions (delete, remove, irreversible), use enc-action-secondary and always show confirmation (modal or step) before submit; do not use enc-action-primary for destructive without confirmation.</p>
+          <p><strong>Success states:</strong> After success, use EncToast (Success) or EncTag for status; disabled state for loading; no built-in success visual on the button.</p>
         </div>
         <div class="gallery-misuse">
           <strong>Do not use for:</strong>
@@ -414,6 +488,29 @@
             <button type="button" class="enc-action-secondary">Secondary</button>
           </div>
         </div>
+        <div class="gallery-preview">
+          <p class="gallery-combo-label">Combinations — Radius (DS: md, lg, full; display-only: none)</p>
+          <p class="gallery-combo-label">Default (md)</p>
+          <div class="gallery-preview-inline">
+            <button type="button" class="enc-action-primary">Primary</button>
+            <button type="button" class="enc-action-secondary">Secondary</button>
+          </div>
+          <p class="gallery-combo-label">Large (lg)</p>
+          <div class="gallery-preview-inline gallery-combo-radius-lg">
+            <button type="button" class="enc-action-primary">Primary</button>
+            <button type="button" class="enc-action-secondary">Secondary</button>
+          </div>
+          <p class="gallery-combo-label">Full / pill (full)</p>
+          <div class="gallery-preview-inline gallery-combo-radius-full">
+            <button type="button" class="enc-action-primary">Primary</button>
+            <button type="button" class="enc-action-secondary">Secondary</button>
+          </div>
+          <p class="gallery-combo-label">No radius (display-only)</p>
+          <div class="gallery-preview-inline gallery-combo-radius-none">
+            <button type="button" class="enc-action-primary">Primary</button>
+            <button type="button" class="enc-action-secondary">Secondary</button>
+          </div>
+        </div>
       </div>
 
       <div class="gallery-component-block">
@@ -425,6 +522,8 @@
           <p><strong>Do NOT use when:</strong> Primary CTA (use EncButton with label); when label is essential for clarity.</p>
           <p><strong>Stable props:</strong> class <code>enc-icon-button</code>; aria-label (required); icon from Lucide only.</p>
           <p><strong>Governance:</strong> Accessible label required (aria-label or sr-only); icon size from DS; Lucide only.</p>
+          <p><strong>Destruction warning:</strong> For delete/remove icon actions, require confirmation (modal or step) before executing; use aria-label that indicates action (e.g. "Delete item").</p>
+          <p><strong>Success states:</strong> After success, use EncToast (Success); no built-in success visual on the icon button.</p>
         </div>
         <div class="gallery-misuse">
           <strong>Do not use for:</strong>
@@ -443,6 +542,17 @@
             <button type="button" class="enc-icon-button" aria-label="More">⋯</button>
             <button type="button" class="enc-icon-button" disabled aria-label="Disabled">+</button>
           </div>
+        </div>
+        <div class="gallery-preview">
+          <p class="gallery-combo-label">Combinations — Radius (default md, lg, full, none)</p>
+          <p class="gallery-combo-label">Default (md)</p>
+          <div class="gallery-preview-inline"><button type="button" class="enc-icon-button" aria-label="Add">+</button></div>
+          <p class="gallery-combo-label">Large (lg)</p>
+          <div class="gallery-preview-inline gallery-combo-radius-lg"><button type="button" class="enc-icon-button" aria-label="Add">+</button></div>
+          <p class="gallery-combo-label">Full (circle)</p>
+          <div class="gallery-preview-inline gallery-combo-radius-full"><button type="button" class="enc-icon-button" aria-label="Add">+</button></div>
+          <p class="gallery-combo-label">No radius</p>
+          <div class="gallery-preview-inline gallery-combo-radius-none"><button type="button" class="enc-icon-button" aria-label="Add">+</button></div>
         </div>
       </div>
 
@@ -474,6 +584,15 @@
             <p style="margin: 0; font-size: var(--en-font-size-sm); color: var(--en-neutral-500);">Dummy content for preview. Department X, Option A.</p>
           </div>
         </div>
+        <div class="gallery-preview">
+          <p class="gallery-combo-label">Combinations — Radius (default lg, md, none)</p>
+          <p class="gallery-combo-label">Default (lg)</p>
+          <div class="enc-card" style="max-width: 16rem; padding: var(--en-space-md);"><p style="margin: 0; font-size: var(--en-font-size-sm);">Card</p></div>
+          <p class="gallery-combo-label">Medium (md)</p>
+          <div class="gallery-combo-radius-md"><div class="enc-card" style="max-width: 16rem; padding: var(--en-space-md);"><p style="margin: 0; font-size: var(--en-font-size-sm);">Card</p></div></div>
+          <p class="gallery-combo-label">No radius</p>
+          <div class="gallery-combo-radius-none"><div class="enc-card" style="max-width: 16rem; padding: var(--en-space-md);"><p style="margin: 0; font-size: var(--en-font-size-sm);">Card</p></div></div>
+        </div>
       </div>
 
       <div class="gallery-component-block">
@@ -485,6 +604,7 @@
           <p><strong>Do NOT use when:</strong> Single-action button; table header row; dashboard KPI row.</p>
           <p><strong>Stable props:</strong> class <code>enc-list-row</code>; aria-selected; disabled state; row actions must use EncIconButton.</p>
           <p><strong>Governance:</strong> State visuals DS-owned; product may signal intent (selected, disabled); no utility-based state styling.</p>
+          <p><strong>Success states:</strong> Use aria-selected="true" for selected/active row; state visuals are DS-owned; pair with EncTag for status (e.g. Completed) where needed.</p>
         </div>
         <div class="gallery-misuse">
           <strong>Do not use for:</strong>
@@ -516,6 +636,17 @@
             <span class="enc-tag">N/A</span>
           </div>
         </div>
+        <div class="gallery-preview">
+          <p class="gallery-combo-label">Combinations — Radius (default md, lg, full, none)</p>
+          <p class="gallery-combo-label">Default (md)</p>
+          <div class="enc-list-row"><span>Row</span></div>
+          <p class="gallery-combo-label">Large (lg)</p>
+          <div class="gallery-combo-radius-lg"><div class="enc-list-row"><span>Row</span></div></div>
+          <p class="gallery-combo-label">Full (pill)</p>
+          <div class="gallery-combo-radius-full"><div class="enc-list-row"><span>Row</span></div></div>
+          <p class="gallery-combo-label">No radius</p>
+          <div class="gallery-combo-radius-none"><div class="enc-list-row"><span>Row</span></div></div>
+        </div>
       </div>
 
       <div class="gallery-component-block">
@@ -527,6 +658,7 @@
           <p><strong>Do NOT use when:</strong> Blocking modal; persistent banner; inline validation (use form-level).</p>
           <p><strong>Stable props:</strong> Variant (Success/Warning/Error/Info); token-only colors; Z-Index 1600.</p>
           <p><strong>Governance:</strong> Token-only colors; no custom positioning outside DS rules.</p>
+          <p><strong>Success states:</strong> Use Success variant (--en-success-500) for success feedback (e.g. "Saved", "Deleted"); do not imply error for success; auto-dismiss 4–6s.</p>
         </div>
         <div class="gallery-misuse">
           <strong>Do not use for:</strong>
@@ -629,6 +761,7 @@
     <!-- ==================== ORGANISMS ==================== -->
     <section class="gallery-section" id="organisms">
       <h2 class="gallery-section-heading">Organisms</h2>
+      <p class="gallery-back-nav"><a href="#intent-index" class="gallery-back-link">← Back to Intent Index</a></p>
 
       <div class="gallery-component-block">
         <h3 class="gallery-component-title">EncHeader</h3>
@@ -811,6 +944,7 @@
     <!-- ==================== SYSTEM ==================== -->
     <section class="gallery-section" id="system">
       <h2 class="gallery-section-heading">System</h2>
+      <p class="gallery-back-nav"><a href="#intent-index" class="gallery-back-link">← Back to Intent Index</a></p>
 
       <div class="gallery-component-block">
         <h3 class="gallery-component-title">Density (Compact)</h3>
