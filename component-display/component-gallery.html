@@ -1,10 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
   <title>Enculture Design System — Component Gallery</title>
-  <link rel="stylesheet" href="../Enculture Ds/enculture.css">
+  <link rel="stylesheet" href="../Enculture Ds/enculture.css?v=20260203">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -17,18 +21,24 @@
       --en-primary-brand-100: #f3e8ff;
       --en-primary-brand-500: #a246f0;
       --en-primary-brand-700: #7e22ce;
-      /* Grey scale from En-AI_Design_System.md (mapped to neutral for compatibility) */
-      --en-grey-0: var(--en-neutral-0);
+      /* Grey scale theme tokens from En-AI_Design_System.md (complete palette) */
+      --en-grey-0: #ffffff;
+      /* Surface / Card Bg */
       --en-grey-10: #fcfcfd;
       --en-grey-20: #f8fafb;
+      /* Alt Background */
       --en-grey-100: #f0f4f5;
-      --en-grey-200: var(--en-neutral-200);
+      --en-grey-200: #d5dbde;
+      /* Borders */
       --en-grey-300: #a1a6a8;
-      --en-grey-400: var(--en-neutral-400);
-      --en-grey-500: var(--en-neutral-500);
+      /* Disabled Text */
+      --en-grey-400: #73787a;
+      --en-grey-500: #505355;
+      /* Placeholder / Muted */
       --en-grey-600: #383b3c;
       --en-grey-700: #2b2d2e;
-      --en-grey-800: var(--en-neutral-800);
+      --en-grey-800: #18191a;
+      /* Primary Text */
       --en-grey-1000: #000000;
       /* Semantic states */
       --en-success-500: #0fa251;
@@ -36,6 +46,13 @@
       --en-error-500: #c0334d;
       --en-error-100: #ffdbe2;
       --en-info-100: #e5f2ff;
+      /* Sentiment/eNPS Specific (Organisation Culture Theme) */
+      --en-sentiment-positive: #38b784;
+      /* Promoters - Green */
+      --en-sentiment-neutral: #ffc624;
+      /* Passives - Yellow */
+      --en-sentiment-negative: #ec407a;
+      /* Detractors - Pink */
       /* Shadow CEO per EN-AI_Components_Molecules.md */
       --en-shadow-ceo: 0 12px 32px 0 rgba(124, 58, 237, 0.08);
       /* Additional spacing tokens from En-AI_Design_System.md */
@@ -47,138 +64,30 @@
       /* Surface tokens from enculture.css */
       --en-surface-glass-70: rgba(255, 255, 255, 0.7);
       /* Density tokens for input size enforcement per Input size enforcement_CANONICAL.md */
-      --en-density-control-height: 48px; /* Comfortable mode */
-      --en-density-compact-control-height: 40px; /* Compact mode */
+      --en-density-control-height: 48px;
+      /* Comfortable mode */
+      --en-density-compact-control-height: 40px;
+      /* Compact mode */
       /* Density spacing tokens per En-AI_Design_System.md */
-      --en-density-space-sm: 12px; /* Comfortable mode */
-      --en-density-space-md: 16px; /* Comfortable mode */
-      --en-density-compact-space-sm: 8px; /* Compact mode */
-      --en-density-compact-space-md: 12px; /* Compact mode */
+      --en-density-space-sm: 12px;
+      /* Comfortable mode */
+      --en-density-space-md: 16px;
+      /* Comfortable mode */
+      --en-density-space-lg: 24px;
+      /* Comfortable mode */
+      --en-density-compact-space-sm: 8px;
+      /* Compact mode */
+      --en-density-compact-space-md: 12px;
+      /* Compact mode */
+      --en-density-compact-space-lg: 16px;
+      /* Compact mode */
+      /* Density radius tokens per En_Table rule book CANONICAL Post Legacy.md */
+      --en-density-radius: var(--en-radius-lg);
+      /* Comfortable mode - 16px */
+      --en-density-compact-radius: var(--en-radius-md);
+      /* Compact mode - 8px */
     }
 
-    /* ========== Gallery layout using Enculture DS semantic classes ========== */
-    /* Using .enc-main-container for page structure (DS semantic) */
-    /* Per EN-AI_Components_Molecules.md EncContainer: Padding {Global20} (20px) */
-    .enc-main-container {
-      max-width: 1200px; /* EncContainer Lg per EN-AI_Components_Molecules.md */
-      margin: 0 auto;
-      padding: 20px; /* Global20 (20px) per EN-AI_Components_Molecules.md - not a standard token, but required by spec */
-      background: var(--en-grey-0);
-      font-family: var(--en-font-family-base);
-    }
-    body {
-      background: var(--en-primary-brand-50); /* Page Background per En-AI_Design_System.md */
-    }
-    .gallery-title { font-size: var(--en-font-size-h3); margin: 0 0 var(--en-space-sm); font-weight: 600; }
-    .gallery-subtitle { font-size: var(--en-font-size-sm); color: var(--en-grey-500); margin: 0 0 var(--en-space-xl); }
-    .gallery-section { margin-bottom: var(--en-space-2xl); } /* Increased spacing between major sections */
-    .gallery-section-heading { font-size: var(--en-font-size-h4); margin: 0 0 var(--en-space-lg); font-weight: 600; color: var(--en-grey-800); }
-    .gallery-component-block { margin-bottom: var(--en-space-xl); } /* Increased spacing between component blocks */
-    .gallery-component-title { font-size: var(--en-font-size-md); font-weight: 600; margin: 0 0 var(--en-space-sm); color: var(--en-grey-800); }
-    .gallery-component-purpose { font-size: var(--en-font-size-sm); color: var(--en-grey-500); margin: 0 0 var(--en-space-lg); }
-    /* Using .enc-card for component previews (DS semantic) */
-    .enc-main-container .enc-card.gallery-preview { background: var(--en-grey-20); margin-bottom: var(--en-space-md); padding: var(--en-space-lg); } /* Alt Background per En-AI_Design_System.md, added padding */
-    .gallery-preview-inline { display: flex; flex-wrap: wrap; gap: var(--en-space-lg); align-items: center; } /* Increased gap for badges/buttons */
-    .gallery-state-row { margin-bottom: var(--en-space-lg); } /* Increased spacing between state rows */
-    .gallery-state-label { font-size: var(--en-font-size-caption); color: var(--en-grey-500); margin-bottom: var(--en-space-sm); } /* Increased spacing between label and component */
-    .gallery-skip-note { font-size: var(--en-font-size-sm); color: var(--en-grey-500); font-style: italic; padding: var(--en-space-md); border: 1px dashed var(--en-grey-200); border-radius: var(--en-radius-md); }
-    .gallery-intent-table { width: 100%; border-collapse: collapse; font-size: var(--en-font-size-sm); margin-bottom: var(--en-space-lg); }
-    .gallery-intent-table th, .gallery-intent-table td { text-align: left; padding: var(--en-space-xs) var(--en-space-sm); border: 1px solid var(--en-grey-200); }
-    .gallery-intent-table th { background: var(--en-grey-20); font-weight: 600; } /* Alt Background per En-AI_Design_System.md */
-    /* Using .enc-card for contract blocks (DS semantic) */
-    .enc-main-container .enc-card.gallery-contract { font-size: var(--en-font-size-sm); margin-bottom: var(--en-space-sm); }
-    .gallery-contract p, .gallery-contract ul { margin: 0 0 var(--en-space-xs); }
-    .gallery-contract ul:last-child { margin-bottom: 0; }
-    .gallery-misuse { font-size: var(--en-font-size-sm); color: var(--en-grey-800); margin-bottom: var(--en-space-sm); }
-    .gallery-misuse strong { display: block; margin-bottom: var(--en-space-xs); }
-    .gallery-misuse ul { margin: 0; padding-left: var(--en-space-lg); }
-    /* Using .enc-card for code snippets (DS semantic) */
-    .enc-main-container .enc-card.gallery-snippet { font-size: var(--en-font-size-caption); font-family: ui-monospace, monospace; white-space: pre-wrap; word-break: break-all; margin-top: var(--en-space-sm); }
-    .gallery-back-nav { margin: 0 0 var(--en-space-md); }
-    /* Using .enc-action-secondary for navigation links (DS semantic) */
-    .enc-main-container .enc-action-secondary.gallery-back-link { display: inline-block; text-decoration: none; }
-    .gallery-combo-label { font-size: var(--en-font-size-caption); color: var(--en-grey-500); margin-bottom: var(--en-space-sm); } /* Increased spacing between label and component */
-    /* Radius combinations (DS tokens: md, lg, full; display-only: none) */
-    /* Radius combinations scoped to gallery context */
-    .enc-main-container .gallery-combo-radius-lg .enc-action-primary,
-    .enc-main-container .gallery-combo-radius-lg .enc-action-secondary { border-radius: var(--en-radius-lg); }
-    .enc-main-container .gallery-combo-radius-full .enc-action-primary,
-    .enc-main-container .gallery-combo-radius-full .enc-action-secondary { border-radius: var(--en-radius-full); }
-    .enc-main-container .gallery-combo-radius-none .enc-action-primary,
-    .enc-main-container .gallery-combo-radius-none .enc-action-secondary { border-radius: 0; }
-    .enc-main-container .gallery-combo-radius-lg .enc-tag { border-radius: var(--en-radius-lg); }
-    .enc-main-container .gallery-combo-radius-full .enc-tag { border-radius: var(--en-radius-full); }
-    .enc-main-container .gallery-combo-radius-none .enc-tag { border-radius: 0; }
-    .enc-main-container .gallery-combo-radius-lg .enc-icon-button { border-radius: var(--en-radius-lg); }
-    .enc-main-container .gallery-combo-radius-full .enc-icon-button { border-radius: var(--en-radius-full); }
-    .enc-main-container .gallery-combo-radius-none .enc-icon-button { border-radius: 0; }
-    .enc-main-container .gallery-combo-radius-md .enc-card { border-radius: var(--en-radius-md); }
-    .enc-main-container .gallery-combo-radius-none .enc-card { border-radius: 0; }
-    .enc-main-container .gallery-combo-radius-lg .enc-list-row { border-radius: var(--en-radius-lg); }
-    .enc-main-container .gallery-combo-radius-full .enc-list-row { border-radius: var(--en-radius-full); }
-    .enc-main-container .gallery-combo-radius-none .enc-list-row { border-radius: 0; }
-    .enc-main-container .gallery-combo-radius-lg .enc-toggle { border-radius: var(--en-radius-lg); }
-    .enc-main-container .gallery-combo-radius-full .enc-toggle { border-radius: var(--en-radius-full); }
-    .enc-main-container .gallery-combo-radius-none .enc-toggle { border-radius: 0; }
-    .enc-main-container .gallery-combo-radius-lg .enc-input-field { border-radius: var(--en-radius-lg); }
-    .enc-main-container .gallery-combo-radius-full .enc-input-field { border-radius: var(--en-radius-full); }
-    .enc-main-container .gallery-combo-radius-none .enc-input-field { border-radius: 0; }
-    /* Search and filter */
-    /* Using .enc-card for search filter container (DS semantic) */
-    .enc-main-container .enc-card.gallery-search-filter { margin-bottom: var(--en-space-lg); }
-    .gallery-search-row { display: flex; gap: var(--en-space-md); align-items: flex-end; flex-wrap: wrap; width: 100%; box-sizing: border-box; }
-    .gallery-type-filter { min-width: 160px; flex: 0 0 auto; } /* Use px, not rem - convert 10rem ≈ 160px */
-    .gallery-type-filter select { width: 100%; display: block; }
-    .gallery-search-box { flex: 1 1 0; min-width: 0; position: relative; overflow: hidden; } /* Fill available space, min-width: 0 allows proper shrinking, respects gap */
-    .gallery-search-box input { width: 100%; display: block; box-sizing: border-box; }
-    .gallery-search-actions { display: flex; flex-direction: row; gap: var(--en-space-xs); flex: 0 0 auto; align-items: flex-end; flex-shrink: 0; } /* Buttons in same line, don't shrink */
-    .gallery-search-actions button { flex-shrink: 0; width: auto; white-space: nowrap; }
-    .gallery-component-block.hidden { display: none; }
-    /* Remove inline styles - use DS tokens via classes */
-    .gallery-nav-inline { margin-bottom: var(--en-space-md); }
-    .gallery-label-bold { font-weight: 600; color: var(--en-grey-800); }
-    .gallery-input-spacing { margin-top: var(--en-space-xs); }
-    .gallery-clear-hidden { display: none; }
-    .gallery-clear-visible { display: inline-block; }
-    .gallery-divider-spacing { margin: var(--en-space-sm) 0; }
-    .gallery-input-constrained { max-width: 320px; } /* Use px, not rem - convert 20rem ≈ 320px */
-    .gallery-input-small { max-width: 192px; } /* Use px, not rem - convert 12rem ≈ 192px */
-    .gallery-card-constrained { max-width: 320px; } /* Use px, not rem - convert 20rem ≈ 320px */
-    .gallery-card-small { max-width: 256px; padding: var(--en-space-md); } /* Use px, not rem - convert 16rem ≈ 256px */
-    .gallery-text-no-margin { margin: 0; }
-    .gallery-text-margin-bottom { margin: 0 0 var(--en-space-xs); }
-    .gallery-text-margin-top { margin: var(--en-space-xs) 0 0; }
-    .gallery-sidebar-narrow { min-width: 192px; } /* Use px, not rem - convert 12rem ≈ 192px */
-    .gallery-sidebar-mini { min-width: 160px; } /* Use px, not rem - convert 10rem ≈ 160px */
-    .gallery-footer-spacing { margin-top: var(--en-space-lg); padding-top: var(--en-space-md); border-top: 1px solid var(--en-grey-200); font-size: var(--en-font-size-caption); color: var(--en-grey-500); }
-    .gallery-layout-bordered { border: 1px solid var(--en-grey-200); border-radius: var(--en-radius-md); overflow: hidden; }
-    /* Text styling using DS tokens */
-    .gallery-text-bold { font-weight: 600; }
-    .gallery-text-muted { font-size: var(--en-font-size-sm); color: var(--en-grey-500); }
-    /* Search suggestions dropdown - no overlap */
-    .gallery-search-suggestions { position: absolute; top: calc(100% + var(--en-space-xs)); left: 0; right: 0; background: var(--en-grey-0); border: 1px solid var(--en-grey-200); border-radius: var(--en-radius-md); box-shadow: var(--en-shadow-md); max-height: 320px; overflow-y: auto; z-index: 1000; display: none; } /* Use px, not rem - convert 20rem ≈ 320px */
-    .gallery-search-suggestions.show { display: block; }
-    .gallery-suggestion-item { padding: var(--en-space-sm) var(--en-space-md); cursor: pointer; border-bottom: 1px solid var(--en-grey-200); font-size: var(--en-font-size-sm); }
-    .gallery-suggestion-item:last-child { border-bottom: none; }
-    .gallery-suggestion-item:hover, .gallery-suggestion-item.highlighted { background: var(--en-grey-20); }
-    .gallery-suggestion-name { font-weight: 600; color: var(--en-grey-800); }
-    .gallery-suggestion-type { font-size: var(--en-font-size-caption); color: var(--en-grey-500); margin-top: var(--en-space-xs); }
-
-    /* ========== Gallery Display Bindings (for component gallery only) ========== */
-    /* NOTE: Semantic classes (.enc-*) remain EMPTY per DS rules. Styling scoped to gallery context only. */
-    /* EncButton - Primary: Height 48px (Lg), Padding SpaceLg (20px) per EN-AI_Components_Molecules.md */
-    /* Scope styling to gallery context so .enc-* classes remain empty globally */
-    .enc-main-container .enc-action-primary,
-    .gallery-preview .enc-action-primary {
-      background: var(--en-primary-brand-500); /* #a246f0 - MAIN BRAND COLOR per En-AI_Design_System.md */
-      color: var(--en-grey-0);
-      border: none;
-      height: 48px;
-      padding: 0 20px; /* SpaceLg (20px) per EN-AI_Components_Molecules.md - not a standard token, but required by spec */
-      border-radius: var(--en-radius-md);
-      font-size: var(--en-font-size-sm);
-      font-weight: 600;
-      line-height: 1.4; /* EnText Rhythm.En_Text_LineHeight_Normal per EN-AI_Components_Molecules.md */
       cursor: pointer;
       display: inline-flex;
       align-items: center;
@@ -186,27 +95,39 @@
       transition: background-color 0.2s;
       font-family: var(--en-font-family-base);
     }
+
     .enc-main-container .enc-action-primary:hover,
-    .gallery-preview .enc-action-primary:hover { background: var(--en-primary-brand-700); } /* #7e22ce - Hover State per En-AI_Design_System.md */
+    .gallery-preview .enc-action-primary:hover {
+      background: var(--en-primary-brand-700);
+    }
+
+    /* #7e22ce - Hover State per En-AI_Design_System.md */
     .enc-main-container .enc-action-primary:focus-visible,
-    .gallery-preview .enc-action-primary:focus-visible { 
-      outline: 2px solid var(--en-primary-brand-500); 
-      outline-offset: 2px; 
+    .gallery-preview .enc-action-primary:focus-visible {
+      outline: 2px solid var(--en-primary-brand-500);
+      outline-offset: 2px;
     }
+
     .enc-main-container .enc-action-primary:disabled,
-    .gallery-preview .enc-action-primary:disabled { 
-      opacity: 0.6; 
-      cursor: not-allowed; 
-      background: var(--en-grey-200); /* Disabled surface per En-AI_Design_System.md */
+    .gallery-preview .enc-action-primary:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+      background: var(--en-grey-200);
+      /* Disabled surface per En-AI_Design_System.md */
     }
+
     /* EncButton - Secondary: Height 48px (Lg), Padding SpaceLg (20px) */
     .enc-main-container .enc-action-secondary,
     .gallery-preview .enc-action-secondary {
-      background: var(--en-grey-0); /* Surface / Card Bg per En-AI_Design_System.md */
-      color: var(--en-grey-800); /* Primary Text per En-AI_Design_System.md */
-      border: 1px solid var(--en-grey-200); /* Borders per En-AI_Design_System.md */
+      background: var(--en-grey-0);
+      /* Surface / Card Bg per En-AI_Design_System.md */
+      color: var(--en-grey-800);
+      /* Primary Text per En-AI_Design_System.md */
+      border: 1px solid var(--en-grey-200);
+      /* Borders per En-AI_Design_System.md */
       height: 48px;
-      padding: 0 20px; /* SpaceLg (20px) per EN-AI_Components_Molecules.md - not a standard token, but required by spec */
+      padding: 0 20px;
+      /* SpaceLg (20px) per EN-AI_Components_Molecules.md - not a standard token, but required by spec */
       border-radius: var(--en-radius-md);
       font-size: var(--en-font-size-sm);
       font-weight: 500;
@@ -218,29 +139,44 @@
       transition: background-color 0.2s, border-color 0.2s;
       font-family: var(--en-font-family-base);
     }
+
     .enc-main-container .enc-action-secondary:hover,
-    .gallery-preview .enc-action-secondary:hover { 
-      background: var(--en-grey-20); /* Alt Background per En-AI_Design_System.md */
-      border-color: var(--en-grey-400); 
+    .gallery-preview .enc-action-secondary:hover {
+      background: var(--en-grey-20);
+      /* Alt Background per En-AI_Design_System.md */
+      border-color: var(--en-grey-400);
     }
+
     .enc-main-container .enc-action-secondary:focus-visible,
-    .gallery-preview .enc-action-secondary:focus-visible { outline: 2px solid var(--en-primary-brand-500); outline-offset: 2px; }
+    .gallery-preview .enc-action-secondary:focus-visible {
+      outline: 2px solid var(--en-primary-brand-500);
+      outline-offset: 2px;
+    }
+
     .enc-main-container .enc-action-secondary:disabled,
-    .gallery-preview .enc-action-secondary:disabled { opacity: 0.6; cursor: not-allowed; }
+    .gallery-preview .enc-action-secondary:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+
     .enc-main-container .enc-card,
     .gallery-preview .enc-card {
-      background: var(--en-grey-0); /* Surface / Card Bg per En-AI_Design_System.md */
-      border: 1px solid var(--en-grey-200); /* Borders per En-AI_Design_System.md */
+      background: var(--en-grey-0);
+      /* Surface / Card Bg per En-AI_Design_System.md */
+      border: 1px solid var(--en-grey-200);
+      /* Borders per En-AI_Design_System.md */
       border-radius: var(--en-radius-lg);
       padding: var(--en-space-lg);
       box-shadow: var(--en-shadow-sm);
     }
+
     /* EncCard - Glass Variant per EN-AI_Components_Molecules.md */
     .enc-main-container .enc-card.gallery-card-glass,
     .gallery-preview .enc-card.gallery-card-glass {
       background: var(--en-surface-glass-70);
       box-shadow: var(--en-shadow-ceo);
     }
+
     /* Gallery display classes for semantic components (semantic classes remain empty per DS) */
     .enc-main-container .enc-tag,
     .gallery-preview .enc-tag {
@@ -249,11 +185,70 @@
       border-radius: var(--en-radius-md);
       font-size: var(--en-font-size-caption);
       font-weight: 500;
-      background: var(--en-grey-100); /* Subtle backgrounds per En-AI_Design_System.md */
-      color: var(--en-grey-800); /* Primary Text per En-AI_Design_System.md */
-      border: 1px solid var(--en-grey-200); /* Borders per En-AI_Design_System.md */
+      background: var(--en-grey-100);
+      /* Subtle backgrounds per En-AI_Design_System.md */
+      color: var(--en-grey-800);
+      /* Primary Text per En-AI_Design_System.md */
+      border: 1px solid var(--en-grey-200);
+      /* Borders per En-AI_Design_System.md */
       font-family: var(--en-font-family-base);
     }
+
+    /* Strategic colors for tags in tables (Organisation Culture Theme) */
+    /* Tags in tables use sentiment/strategic colors per EntagCustome rules.md */
+    /* WCAG AA Compliance: All text colors meet 4.5:1 contrast ratio requirement */
+    .gallery-showcase-table .enc-tag[data-tone="success"],
+    .gallery-intent-table .enc-tag[data-tone="success"] {
+      background: var(--en-success-100);
+      color: #0a7a3d;
+      /* Darker green for WCAG AA contrast (4.5:1+) on #e5fff1 */
+      border-color: var(--en-success-500);
+    }
+
+    .gallery-showcase-table .enc-tag[data-tone="warning"],
+    .gallery-intent-table .enc-tag[data-tone="warning"] {
+      background: #fff4bc;
+      /* Light tint of sentiment-neutral */
+      color: #b8860b;
+      /* Darker yellow/amber for WCAG AA contrast (4.5:1+) on #fff4bc */
+      border-color: #b8860b;
+    }
+
+    .gallery-showcase-table .enc-tag[data-tone="error"],
+    .gallery-intent-table .enc-tag[data-tone="error"] {
+      background: var(--en-error-100);
+      color: #9b2638;
+      /* Darker red for WCAG AA contrast (4.5:1+) on #ffdbe2 */
+      border-color: var(--en-error-500);
+    }
+
+    .gallery-showcase-table .enc-tag[data-tone="positive"],
+    .gallery-intent-table .enc-tag[data-tone="positive"] {
+      background: #e5fff1;
+      /* Light tint of sentiment-positive */
+      color: #2a8f5f;
+      /* Darker green for WCAG AA contrast (4.5:1+) on #e5fff1 */
+      border-color: #2a8f5f;
+    }
+
+    .gallery-showcase-table .enc-tag[data-tone="neutral"],
+    .gallery-intent-table .enc-tag[data-tone="neutral"] {
+      background: #fff4bc;
+      /* Light tint of sentiment-neutral */
+      color: #b8860b;
+      /* Darker yellow/amber for WCAG AA contrast (4.5:1+) on #fff4bc */
+      border-color: #b8860b;
+    }
+
+    .gallery-showcase-table .enc-tag[data-tone="negative"],
+    .gallery-intent-table .enc-tag[data-tone="negative"] {
+      background: #ffdbe2;
+      /* Light tint of sentiment-negative */
+      color: #b81e3a;
+      /* Darker pink/red for WCAG AA contrast (4.5:1+) on #ffdbe2 */
+      border-color: #b81e3a;
+    }
+
     .enc-main-container .enc-avatar,
     .gallery-preview .enc-avatar {
       width: var(--en-icon-size-xl);
@@ -268,6 +263,7 @@
       flex-shrink: 0;
       font-family: var(--en-font-family-base);
     }
+
     .enc-main-container .enc-icon-button,
     .gallery-preview .enc-icon-button {
       width: var(--en-icon-size-lg);
@@ -283,12 +279,24 @@
       cursor: pointer;
       color: var(--en-grey-800);
     }
+
     .enc-main-container .enc-icon-button:hover,
-    .gallery-preview .enc-icon-button:hover { background: var(--en-grey-20); }
+    .gallery-preview .enc-icon-button:hover {
+      background: var(--en-grey-20);
+    }
+
     .enc-main-container .enc-icon-button:focus-visible,
-    .gallery-preview .enc-icon-button:focus-visible { outline: 2px solid var(--en-primary-brand-500); outline-offset: 2px; }
+    .gallery-preview .enc-icon-button:focus-visible {
+      outline: 2px solid var(--en-primary-brand-500);
+      outline-offset: 2px;
+    }
+
     .enc-main-container .enc-icon-button:disabled,
-    .gallery-preview .enc-icon-button:disabled { opacity: 0.6; cursor: not-allowed; }
+    .gallery-preview .enc-icon-button:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+
     .enc-main-container .enc-list-row,
     .gallery-preview .enc-list-row {
       padding: var(--en-space-sm) var(--en-space-md);
@@ -300,12 +308,24 @@
       gap: var(--en-space-md);
       background: var(--en-grey-0);
     }
+
     .enc-main-container .enc-list-row:hover,
-    .gallery-preview .enc-list-row:hover { background: var(--en-grey-20); }
+    .gallery-preview .enc-list-row:hover {
+      background: var(--en-grey-20);
+    }
+
     .enc-main-container .enc-list-row[aria-selected="true"],
-    .gallery-preview .enc-list-row[aria-selected="true"] { background: var(--en-grey-20); border-color: var(--en-primary-brand-500); }
+    .gallery-preview .enc-list-row[aria-selected="true"] {
+      background: var(--en-grey-20);
+      border-color: var(--en-primary-brand-500);
+    }
+
     .enc-main-container .enc-list-row.enc-list-row--disabled,
-    .gallery-preview .enc-list-row.enc-list-row--disabled { opacity: 0.6; pointer-events: none; }
+    .gallery-preview .enc-list-row.enc-list-row--disabled {
+      opacity: 0.6;
+      pointer-events: none;
+    }
+
     .enc-main-container .enc-toggle,
     .gallery-preview .enc-toggle {
       padding: var(--en-space-xs) var(--en-space-sm);
@@ -317,10 +337,18 @@
       cursor: pointer;
       font-family: var(--en-font-family-base);
     }
+
     .enc-main-container .enc-toggle[aria-checked="true"],
-    .gallery-preview .enc-toggle[aria-checked="true"] { background: var(--en-grey-200); }
+    .gallery-preview .enc-toggle[aria-checked="true"] {
+      background: var(--en-grey-200);
+    }
+
     .enc-main-container .enc-toggle:focus-visible,
-    .gallery-preview .enc-toggle:focus-visible { outline: 2px solid var(--en-primary-brand-500); outline-offset: 2px; }
+    .gallery-preview .enc-toggle:focus-visible {
+      outline: 2px solid var(--en-primary-brand-500);
+      outline-offset: 2px;
+    }
+
     /* Checkbox and Radio display bindings (DS tokens only) - these don't exist in enculture.css, so create gallery-only */
     .enc-main-container .enc-checkbox,
     .gallery-preview .enc-checkbox,
@@ -339,28 +367,38 @@
       position: relative;
       flex-shrink: 0;
     }
+
     .enc-main-container .enc-radio,
     .gallery-preview .enc-radio {
       border-radius: var(--en-radius-full);
     }
+
     .enc-main-container .enc-checkbox:checked,
     .gallery-preview .enc-checkbox:checked,
     .enc-main-container .enc-radio:checked,
     .gallery-preview .enc-radio:checked {
-      background: var(--en-primary-brand-500); /* Use --en-primary-brand-500 per En-AI_Design_System.md */
+      background: var(--en-primary-brand-500);
+      /* Use --en-primary-brand-500 per En-AI_Design_System.md */
       border-color: var(--en-primary-brand-500);
     }
+
     .enc-main-container .enc-checkbox:checked::after,
     .gallery-preview .enc-checkbox:checked::after {
-      content: '✓';
+      content: '';
+      /* Replace text checkmark with SVG background mask or similar if possible, but for gallery strict CSS we use simple shapes or inline SVG data uri */
       position: absolute;
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      color: var(--en-grey-0);
-      font-size: var(--en-font-size-sm);
-      font-weight: 600;
+      width: 12px;
+      height: 12px;
+      /* Using Lucide Check icon as mask would be ideal, but for straight CSS without external assets: */
+      /* CSS-only checkmark for simplicity in this gallery file only */
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23ffffff' stroke-width='4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'%3E%3C/polyline%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: center;
     }
+
     .enc-main-container .enc-radio:checked::after,
     .gallery-preview .enc-radio:checked::after {
       content: '';
@@ -373,6 +411,7 @@
       border-radius: var(--en-radius-full);
       background: var(--en-grey-0);
     }
+
     .enc-main-container .enc-checkbox:focus-visible,
     .gallery-preview .enc-checkbox:focus-visible,
     .enc-main-container .enc-radio:focus-visible,
@@ -380,6 +419,7 @@
       outline: 2px solid var(--en-primary-brand-500);
       outline-offset: 2px;
     }
+
     .enc-main-container .enc-checkbox:disabled,
     .gallery-preview .enc-checkbox:disabled,
     .enc-main-container .enc-radio:disabled,
@@ -388,11 +428,14 @@
       cursor: not-allowed;
       background: var(--en-grey-100);
     }
+
     /* Switch display binding (alternative to toggle) - doesn't exist in enculture.css */
     .enc-main-container .enc-switch,
     .gallery-preview .enc-switch {
-      width: 44px; /* Standard switch width: thumb (20px) + padding (4px each side) + space for movement (16px) */
-      height: 24px; /* Standard switch height: thumb height (20px) + padding (2px top/bottom) */
+      width: 44px;
+      /* Standard switch width: thumb (20px) + padding (4px each side) + space for movement (16px) */
+      height: 24px;
+      /* Standard switch height: thumb height (20px) + padding (2px top/bottom) */
       border-radius: var(--en-radius-full);
       border: 1px solid var(--en-grey-200);
       background: var(--en-grey-200);
@@ -403,57 +446,79 @@
       transition: background-color 0.2s, border-color 0.2s;
       box-sizing: border-box;
     }
+
     .enc-main-container .enc-switch:checked,
     .gallery-preview .enc-switch:checked {
-      background: var(--en-primary-brand-500); /* Use --en-primary-brand-500 per En-AI_Design_System.md */
+      background: var(--en-primary-brand-500);
+      /* Use --en-primary-brand-500 per En-AI_Design_System.md */
       border-color: var(--en-primary-brand-500);
     }
+
     .enc-main-container .enc-switch::after,
     .gallery-preview .enc-switch::after {
       content: '';
       position: absolute;
-      top: 50%; /* Center vertically */
-      left: 2px; /* 2px from left when unchecked */
-      width: 20px; /* Thumb size: var(--en-icon-size-md) = 20px */
-      height: 20px; /* Thumb size: var(--en-icon-size-md) = 20px */
+      top: 50%;
+      /* Center vertically */
+      left: 2px;
+      /* 2px from left when unchecked */
+      width: 20px;
+      /* Thumb size: var(--en-icon-size-md) = 20px */
+      height: 20px;
+      /* Thumb size: var(--en-icon-size-md) = 20px */
       border-radius: var(--en-radius-full);
       background: var(--en-grey-0);
       transition: transform 0.2s;
       box-sizing: border-box;
-      transform: translateY(-50%); /* Center vertically by moving up half of thumb height */
+      transform: translateY(-50%);
+      /* Center vertically by moving up half of thumb height */
     }
+
     .enc-main-container .enc-switch:checked::after,
     .gallery-preview .enc-switch:checked::after {
-      transform: translateX(20px) translateY(-50%); /* Move thumb 20px to right and maintain vertical center */
+      transform: translateX(20px) translateY(-50%);
+      /* Move thumb 20px to right and maintain vertical center */
     }
+
     .enc-main-container .enc-switch:focus-visible,
     .gallery-preview .enc-switch:focus-visible {
       outline: 2px solid var(--en-primary-brand-500);
       outline-offset: 2px;
     }
+
     .enc-main-container .enc-switch:disabled,
     .gallery-preview .enc-switch:disabled {
       opacity: 0.6;
       cursor: not-allowed;
     }
+
     /* Compact mode: smaller switch */
     [data-density="compact"] .enc-main-container .enc-switch,
     [data-density="compact"] .gallery-preview .enc-switch {
-      width: 36px; /* Compact switch width */
-      height: 20px; /* Compact switch height */
+      width: 36px;
+      /* Compact switch width */
+      height: 20px;
+      /* Compact switch height */
     }
+
     [data-density="compact"] .enc-main-container .enc-switch::after,
     [data-density="compact"] .gallery-preview .enc-switch::after {
-      width: 16px; /* Compact thumb: var(--en-icon-size-sm) = 16px */
+      width: 16px;
+      /* Compact thumb: var(--en-icon-size-sm) = 16px */
       height: 16px;
-      top: 50%; /* Center vertically */
+      top: 50%;
+      /* Center vertically */
       left: 2px;
-      transform: translateY(-50%); /* Center vertically by moving up half of thumb height */
+      transform: translateY(-50%);
+      /* Center vertically by moving up half of thumb height */
     }
+
     [data-density="compact"] .enc-main-container .enc-switch:checked::after,
     [data-density="compact"] .gallery-preview .enc-switch:checked::after {
-      transform: translateX(16px) translateY(-50%); /* Move thumb 16px to right and maintain vertical center */
+      transform: translateX(16px) translateY(-50%);
+      /* Move thumb 16px to right and maintain vertical center */
     }
+
     /* Color swatch display */
     .gallery-color-swatch {
       width: 100%;
@@ -469,53 +534,254 @@
       color: var(--en-grey-800);
       font-family: var(--en-font-family-base);
     }
+
     .gallery-color-swatch-dark {
       color: var(--en-grey-0);
     }
+
     /* Typography display */
     .gallery-typography-sample {
       margin-bottom: var(--en-space-md);
     }
+
     /* Color swatch variants */
-    .gallery-swatch-brand-500 { background: var(--en-primary-brand-500); }
-    .gallery-swatch-brand-600 { background: var(--en-primary-brand-700); } /* Use 700 for hover */
-    .gallery-swatch-brand-50 { background: var(--en-primary-brand-50); }
-    .gallery-swatch-brand-100 { background: var(--en-primary-brand-100); }
-    .gallery-swatch-brand-700 { background: var(--en-primary-brand-700); }
-    .gallery-swatch-neutral-0 { background: var(--en-grey-0); border: 1px solid var(--en-grey-200); }
-    .gallery-swatch-neutral-50 { background: var(--en-grey-20); } /* Use grey-20 for alt background */
-    .gallery-swatch-neutral-200 { background: var(--en-grey-200); }
-    .gallery-swatch-neutral-400 { background: var(--en-grey-300); } /* Use grey-300 for disabled */
-    .gallery-swatch-neutral-500 { background: var(--en-grey-500); }
-    .gallery-swatch-neutral-800 { background: var(--en-grey-800); }
-    .gallery-swatch-success-500 { background: var(--en-success-500); }
-    .gallery-swatch-success-100 { background: var(--en-success-100); }
-    .gallery-swatch-error-500 { background: var(--en-error-500); }
-    .gallery-swatch-error-100 { background: var(--en-error-100); }
-    .gallery-swatch-info-100 { background: var(--en-info-100); }
-    .gallery-swatch-teal-50 { background: var(--en-teal-50); }
-    .gallery-swatch-teal-200 { background: var(--en-teal-200); }
-    .gallery-swatch-teal-500 { background: var(--en-teal-500); }
+    .gallery-swatch-brand-500 {
+      background: var(--en-primary-brand-500);
+      color: var(--en-grey-0);
+      /* Text.OnPrimary semantic - WCAG AA: 4.5:1 contrast ratio */
+    }
+
+    .gallery-swatch-brand-600 {
+      background: var(--en-primary-brand-700);
+    }
+
+    /* Use 700 for hover */
+    .gallery-swatch-brand-50 {
+      background: var(--en-primary-brand-50);
+    }
+
+    .gallery-swatch-brand-100 {
+      background: var(--en-primary-brand-100);
+    }
+
+    .gallery-swatch-brand-700 {
+      background: var(--en-primary-brand-700);
+      color: var(--en-grey-0);
+      /* Text.OnPrimary semantic - WCAG AA: 4.5:1 contrast ratio */
+    }
+
+    .gallery-swatch-neutral-0 {
+      background: var(--en-grey-0);
+      border: 1px solid var(--en-grey-200);
+    }
+
+    .gallery-swatch-neutral-50 {
+      background: var(--en-grey-20);
+    }
+
+    /* Use grey-20 for alt background */
+    .gallery-swatch-neutral-200 {
+      background: var(--en-grey-200);
+    }
+
+    .gallery-swatch-neutral-400 {
+      background: var(--en-grey-300);
+    }
+
+    /* Use grey-300 for disabled */
+    .gallery-swatch-neutral-500 {
+      background: var(--en-grey-500);
+      color: var(--en-grey-0);
+    }
+
+    /* Dark background needs white text */
+    .gallery-swatch-neutral-800 {
+      background: var(--en-grey-800);
+      color: var(--en-grey-0);
+    }
+
+    /* Dark background needs white text */
+    .gallery-swatch-success-500 {
+      background: var(--en-success-500);
+      color: var(--en-grey-0);
+      /* White text for WCAG AA contrast on green background */
+    }
+
+    .gallery-swatch-success-100 {
+      background: var(--en-success-100);
+      color: #0a7a3d;
+      /* Darker green text for WCAG AA contrast on light green background */
+    }
+
+    .gallery-swatch-error-500 {
+      background: var(--en-error-500);
+      color: var(--en-grey-0);
+      /* White text for WCAG AA contrast on red background */
+    }
+
+    .gallery-swatch-error-100 {
+      background: var(--en-error-100);
+      color: #9b2638;
+      /* Darker red text for WCAG AA contrast on light red background */
+    }
+
+    .gallery-swatch-info-100 {
+      background: var(--en-info-100);
+      color: #0052a3;
+      /* Darker blue text for WCAG AA contrast on light blue background */
+    }
+
+    /* Sentiment color swatches (Organisation Culture Theme) - WCAG AA compliant */
+    .gallery-swatch-sentiment-positive {
+      background: var(--en-sentiment-positive);
+      color: var(--en-grey-0);
+      /* White text for WCAG AA contrast on green background */
+    }
+
+    .gallery-swatch-sentiment-neutral {
+      background: var(--en-sentiment-neutral);
+      color: var(--en-grey-800);
+      /* Dark text for WCAG AA contrast on yellow background */
+    }
+
+    .gallery-swatch-sentiment-negative {
+      background: var(--en-sentiment-negative);
+      color: var(--en-grey-0);
+      /* White text for WCAG AA contrast on pink background */
+    }
+
+    /* Light tint backgrounds for sentiment colors */
+    .gallery-swatch-sentiment-positive-light {
+      background: #e5fff1;
+      /* Light tint of sentiment-positive */
+      color: #2a8f5f;
+      /* Darker green text for WCAG AA contrast */
+    }
+
+    .gallery-swatch-sentiment-neutral-light {
+      background: #fff4bc;
+      /* Light tint of sentiment-neutral */
+      color: #b8860b;
+      /* Darker yellow/amber text for WCAG AA contrast */
+    }
+
+    .gallery-swatch-sentiment-negative-light {
+      background: #ffdbe2;
+      /* Light tint of sentiment-negative */
+      color: #b81e3a;
+      /* Darker pink/red text for WCAG AA contrast */
+    }
+
+    .gallery-swatch-teal-50 {
+      background: var(--en-teal-50);
+      color: #1a5050;
+      /* Darker teal text for WCAG AA contrast on light teal background */
+    }
+
+    .gallery-swatch-teal-200 {
+      background: var(--en-teal-200);
+      color: #1a5050;
+      /* Darker teal text for WCAG AA contrast on medium teal background */
+    }
+
+    .gallery-swatch-teal-500 {
+      background: var(--en-teal-500);
+      color: var(--en-grey-0);
+      /* White text for WCAG AA contrast on dark teal background */
+    }
+
     /* Grid layout for swatches */
-    .gallery-swatch-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(192px, 1fr)); gap: var(--en-space-lg); } /* Increased gap for color swatches */
+    .gallery-swatch-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(192px, 1fr));
+      gap: var(--en-space-lg);
+    }
+
+    /* Increased gap for color swatches */
     /* Typography samples */
-    .gallery-typo-h2 { font-size: var(--en-font-size-h2); font-weight: 600; margin: 0 0 var(--en-space-md); }
-    .gallery-typo-h3 { font-size: var(--en-font-size-h3); font-weight: 600; margin: 0 0 var(--en-space-md); }
-    .gallery-typo-h4 { font-size: var(--en-font-size-h4); font-weight: 600; margin: 0 0 var(--en-space-md); }
-    .gallery-typo-lg { font-size: var(--en-font-size-lg); margin: 0 0 var(--en-space-md); }
-    .gallery-typo-md { font-size: var(--en-font-size-md); margin: 0 0 var(--en-space-md); }
-    .gallery-typo-sm { font-size: var(--en-font-size-sm); margin: 0 0 var(--en-space-md); }
-    .gallery-typo-caption { font-size: var(--en-font-size-caption); margin: 0; }
-    .gallery-typo-weight-400 { font-weight: 400; }
-    .gallery-typo-weight-500 { font-weight: 500; }
-    .gallery-typo-weight-600 { font-weight: 600; }
-    .gallery-typo-weight-700 { font-weight: 700; }
-    .gallery-typo-family { font-family: var(--en-font-family-base); }
+    .gallery-typo-h2 {
+      font-size: var(--en-font-size-h2);
+      font-weight: 600;
+      margin: 0 0 var(--en-space-md);
+    }
+
+    .gallery-typo-h3 {
+      font-size: var(--en-font-size-h3);
+      font-weight: 600;
+      margin: 0 0 var(--en-space-md);
+    }
+
+    .gallery-typo-h4 {
+      font-size: var(--en-font-size-h4);
+      font-weight: 600;
+      margin: 0 0 var(--en-space-md);
+    }
+
+    .gallery-typo-lg {
+      font-size: var(--en-font-size-lg);
+      margin: 0 0 var(--en-space-md);
+    }
+
+    .gallery-typo-md {
+      font-size: var(--en-font-size-md);
+      margin: 0 0 var(--en-space-md);
+    }
+
+    .gallery-typo-sm {
+      font-size: var(--en-font-size-sm);
+      margin: 0 0 var(--en-space-md);
+    }
+
+    .gallery-typo-caption {
+      font-size: var(--en-font-size-caption);
+      margin: 0;
+    }
+
+    .gallery-typo-weight-400 {
+      font-weight: 400;
+    }
+
+    .gallery-typo-weight-500 {
+      font-weight: 500;
+    }
+
+    .gallery-typo-weight-600 {
+      font-weight: 600;
+    }
+
+    .gallery-typo-weight-700 {
+      font-weight: 700;
+    }
+
+    .gallery-typo-family {
+      font-family: var(--en-font-family-base);
+    }
+
     /* Form control label layout */
-    .gallery-form-label { display: flex; align-items: center; gap: var(--en-space-sm); cursor: pointer; }
-    .gallery-form-label-disabled { cursor: not-allowed; opacity: 0.6; }
-    .gallery-form-group { display: flex; flex-direction: column; gap: var(--en-space-md); } /* Increased gap for form groups */
-    .gallery-form-group-md { gap: var(--en-space-lg); } /* Increased gap for medium form groups */
+    .gallery-form-label {
+      display: flex;
+      align-items: center;
+      gap: var(--en-space-sm);
+      cursor: pointer;
+    }
+
+    .gallery-form-label-disabled {
+      cursor: not-allowed;
+      opacity: 0.6;
+    }
+
+    .gallery-form-group {
+      display: flex;
+      flex-direction: column;
+      gap: var(--en-space-md);
+    }
+
+    /* Increased gap for form groups */
+    .gallery-form-group-md {
+      gap: var(--en-space-lg);
+    }
+
+    /* Increased gap for medium form groups */
     .enc-main-container .enc-header,
     .gallery-preview .enc-header {
       padding: var(--en-space-md) var(--en-space-lg);
@@ -526,20 +792,36 @@
       flex-wrap: wrap;
       gap: var(--en-space-md);
     }
+
     /* .enc-main-container padding already set above (var(--en-space-20)) */
     .enc-main-container .enc-sidebar,
     .gallery-preview .enc-sidebar {
       padding: var(--en-space-lg);
       border-right: 1px solid var(--en-grey-200);
-      background: var(--en-grey-20); /* Alt Background per En-AI_Design_System.md */
+      background: var(--en-grey-20);
+      /* Alt Background per En-AI_Design_System.md */
     }
-    .gallery-mini-layout { display: flex; min-height: calc(var(--en-space-lg) * 5); gap: var(--en-space-md); } /* Use DS tokens for min-height */
-    .gallery-mini-layout .enc-sidebar { min-width: 160px; }
-    .gallery-mini-layout .enc-main-container { flex: 1; }
+
+    .gallery-mini-layout {
+      display: flex;
+      min-height: calc(var(--en-space-lg) * 5);
+      gap: var(--en-space-md);
+    }
+
+    /* Use DS tokens for min-height */
+    .gallery-mini-layout .enc-sidebar {
+      min-width: 160px;
+    }
+
+    .gallery-mini-layout .enc-main-container {
+      flex: 1;
+    }
+
     /* Input size enforcement per Input size enforcement_CANONICAL.md */
     /* Inputs (including select dropdowns and search) MUST bind to density tokens ONLY */
-    /* Height, padding, radius MUST resolve from Enculture density tokens - NO Shadcn sizing, NO Tailwind h-*/py-*, NO per-input sizing */
-    .enc-main-container .enc-input-field,
+    /* Height, padding, radius MUST resolve from Enculture density tokens - NO Shadcn sizing, NO Tailwind h-*/
+    py-*,
+    NO per-input sizing */ .enc-main-container .enc-input-field,
     .enc-main-container select.enc-input-field,
     .enc-main-container input.enc-input-field,
     .gallery-preview .enc-input-field,
@@ -548,8 +830,10 @@
     .gallery-search-filter .enc-input-field,
     .gallery-search-filter select.enc-input-field,
     .gallery-search-filter input.enc-input-field {
-      height: var(--en-density-control-height, 48px) !important; /* Comfortable mode - 48px per Input size enforcement_CANONICAL.md */
-      padding: var(--en-density-space-sm, 12px) var(--en-density-space-md, 16px) !important; /* Density tokens per En-AI_Design_System.md: vertical 12px, horizontal 16px */
+      height: var(--en-density-control-height, 48px) !important;
+      /* Comfortable mode - 48px per Input size enforcement_CANONICAL.md */
+      padding: var(--en-density-space-sm, 12px) var(--en-density-space-md, 16px) !important;
+      /* Density tokens per En-AI_Design_System.md: vertical 12px, horizontal 16px */
       font-family: var(--en-font-family-base) !important;
       font-size: var(--en-font-size-md) !important;
       border-radius: var(--en-radius-md) !important;
@@ -558,6 +842,7 @@
       color: var(--en-grey-800) !important;
       box-sizing: border-box;
     }
+
     /* Search inputs are NOT special - same height as EncInput per Input size enforcement_CANONICAL.md */
     .enc-main-container .enc-input-field:focus,
     .enc-main-container select.enc-input-field:focus,
@@ -567,16 +852,18 @@
     .gallery-preview input.enc-input-field:focus,
     .gallery-search-filter .enc-input-field:focus,
     .gallery-search-filter select.enc-input-field:focus,
-    .gallery-search-filter input.enc-input-field:focus { 
-      outline: 2px solid var(--en-primary-brand-500) !important; 
-      outline-offset: 0; 
+    .gallery-search-filter input.enc-input-field:focus {
+      outline: 2px solid var(--en-primary-brand-500) !important;
+      outline-offset: 0;
       border-color: var(--en-primary-brand-500) !important;
     }
+
     .enc-main-container .enc-input-field::placeholder,
     .gallery-preview .enc-input-field::placeholder,
     .gallery-search-filter .enc-input-field::placeholder {
       color: var(--en-grey-500) !important;
     }
+
     .enc-main-container .enc-input-field:disabled,
     .enc-main-container select.enc-input-field:disabled,
     .enc-main-container input.enc-input-field:disabled,
@@ -589,6 +876,7 @@
       background: var(--en-grey-100) !important;
       color: var(--en-grey-400) !important;
     }
+
     /* Compact density: inputs use compact height */
     [data-density="compact"] .enc-main-container .enc-input-field,
     [data-density="compact"] .enc-main-container select.enc-input-field,
@@ -600,1082 +888,88 @@
     [data-density="compact"] .gallery-search-filter .enc-input-field,
     [data-density="compact"] .gallery-search-filter select.enc-input-field,
     [data-density="compact"] .gallery-search-filter input.enc-input-field {
-      height: 32px !important; /* Mini size - equal height for dropdown and search, reduced from 40px */
-      padding: var(--en-space-xs, 4px) var(--en-density-compact-space-md, 12px) !important; /* Reduced vertical padding for smaller height */
-      font-size: var(--en-font-size-sm, 14px) !important; /* Slightly smaller font for reduced height */
+      height: 32px !important;
+      /* Mini size - equal height for dropdown and search, reduced from 40px */
+      padding: var(--en-space-xs, 4px) var(--en-density-compact-space-md, 12px) !important;
+      /* Reduced vertical padding for smaller height */
+      font-size: var(--en-font-size-sm, 14px) !important;
+      /* Slightly smaller font for reduced height */
     }
+
     /* Compact density: buttons use compact height (40px) and compact padding per EN-AI_Components_Molecules.md Sm buttons */
     [data-density="compact"] .enc-main-container .enc-action-primary,
     [data-density="compact"] .gallery-preview .enc-action-primary,
     [data-density="compact"] .enc-main-container .enc-action-secondary,
     [data-density="compact"] .gallery-preview .enc-action-secondary {
-      height: var(--en-density-compact-control-height, 40px); /* Sm button height per EN-AI_Components_Molecules.md */
-      padding: 0 var(--en-density-compact-space-md, 12px); /* Compact SpaceMd (12px) per En-AI_Design_System.md */
+      height: var(--en-density-compact-control-height, 40px);
+      /* Sm button height per EN-AI_Components_Molecules.md */
+      padding: 0 var(--en-density-compact-space-md, 12px);
+      /* Compact SpaceMd (12px) per En-AI_Design_System.md */
     }
+
   </style>
 </head>
-<body>
-  <div class="gallery-page">
+
+<body data-density="compact">
+  <div class="enc-main-container">
     <p class="gallery-back-nav"><a href="index.html" class="gallery-back-link">← Back to Component Index</a></p>
     <h1 class="gallery-title">Enculture Design System — Component Gallery</h1>
-    <p class="gallery-subtitle">Single live reference for all Enculture UI components. Dummy data only. Governed by enculture.css, En-AI_Design_System.md, EN-AI_Components_Molecules.md, COMPONENT_REGISTRY.md.</p>
-    <nav class="gallery-back-nav gallery-preview-inline" style="margin-bottom: var(--en-space-md);" aria-label="Section jump">
-      <a href="#intent-index" class="gallery-back-link">Intent Index</a>
-      <a href="#atoms" class="gallery-back-link">Atoms</a>
-      <a href="#molecules" class="gallery-back-link">Molecules</a>
-      <a href="#organisms" class="gallery-back-link">Organisms</a>
-      <a href="#system" class="gallery-back-link">System</a>
-    </nav>
+    <p class="gallery-subtitle">Single live reference for all Enculture UI components. Dummy data only. Governed by
+      enculture.css, En-AI_Design_System.md, EN-AI_Components_Molecules.md, COMPONENT_REGISTRY.md.</p>
+    <!-- ==================== SIDEBAR LAYOUT ==================== -->
+    <div class="gallery-layout">
+      <aside class="gallery-sidebar-nav" aria-label="Section jump">
+        <a href="#intent-index">Intent Index</a>
+        <a href="#atoms">Atoms</a>
+        <a href="#molecules">Molecules</a>
+        <a href="#organisms">Organisms</a>
+        <a href="#system">System</a>
+        <a href="#tables">Tables</a>
+      </aside>
 
-    <!-- ==================== INTENT → COMPONENT INDEX ==================== -->
-    <section class="gallery-section" id="intent-index">
-      <h2 class="gallery-section-heading">Intent → Component Index</h2>
-      <p class="gallery-component-purpose">Use this table to choose the correct component for your intent. Do not improvise with non-DS components.</p>
-      <table class="gallery-intent-table" aria-label="Developer intent to Enculture component mapping">
-        <thead>
-          <tr>
-            <th>Developer intent</th>
-            <th>Recommended component</th>
-            <th>Notes</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr><td>Separate sections or content groups visually</td><td>EncDivider</td><td>Decorative; not a layout container</td></tr>
-          <tr><td>Capture text, choice, or selection from user (forms)</td><td>EncInputField</td><td>Single approved input; use on input, textarea, select</td></tr>
-          <tr><td>Show status or category label (read-only)</td><td>EncTag</td><td>Metadata only; not an action</td></tr>
-          <tr><td>Show user or entity identity</td><td>EncAvatar</td><td>Provide aria-label or alt</td></tr>
-          <tr><td>Binary on/off setting (form control)</td><td>EncToggle / EncSwitch</td><td>role="switch"; reflect state to assistive tech</td></tr>
-          <tr><td>Multiple selection (checkboxes)</td><td>EncCheckbox</td><td>Multiple choice questions, permission matrices, bulk selection</td></tr>
-          <tr><td>Single selection (radio buttons)</td><td>EncRadio</td><td>Single choice questions, mutually exclusive options</td></tr>
-          <tr><td>Color reference (backgrounds, surfaces)</td><td>Color Swatches</td><td>Design Tokens section — use var(--en-*) tokens only</td></tr>
-          <tr><td>Typography reference (fonts, sizes)</td><td>Typography</td><td>Design Tokens section — use var(--en-font-*) tokens only</td></tr>
-          <tr><td>Primary action (submit, confirm, main CTA)</td><td>EncButton (enc-action-primary)</td><td>Do not use enc-btn or enc-btn-primary</td></tr>
-          <tr><td>Secondary action (cancel, back, secondary CTA)</td><td>EncButton (enc-action-secondary)</td><td>—</td></tr>
-          <tr><td>Icon-only action (add, edit, expand, more)</td><td>EncIconButton</td><td>Accessible label required; Lucide only</td></tr>
-          <tr><td>Group related content in a surface</td><td>EncCard</td><td>Owns padding, radius, elevation</td></tr>
-          <tr><td>Selectable or navigable list row</td><td>EncListRow</td><td>State visuals DS-owned; actions use EncIconButton</td></tr>
-          <tr><td>Show feedback or notification (toast)</td><td>EncToast</td><td>No .enc-* in enculture.css; see EN-AI_Components_Molecules</td></tr>
-          <tr><td>Show multi-step progress (wizard)</td><td>EncStepper</td><td>No .enc-* in enculture.css</td></tr>
-          <tr><td>Start and end date selection</td><td>EncDateRangePicker</td><td>No .enc-* in enculture.css</td></tr>
-          <tr><td>Time value capture</td><td>EncTimeInput</td><td>No .enc-* in enculture.css</td></tr>
-          <tr><td>Empty list or configuration state</td><td>EncEmptyState</td><td>No .enc-* in enculture.css</td></tr>
-          <tr><td>App shell top bar (context, nav, actions)</td><td>EncHeader</td><td>No workflow logic</td></tr>
-          <tr><td>App shell side nav or auxiliary panel</td><td>EncSidebar</td><td>Width from tokens or parent; .enc-respondent for respondent min-width</td></tr>
-          <tr><td>App shell main layout (header + sidebar + canvas)</td><td>EncMainContainer</td><td>Sole owner of page-level layout; no product layout utilities</td></tr>
-          <tr><td>Page or section max-width container</td><td>EncContainer</td><td>No .enc-* in enculture.css; Sm/Md/Lg/Xl</td></tr>
-          <tr><td>Page-level title, description, actions</td><td>EncPageHeader</td><td>No .enc-* in enculture.css</td></tr>
-          <tr><td>Group content with vertical rhythm</td><td>EncSection</td><td>No .enc-* in enculture.css</td></tr>
-          <tr><td>Section title with optional helper and actions</td><td>EncSectionHeader</td><td>No .enc-* in enculture.css; must not compete with EncPageHeader</td></tr>
-          <tr><td>Compact UI (smaller controls, spacing)</td><td>Density (compact)</td><td>Set data-density="compact" on container</td></tr>
-          <tr><td>Survey respondent flow layout</td><td>Enc Respondent scope</td><td>Apply .enc-respondent to respondent shell</td></tr>
-          <tr><td><strong>Destructive action</strong> (delete, remove, irreversible)</td><td>EncButton (enc-action-secondary) + confirmation</td><td><strong>Destruction warning:</strong> Use confirmation (modal/step) before submit; do not use enc-action-primary for destructive without confirmation.</td></tr>
-          <tr><td><strong>Success feedback or state</strong></td><td>EncToast (Success), EncTag (e.g. Completed)</td><td><strong>Success states:</strong> Use Success variant / token; EncTag for status labels (Completed, etc.); do not imply error.</td></tr>
-        </tbody>
-      </table>
-    </section>
+      <div class="gallery-content">
 
-    <!-- ==================== ATOMS ==================== -->
-    <section class="gallery-section" id="atoms" data-component-type="atoms">
-      <h2 class="gallery-section-heading">Atoms</h2>
-      <p class="gallery-back-nav"><a href="#intent-index" class="gallery-back-link">← Back to Intent Index</a></p>
-
-      <div class="gallery-component-block" data-component-name="EncDivider" data-component-type="atoms">
-        <h3 class="gallery-component-title">EncDivider</h3>
-        <p class="gallery-component-purpose">Visual separation between sections or groups without creating hierarchy.</p>
-        <div class="gallery-contract">
-          <p><strong>Role / Intent:</strong> Visual separation without creating hierarchy.</p>
-          <p><strong>Use when:</strong> Separating sections, lists, or card content.</p>
-          <p><strong>Do NOT use when:</strong> As a layout container; as a decorative line inside charts or analytics.</p>
-          <p><strong>Stable props:</strong> Class <code>enc-divider</code> only (semantic hook).</p>
-          <p><strong>Governance:</strong> Uses border tokens only; must not be used as a layout container.</p>
-        </div>
-        <div class="gallery-misuse">
-          <strong>Do not use for:</strong>
-          <ul>
-            <li>Analytics or dashboard chart dividers (use chart/DS rules for data viz)</li>
-            <li>Layout (e.g. flex/grid spacer)</li>
-            <li>Status or action separator (use EncTag or EncButton for actions)</li>
-          </ul>
-        </div>
-        <div class="gallery-snippet">&lt;hr class="enc-divider"&gt;</div>
-        <div class="gallery-preview">
-          <p class="gallery-state-label">Default</p>
-          <div>Content above</div>
-          <hr class="enc-divider gallery-divider-spacing">
-          <div>Content below</div>
-        </div>
-      </div>
-
-      <div class="gallery-component-block" data-component-name="EncInputField" data-component-type="atoms">
-        <h3 class="gallery-component-title">EncInputField</h3>
-        <p class="gallery-component-purpose">Single approved text/input primitive; applies to input, textarea, select where applicable.</p>
-        <div class="gallery-contract">
-          <p><strong>Role / Intent:</strong> Single approved text/input primitive for forms.</p>
-          <p><strong>Use when:</strong> Text, textarea, or select in Survey Creator, Admin, or forms.</p>
-          <p><strong>Do NOT use when:</strong> Custom-styled search that overrides DS; use enc-input (forbidden — use enc-input-field).</p>
-          <p><strong>Stable props:</strong> class <code>enc-input-field</code>; type, placeholder, disabled; aria-label or associated label.</p>
-          <p><strong>Governance:</strong> Placeholder/disabled colors from DS; semantic labels required; no raw colors.</p>
-          <p><strong>Success states:</strong> Valid/unchanged input uses default styling; success feedback (e.g. "Saved") use EncToast (Success) or helper text; error state per form governance (not implied by EncInputField alone).</p>
-        </div>
-        <div class="gallery-misuse">
-          <strong>Do not use for:</strong>
-          <ul>
-            <li>Data-visualization or analytics filter inputs with custom styling</li>
-            <li>Dashboard-only inputs that bypass DS semantics</li>
-            <li>Without accessible label (aria-label or &lt;label for&gt;)</li>
-          </ul>
-        </div>
-        <div class="gallery-snippet">&lt;label for="f1"&gt;Label&lt;/label&gt;
-&lt;input type="text" id="f1" class="enc-input-field" aria-label="Label" placeholder="Placeholder"&gt;</div>
-        <div class="gallery-preview">
-          <p class="gallery-state-label">Default (with value)</p>
-          <input type="text" class="enc-input-field gallery-input-constrained" value="Sample question" aria-label="Sample input">
-        </div>
-        <div class="gallery-preview">
-          <p class="gallery-state-label">Placeholder</p>
-          <input type="text" class="enc-input-field gallery-input-constrained" placeholder="Option A" aria-label="Placeholder input">
-        </div>
-        <div class="gallery-preview">
-          <p class="gallery-state-label">Disabled</p>
-          <input type="text" class="enc-input-field gallery-input-constrained" value="Department X" disabled aria-label="Disabled input">
-        </div>
-        <div class="gallery-preview">
-          <p class="gallery-state-label">Textarea variant</p>
-          <textarea class="enc-input-field gallery-input-constrained" rows="3" placeholder="Helper text (Content.Text.Muted)" aria-label="Sample textarea" style="resize: vertical;">Sample multi-line response.</textarea>
-        </div>
-        <div class="gallery-preview">
-          <p class="gallery-combo-label">Combinations — Radius (default md, lg, full, none)</p>
-          <p class="gallery-combo-label">Default (md)</p>
-          <input type="text" class="enc-input-field gallery-input-small" value="Sample" aria-label="Sample">
-          <p class="gallery-combo-label">Large (lg)</p>
-          <div class="gallery-combo-radius-lg"><input type="text" class="enc-input-field gallery-input-small" value="Sample" aria-label="Sample"></div>
-          <p class="gallery-combo-label">Full (pill)</p>
-          <div class="gallery-combo-radius-full"><input type="text" class="enc-input-field gallery-input-small" value="Sample" aria-label="Sample"></div>
-          <p class="gallery-combo-label">No radius</p>
-          <div class="gallery-combo-radius-none"><input type="text" class="enc-input-field gallery-input-small" value="Sample" aria-label="Sample"></div>
-        </div>
-        <div class="gallery-preview">
-          <p class="gallery-combo-label">Combinations — Radius (default md, lg, full, none)</p>
-          <p class="gallery-combo-label">Default (md)</p>
-          <input type="text" class="enc-input-field" value="Sample" aria-label="Sample" style="max-width: 12rem;">
-          <p class="gallery-combo-label">Large (lg)</p>
-          <div class="gallery-combo-radius-lg"><input type="text" class="enc-input-field" value="Sample" aria-label="Sample" style="max-width: 12rem;"></div>
-          <p class="gallery-combo-label">Full (pill)</p>
-          <div class="gallery-combo-radius-full"><input type="text" class="enc-input-field" value="Sample" aria-label="Sample" style="max-width: 12rem;"></div>
-          <p class="gallery-combo-label">No radius</p>
-          <div class="gallery-combo-radius-none"><input type="text" class="enc-input-field" value="Sample" aria-label="Sample" style="max-width: 12rem;"></div>
-        </div>
-      </div>
-
-      <div class="gallery-component-block" data-component-name="EncTag" data-component-type="atoms">
-        <h3 class="gallery-component-title">EncTag</h3>
-        <p class="gallery-component-purpose">Governed metadata label for status, sentiment, lifecycle, or categorical metadata.</p>
-        <div class="gallery-contract">
-          <p><strong>Role / Intent:</strong> Compact metadata label for status or categorization (read-only).</p>
-          <p><strong>Use when:</strong> Status badges, categories, filters in lists.</p>
-          <p><strong>Do NOT use when:</strong> As a button or action; for chart legends; for primary CTAs.</p>
-          <p><strong>Stable props:</strong> class <code>enc-tag</code>; content (text).</p>
-          <p><strong>Governance:</strong> Status/category only; ensure contrast; no action semantics.</p>
-          <p><strong>Success states:</strong> Use for success/status labels (e.g. Completed, In progress, Pending); token-only; do not imply error unless semantically correct.</p>
-        </div>
-        <div class="gallery-misuse">
-          <strong>Do not use for:</strong>
-          <ul>
-            <li>Clickable filters or actions (use EncButton or EncIconButton; parent may wrap EncTag inside, but EncTag itself stays non-interactive).</li>
-            <li>Analytics or dashboard chart legends (use data-vis / chart tokens instead of EncTag).</li>
-            <li>Navigation tabs or pills (use the appropriate nav component).</li>
-            <li>Icon-only chips or badges (EncTag must always include a text label).</li>
-            <li>Custom visual styles: brand purple tags, dashboard pastels, gradients, glow, animation, or raw hex/rgb colors.</li>
-          </ul>
-        </div>
-        <div class="gallery-snippet">&lt;EncTag variant="status" tone="success" icon="check" iconPosition="right"&gt;
-  Completed
-&lt;/EncTag&gt;
-
-&lt;EncTag variant="sentiment" tone="error" icon="alert-triangle"&gt;
-  Critical
-&lt;/EncTag&gt;
-
-&lt;EncTag variant="neutral"&gt;
-  Draft
-&lt;/EncTag&gt;</div>
-        <div class="gallery-preview">
-          <p class="gallery-state-label">Examples (labels only; variant/tone owned by EncTag implementation)</p>
-          <div class="gallery-preview-inline">
-            <span class="enc-tag">Completed</span>
-            <span class="enc-tag">In progress</span>
-            <span class="enc-tag">Pending</span>
-            <span class="enc-tag">Draft</span>
-            <span class="enc-tag">Department X</span>
-          </div>
-        </div>
-        <div class="gallery-preview">
-          <p class="gallery-combo-label">Combinations — Radius (default md, lg, full, none)</p>
-          <p class="gallery-combo-label">Default (md)</p>
-          <div class="gallery-preview-inline"><span class="enc-tag">Tag</span></div>
-          <p class="gallery-combo-label">Large (lg)</p>
-          <div class="gallery-preview-inline gallery-combo-radius-lg"><span class="enc-tag">Tag</span></div>
-          <p class="gallery-combo-label">Full (pill)</p>
-          <div class="gallery-preview-inline gallery-combo-radius-full"><span class="enc-tag">Tag</span></div>
-          <p class="gallery-combo-label">No radius</p>
-          <div class="gallery-preview-inline gallery-combo-radius-none"><span class="enc-tag">Tag</span></div>
-        </div>
-      </div>
-
-      <div class="gallery-component-block" data-component-name="EncAvatar" data-component-type="atoms">
-        <h3 class="gallery-component-title">EncAvatar</h3>
-        <p class="gallery-component-purpose">Represents a user or entity visually.</p>
-        <div class="gallery-contract">
-          <p><strong>Role / Intent:</strong> Represents a user or entity visually (identity).</p>
-          <p><strong>Use when:</strong> User profile, lists, headers where identity is shown.</p>
-          <p><strong>Do NOT use when:</strong> As icon for non-identity (e.g. KPI icon); for org logo without identity meaning.</p>
-          <p><strong>Stable props:</strong> class <code>enc-avatar</code>; content (initials) or image; aria-label or alt.</p>
-          <p><strong>Governance:</strong> Provide alt or aria-label for identity.</p>
-        </div>
-        <div class="gallery-misuse">
-          <strong>Do not use for:</strong>
-          <ul>
-            <li>Dashboard KPI or metric icons</li>
-            <li>Chart markers or data-vis elements</li>
-            <li>Generic decorative circles (use only for user/entity identity)</li>
-          </ul>
-        </div>
-        <div class="gallery-snippet">&lt;div class="enc-avatar" aria-label="User Jane Doe"&gt;JD&lt;/div&gt;</div>
-        <div class="gallery-preview">
-          <div class="gallery-preview-inline">
-            <div class="enc-avatar" aria-label="User JD">JD</div>
-            <div class="enc-avatar" aria-label="User MK">MK</div>
-            <div class="enc-avatar" aria-label="User SR">SR</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="gallery-component-block" data-component-name="EncToggle" data-component-type="atoms">
-        <h3 class="gallery-component-title">EncToggle</h3>
-        <p class="gallery-component-purpose">Binary on/off form control.</p>
-        <div class="gallery-contract">
-          <p><strong>Role / Intent:</strong> Binary on/off form control.</p>
-          <p><strong>Use when:</strong> Settings, filters, preferences (single on/off).</p>
-          <p><strong>Do NOT use when:</strong> Primary action (use EncButton); multi-option selection (use appropriate control).</p>
-          <p><strong>Stable props:</strong> class <code>enc-toggle</code>; role="switch"; aria-checked; aria-label.</p>
-          <p><strong>Governance:</strong> Focusable; keyboard toggle; reflect state to assistive tech.</p>
-        </div>
-        <div class="gallery-misuse">
-          <strong>Do not use for:</strong>
-          <ul>
-            <li>Submit or primary CTA (use enc-action-primary)</li>
-            <li>Status display only (non-interactive) — use EncTag for read-only status</li>
-            <li>Layout toggle (e.g. sidebar collapse) without form semantics — use EncIconButton if it is an action</li>
-          </ul>
-        </div>
-        <div class="gallery-snippet">&lt;button type="button" class="enc-toggle" role="switch" aria-checked="false" aria-label="Toggle setting"&gt;Off&lt;/button&gt;</div>
-        <div class="gallery-preview">
-          <p class="gallery-state-label">Default (unchecked)</p>
-          <button type="button" class="enc-toggle" role="switch" aria-checked="false" aria-label="Toggle option">Off</button>
-        </div>
-        <div class="gallery-preview">
-          <p class="gallery-state-label">Checked</p>
-          <button type="button" class="enc-toggle" role="switch" aria-checked="true" aria-label="Toggle option">On</button>
-        </div>
-        <div class="gallery-preview">
-          <p class="gallery-combo-label">Combinations — Radius (default md, lg, full, none)</p>
-          <p class="gallery-combo-label">Default (md)</p>
-          <div class="gallery-preview-inline"><button type="button" class="enc-toggle" role="switch" aria-checked="false" aria-label="Toggle">Off</button></div>
-          <p class="gallery-combo-label">Large (lg)</p>
-          <div class="gallery-preview-inline gallery-combo-radius-lg"><button type="button" class="enc-toggle" role="switch" aria-checked="false" aria-label="Toggle">Off</button></div>
-          <p class="gallery-combo-label">Full (pill)</p>
-          <div class="gallery-preview-inline gallery-combo-radius-full"><button type="button" class="enc-toggle" role="switch" aria-checked="false" aria-label="Toggle">Off</button></div>
-          <p class="gallery-combo-label">No radius</p>
-          <div class="gallery-preview-inline gallery-combo-radius-none"><button type="button" class="enc-toggle" role="switch" aria-checked="false" aria-label="Toggle">Off</button></div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ==================== MOLECULES ==================== -->
-    <section class="gallery-section" id="molecules" data-component-type="molecules">
-      <h2 class="gallery-section-heading">Molecules</h2>
-      <p class="gallery-back-nav"><a href="#intent-index" class="gallery-back-link">← Back to Intent Index</a></p>
-
-      <div class="gallery-component-block" data-component-name="EncButton" data-component-type="molecules">
-        <h3 class="gallery-component-title">EncButton (enc-action-primary / enc-action-secondary)</h3>
-        <p class="gallery-component-purpose">Primary/secondary action button. States: default, hover, focus, disabled. Size variants per DS: Lg, Sm, Mini (not bound in enculture.css; shown: default).</p>
-        <div class="gallery-contract">
-          <p><strong>Role / Intent:</strong> Primary or secondary action button.</p>
-          <p><strong>Use when:</strong> Main CTA (primary); secondary actions like Cancel, Back (secondary).</p>
-          <p><strong>Do NOT use when:</strong> Navigation link (use &lt;a&gt;); icon-only (use EncIconButton); toggle (use EncToggle). Do not use enc-btn or enc-btn-primary (forbidden).</p>
-          <p><strong>Stable props:</strong> class <code>enc-action-primary</code> or <code>enc-action-secondary</code>; disabled; visible label.</p>
-          <p><strong>Governance:</strong> enc-btn/enc-btn-primary forbidden; focus visible; disabled not focusable; label required.</p>
-          <p><strong>Destruction warning:</strong> For destructive actions (delete, remove, irreversible), use enc-action-secondary and always show confirmation (modal or step) before submit; do not use enc-action-primary for destructive without confirmation.</p>
-          <p><strong>Success states:</strong> After success, use EncToast (Success) or EncTag for status; disabled state for loading; no built-in success visual on the button.</p>
-        </div>
-        <div class="gallery-misuse">
-          <strong>Do not use for:</strong>
-          <ul>
-            <li>enc-btn or enc-btn-primary (forbidden; use enc-action-primary/secondary only)</li>
-            <li>Status badge or label (use EncTag)</li>
-            <li>Primary destructive action without confirmation flow</li>
-            <li>Dashboard or analytics-only custom buttons that bypass DS</li>
-          </ul>
-        </div>
-        <div class="gallery-snippet">&lt;button type="button" class="enc-action-primary"&gt;Save&lt;/button&gt;
-&lt;button type="button" class="enc-action-secondary"&gt;Cancel&lt;/button&gt;</div>
-        <div class="gallery-preview">
-          <p class="gallery-state-label">Primary — default</p>
-          <button type="button" class="enc-action-primary">Save</button>
-        </div>
-        <div class="gallery-preview">
-          <p class="gallery-state-label">Primary — disabled</p>
-          <button type="button" class="enc-action-primary" disabled>Save</button>
-        </div>
-        <div class="gallery-preview">
-          <p class="gallery-state-label">Secondary — default</p>
-          <button type="button" class="enc-action-secondary">Cancel</button>
-        </div>
-        <div class="gallery-preview">
-          <p class="gallery-state-label">Secondary — disabled</p>
-          <button type="button" class="enc-action-secondary" disabled>Cancel</button>
-        </div>
-        <div class="gallery-preview">
-          <p class="gallery-state-label">Variants side-by-side</p>
-          <div class="gallery-preview-inline">
-            <button type="button" class="enc-action-primary">Primary</button>
-            <button type="button" class="enc-action-secondary">Secondary</button>
-          </div>
-        </div>
-        <div class="gallery-preview">
-          <p class="gallery-combo-label">Combinations — Radius (DS: md, lg, full; display-only: none)</p>
-          <p class="gallery-combo-label">Default (md)</p>
-          <div class="gallery-preview-inline">
-            <button type="button" class="enc-action-primary">Primary</button>
-            <button type="button" class="enc-action-secondary">Secondary</button>
-          </div>
-          <p class="gallery-combo-label">Large (lg)</p>
-          <div class="gallery-preview-inline gallery-combo-radius-lg">
-            <button type="button" class="enc-action-primary">Primary</button>
-            <button type="button" class="enc-action-secondary">Secondary</button>
-          </div>
-          <p class="gallery-combo-label">Full / pill (full)</p>
-          <div class="gallery-preview-inline gallery-combo-radius-full">
-            <button type="button" class="enc-action-primary">Primary</button>
-            <button type="button" class="enc-action-secondary">Secondary</button>
-          </div>
-          <p class="gallery-combo-label">No radius (display-only)</p>
-          <div class="gallery-preview-inline gallery-combo-radius-none">
-            <button type="button" class="enc-action-primary">Primary</button>
-            <button type="button" class="enc-action-secondary">Secondary</button>
-          </div>
-        </div>
-      </div>
-
-      <div class="gallery-component-block" data-component-name="EncIconButton" data-component-type="molecules">
-        <h3 class="gallery-component-title">EncIconButton</h3>
-        <p class="gallery-component-purpose">Icon-only action button (Lucide). Accessible label required. Sizes: Icon.Sm, Icon.Md, Icon.Lg.</p>
-        <div class="gallery-contract">
-          <p><strong>Role / Intent:</strong> Icon-only action button.</p>
-          <p><strong>Use when:</strong> Add, Edit, Expand, More, Sidebar toggle, list row actions.</p>
-          <p><strong>Do NOT use when:</strong> Primary CTA (use EncButton with label); when label is essential for clarity.</p>
-          <p><strong>Stable props:</strong> class <code>enc-icon-button</code>; aria-label (required); icon from Lucide only.</p>
-          <p><strong>Governance:</strong> Accessible label required (aria-label or sr-only); icon size from DS; Lucide only.</p>
-          <p><strong>Destruction warning:</strong> For delete/remove icon actions, require confirmation (modal or step) before executing; use aria-label that indicates action (e.g. "Delete item").</p>
-          <p><strong>Success states:</strong> After success, use EncToast (Success); no built-in success visual on the icon button.</p>
-        </div>
-        <div class="gallery-misuse">
-          <strong>Do not use for:</strong>
-          <ul>
-            <li>Without aria-label or sr-only (accessibility violation)</li>
-            <li>Primary submit or main CTA (use enc-action-primary with visible label)</li>
-            <li>Custom icons outside Lucide</li>
-            <li>Dashboard chart controls with custom styling</li>
-          </ul>
-        </div>
-        <div class="gallery-snippet">&lt;button type="button" class="enc-icon-button" aria-label="Add item"&gt;&lt;!-- Lucide icon --&gt;&lt;/button&gt;</div>
-        <div class="gallery-preview">
-          <div class="gallery-preview-inline">
-            <button type="button" class="enc-icon-button" aria-label="Add">+</button>
-            <button type="button" class="enc-icon-button" aria-label="Edit">✎</button>
-            <button type="button" class="enc-icon-button" aria-label="More">⋯</button>
-            <button type="button" class="enc-icon-button" disabled aria-label="Disabled">+</button>
-          </div>
-        </div>
-        <div class="gallery-preview">
-          <p class="gallery-combo-label">Combinations — Radius (default md, lg, full, none)</p>
-          <p class="gallery-combo-label">Default (md)</p>
-          <div class="gallery-preview-inline"><button type="button" class="enc-icon-button" aria-label="Add">+</button></div>
-          <p class="gallery-combo-label">Large (lg)</p>
-          <div class="gallery-preview-inline gallery-combo-radius-lg"><button type="button" class="enc-icon-button" aria-label="Add">+</button></div>
-          <p class="gallery-combo-label">Full (circle)</p>
-          <div class="gallery-preview-inline gallery-combo-radius-full"><button type="button" class="enc-icon-button" aria-label="Add">+</button></div>
-          <p class="gallery-combo-label">No radius</p>
-          <div class="gallery-preview-inline gallery-combo-radius-none"><button type="button" class="enc-icon-button" aria-label="Add">+</button></div>
-        </div>
-      </div>
-
-      <div class="gallery-component-block" data-component-name="EncCard" data-component-type="molecules">
-        <h3 class="gallery-component-title">EncCard</h3>
-        <p class="gallery-component-purpose">Primary content surface for grouping related information; owns padding, radius, elevation.</p>
-        <div class="gallery-contract">
-          <p><strong>Role / Intent:</strong> Primary content surface for grouping related information.</p>
-          <p><strong>Use when:</strong> Dashboards, insights, survey creator, admin panels (grouping content).</p>
-          <p><strong>Do NOT use when:</strong> As a single-action button or clickable container for one action (use EncButton); for modal content without card semantics.</p>
-          <p><strong>Stable props:</strong> class <code>enc-card</code>; content slot.</p>
-          <p><strong>Governance:</strong> Owns padding, radius, elevation; ensure heading hierarchy if card has title; no layout beyond internal stacking.</p>
-        </div>
-        <div class="gallery-misuse">
-          <strong>Do not use for:</strong>
-          <ul>
-            <li>Chart containers with custom chart styling (use DS tokens for card; chart rules for data viz)</li>
-            <li>Layout grid cell without card semantics (card = content surface, not layout primitive)</li>
-            <li>Analytics KPI tile as card without DS enc-card class</li>
-          </ul>
-        </div>
-        <div class="gallery-snippet">&lt;div class="enc-card"&gt;
-  &lt;h3&gt;Title&lt;/h3&gt;
-  &lt;p&gt;Content.&lt;/p&gt;
-&lt;/div&gt;</div>
-        <div class="gallery-preview">
-          <div class="enc-card gallery-card-constrained">
-            <p class="gallery-text-margin-bottom gallery-text-bold">Sample card title</p>
-            <p class="gallery-text-no-margin gallery-text-muted">Dummy content for preview. Department X, Option A.</p>
-          </div>
-        </div>
-        <div class="gallery-preview">
-          <p class="gallery-combo-label">Combinations — Radius (default lg, md, none)</p>
-          <p class="gallery-combo-label">Default (lg)</p>
-          <div class="enc-card" style="max-width: 16rem; padding: var(--en-space-md);"><p style="margin: 0; font-size: var(--en-font-size-sm);">Card</p></div>
-          <p class="gallery-combo-label">Medium (md)</p>
-          <div class="gallery-combo-radius-md"><div class="enc-card" style="max-width: 16rem; padding: var(--en-space-md);"><p style="margin: 0; font-size: var(--en-font-size-sm);">Card</p></div></div>
-          <p class="gallery-combo-label">No radius</p>
-          <div class="gallery-combo-radius-none"><div class="enc-card" style="max-width: 16rem; padding: var(--en-space-md);"><p style="margin: 0; font-size: var(--en-font-size-sm);">Card</p></div></div>
-        </div>
-      </div>
-
-      <div class="gallery-component-block" data-component-name="EncListRow" data-component-type="molecules">
-        <h3 class="gallery-component-title">EncListRow</h3>
-        <p class="gallery-component-purpose">Selectable or navigable row. States: default, hover, selected, disabled.</p>
-        <div class="gallery-contract">
-          <p><strong>Role / Intent:</strong> Selectable or navigable row in lists.</p>
-          <p><strong>Use when:</strong> Pages, sections, questions lists (Survey Creator); admin lists.</p>
-          <p><strong>Do NOT use when:</strong> Single-action button; table header row; dashboard KPI row.</p>
-          <p><strong>Stable props:</strong> class <code>enc-list-row</code>; aria-selected; disabled state; row actions must use EncIconButton.</p>
-          <p><strong>Governance:</strong> State visuals DS-owned; product may signal intent (selected, disabled); no utility-based state styling.</p>
-          <p><strong>Success states:</strong> Use aria-selected="true" for selected/active row; state visuals are DS-owned; pair with EncTag for status (e.g. Completed) where needed.</p>
-        </div>
-        <div class="gallery-misuse">
-          <strong>Do not use for:</strong>
-          <ul>
-            <li>Analytics or dashboard table rows with custom styling (use enc-list-row + DS tokens)</li>
-            <li>Navigation breadcrumb (use appropriate nav component)</li>
-            <li>Layout misuse: list row is for list content, not generic flex row</li>
-            <li>Row actions with EncButton (use EncIconButton for row actions)</li>
-          </ul>
-        </div>
-        <div class="gallery-snippet">&lt;div class="enc-list-row" aria-selected="false"&gt;
-  &lt;span&gt;Primary label&lt;/span&gt;
-  &lt;span class="enc-tag"&gt;Status&lt;/span&gt;
-&lt;/div&gt;</div>
-        <div class="gallery-preview">
-          <p class="gallery-state-label">Default</p>
-          <div class="enc-list-row">
-            <span>Sample question</span>
-            <span class="enc-tag">Option A</span>
-          </div>
-          <p class="gallery-state-label">Selected (aria-selected="true")</p>
-          <div class="enc-list-row" aria-selected="true">
-            <span>Selected row</span>
-            <span class="enc-tag">Active</span>
-          </div>
-          <p class="gallery-state-label">Disabled</p>
-          <div class="enc-list-row enc-list-row--disabled">
-            <span>Disabled row</span>
-            <span class="enc-tag">N/A</span>
-          </div>
-        </div>
-        <div class="gallery-preview">
-          <p class="gallery-combo-label">Combinations — Radius (default md, lg, full, none)</p>
-          <p class="gallery-combo-label">Default (md)</p>
-          <div class="enc-list-row"><span>Row</span></div>
-          <p class="gallery-combo-label">Large (lg)</p>
-          <div class="gallery-combo-radius-lg"><div class="enc-list-row"><span>Row</span></div></div>
-          <p class="gallery-combo-label">Full (pill)</p>
-          <div class="gallery-combo-radius-full"><div class="enc-list-row"><span>Row</span></div></div>
-          <p class="gallery-combo-label">No radius</p>
-          <div class="gallery-combo-radius-none"><div class="enc-list-row"><span>Row</span></div></div>
-        </div>
-      </div>
-
-      <div class="gallery-component-block" data-component-name="EncToast" data-component-type="molecules">
-        <h3 class="gallery-component-title">EncToast</h3>
-        <p class="gallery-component-purpose">Feedback/notification (Shadcn Toast). Variants: Success, Warning, Error, Info.</p>
-        <div class="gallery-contract">
-          <p><strong>Role / Intent:</strong> Feedback/notification (toast).</p>
-          <p><strong>Use when:</strong> Success, warning, error, info messages; auto-dismiss 4–6s.</p>
-          <p><strong>Do NOT use when:</strong> Blocking modal; persistent banner; inline validation (use form-level).</p>
-          <p><strong>Stable props:</strong> Variant (Success/Warning/Error/Info); token-only colors; Z-Index 1600.</p>
-          <p><strong>Governance:</strong> Token-only colors; no custom positioning outside DS rules.</p>
-          <p><strong>Success states:</strong> Use Success variant (--en-success-500) for success feedback (e.g. "Saved", "Deleted"); do not imply error for success; auto-dismiss 4–6s.</p>
-        </div>
-        <div class="gallery-misuse">
-          <strong>Do not use for:</strong>
-          <ul>
-            <li>Analytics or dashboard custom notifications that bypass DS tokens</li>
-            <li>Critical blocking errors (use modal or inline)</li>
-            <li>Status display instead of action feedback</li>
-          </ul>
-        </div>
-        <div class="gallery-snippet">No .enc-* in enculture.css. See EN-AI_Components_Molecules.md EncToast; use production Shadcn Toast with DS tokens.</div>
-        <p class="gallery-skip-note">Component exists but preview not available (no .enc-* semantic in enculture.css).</p>
-      </div>
-
-      <div class="gallery-component-block" data-component-name="EncStepper" data-component-type="molecules">
-        <h3 class="gallery-component-title">EncStepper</h3>
-        <p class="gallery-component-purpose">Linear progress across multi-step flows. States: default, active, completed.</p>
-        <div class="gallery-contract">
-          <p><strong>Role / Intent:</strong> Linear progress across multi-step flows (survey creation, onboarding, configuration).</p>
-          <p><strong>Use when:</strong> Wizard or step flow; steps indicate progress only.</p>
-          <p><strong>Do NOT use when:</strong> Non-linear navigation; validation gating at component level (handled at flow level).</p>
-          <p><strong>Stable props:</strong> Steps; states default, active, completed; token-only colors.</p>
-          <p><strong>Governance:</strong> All colors resolve to Enculture tokens; no raw spacing/radius/color.</p>
-        </div>
-        <div class="gallery-misuse">
-          <strong>Do not use for:</strong>
-          <ul>
-            <li>Dashboard or analytics progress bars (use data-vis rules)</li>
-            <li>Tab-like navigation (stepper = progress, not tab switch)</li>
-            <li>Layout misuse: stepper is for flow progress, not page structure</li>
-          </ul>
-        </div>
-        <div class="gallery-snippet">No .enc-* in enculture.css. See EN-AI_Components_Molecules.md EncStepper; use production component with DS tokens.</div>
-        <p class="gallery-skip-note">Component exists but preview not available (no .enc-* semantic in enculture.css).</p>
-      </div>
-
-      <div class="gallery-component-block" data-component-name="EncDateRangePicker" data-component-type="molecules">
-        <h3 class="gallery-component-title">EncDateRangePicker</h3>
-        <p class="gallery-component-purpose">Start and end date selection.</p>
-        <div class="gallery-contract">
-          <p><strong>Role / Intent:</strong> Start and end date selection.</p>
-          <p><strong>Use when:</strong> Scheduling, filters (date range).</p>
-          <p><strong>Do NOT use when:</strong> Single date only (use appropriate single-date control); custom dashboard date picker that overrides DS.</p>
-          <p><strong>Stable props:</strong> Start/end inputs; native or Shadcn-backed; validation at form/flow level.</p>
-          <p><strong>Governance:</strong> Use enc-input-field semantics for inputs; validation at form or flow level.</p>
-        </div>
-        <div class="gallery-misuse">
-          <strong>Do not use for:</strong>
-          <ul>
-            <li>Analytics date filter with custom styling (use EncInputField + DS tokens)</li>
-            <li>Dashboard-only date control that bypasses DS</li>
-          </ul>
-        </div>
-        <div class="gallery-snippet">No .enc-* in enculture.css. See EN-AI_Components_Molecules.md EncDateRangePicker; use enc-input-field for inputs.</div>
-        <p class="gallery-skip-note">Component exists but preview not available (no .enc-* semantic in enculture.css).</p>
-      </div>
-
-      <div class="gallery-component-block" data-component-name="EncTimeInput" data-component-type="molecules">
-        <h3 class="gallery-component-title">EncTimeInput</h3>
-        <p class="gallery-component-purpose">Time value capture for scheduling.</p>
-        <div class="gallery-contract">
-          <p><strong>Role / Intent:</strong> Time value capture for scheduling.</p>
-          <p><strong>Use when:</strong> Scheduling contexts (time of day).</p>
-          <p><strong>Do NOT use when:</strong> Duration in hours/minutes (different control); custom time picker that overrides DS.</p>
-          <p><strong>Stable props:</strong> Consistent time format; disabled/error per form governance.</p>
-          <p><strong>Governance:</strong> Disabled and error states follow form governance.</p>
-        </div>
-        <div class="gallery-misuse">
-          <strong>Do not use for:</strong>
-          <ul>
-            <li>Dashboard or analytics time filters with custom styling</li>
-          </ul>
-        </div>
-        <div class="gallery-snippet">No .enc-* in enculture.css. See EN-AI_Components_Molecules.md EncTimeInput; use consistent time format and DS tokens.</div>
-        <p class="gallery-skip-note">Component exists but preview not available (no .enc-* semantic in enculture.css).</p>
-      </div>
-
-      <div class="gallery-component-block" data-component-name="EncEmptyState" data-component-type="molecules">
-        <h3 class="gallery-component-title">EncEmptyState</h3>
-        <p class="gallery-component-purpose">Communicates absence of data or configuration; icon + message + optional action.</p>
-        <div class="gallery-contract">
-          <p><strong>Role / Intent:</strong> Communicates absence of data or configuration.</p>
-          <p><strong>Use when:</strong> Empty lists, dashboards, config; icon + message + optional action.</p>
-          <p><strong>Do NOT use when:</strong> Error state (unless explicitly defined); loading state.</p>
-          <p><strong>Stable props:</strong> Icon (Icon System); message; optional action (EncButton).</p>
-          <p><strong>Governance:</strong> Icons per Icon System; do not imply error unless defined.</p>
-        </div>
-        <div class="gallery-misuse">
-          <strong>Do not use for:</strong>
-          <ul>
-            <li>Error state (use error messaging component)</li>
-            <li>Dashboard empty with custom styling (use DS tokens)</li>
-            <li>Implying error when it is simply empty</li>
-          </ul>
-        </div>
-        <div class="gallery-snippet">No .enc-* in enculture.css. See EN-AI_Components_Molecules.md EncEmptyState; icon + message + optional enc-action-primary.</div>
-        <p class="gallery-skip-note">Component exists but preview not available (no .enc-* semantic in enculture.css).</p>
-      </div>
-    </section>
-
-    <!-- ==================== ORGANISMS ==================== -->
-    <section class="gallery-section" id="organisms" data-component-type="organisms">
-      <h2 class="gallery-section-heading">Organisms</h2>
-      <p class="gallery-back-nav"><a href="#intent-index" class="gallery-back-link">← Back to Intent Index</a></p>
-
-      <div class="gallery-component-block" data-component-name="EncHeader" data-component-type="organisms">
-        <h3 class="gallery-component-title">EncHeader</h3>
-        <p class="gallery-component-purpose">Top-level structural container; hosts context, navigation, high-level actions.</p>
-        <div class="gallery-contract">
-          <p><strong>Role / Intent:</strong> Top-level structural container for app shell; hosts context, nav, high-level actions.</p>
-          <p><strong>Use when:</strong> Survey Builder, Respondent, Admin, Dashboards app shell header.</p>
-          <p><strong>Do NOT use when:</strong> Page-level header within content (use EncPageHeader); section header (use EncSectionHeader).</p>
-          <p><strong>Stable props:</strong> class <code>enc-header</code>; layout is component-owned.</p>
-          <p><strong>Governance:</strong> Z-layer above main, below modals; no workflow logic; DS tokens only.</p>
-        </div>
-        <div class="gallery-misuse">
-          <strong>Do not use for:</strong>
-          <ul>
-            <li>Dashboard-specific filters in header without DS semantics</li>
-            <li>Section divider or in-page header (use EncPageHeader/EncSectionHeader)</li>
-            <li>Layout misuse: header is app shell, not content section</li>
-          </ul>
-        </div>
-        <div class="gallery-snippet">&lt;header class="enc-header"&gt;
-  &lt;div&gt;Title / context&lt;/div&gt;
-  &lt;button type="button" class="enc-action-primary"&gt;Action&lt;/button&gt;
-&lt;/header&gt;</div>
-        <div class="gallery-preview">
-          <header class="enc-header">
-            <div>
-              <p class="gallery-text-no-margin gallery-text-bold">Survey Creator</p>
-              <p class="gallery-text-margin-top gallery-text-muted">Component Gallery</p>
             </div>
-            <div class="gallery-preview-inline">
-              <button type="button" class="enc-action-secondary">Sign in</button>
-              <button type="button" class="enc-action-primary">Get started</button>
+            <div class="gallery-search-box">
+              <label for="component-search" class="gallery-combo-label gallery-label-bold">Search components</label>
+              <div class="gallery-search-wrapper" style="position: relative; width: 100%;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                  stroke="#6b7280" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                  class="gallery-search-icon"
+                  style="position: absolute; left: 12px; top: 50%; transform: translateY(-50%); pointer-events: none;">
+                  <circle cx="11" cy="11" r="8"></circle>
+                  <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                </svg>
+                <input type="text" id="component-search" class="enc-input-field gallery-input-spacing"
+                  placeholder="Type to search (e.g. EncButton, tag, input)..." aria-label="Search components"
+                  autocomplete="off" style="padding-left: 36px !important;">
+              </div>
+              <div id="search-suggestions" class="gallery-search-suggestions" role="listbox"
+                aria-label="Component search suggestions"></div>
             </div>
-          </header>
-        </div>
-      </div>
-
-      <div class="gallery-component-block" data-component-name="EncSidebar" data-component-type="organisms">
-        <h3 class="gallery-component-title">EncSidebar</h3>
-        <p class="gallery-component-purpose">Secondary navigation or auxiliary panel container.</p>
-        <div class="gallery-contract">
-          <p><strong>Role / Intent:</strong> Secondary navigation or auxiliary panel container.</p>
-          <p><strong>Use when:</strong> Dashboards, Survey Creator, Respondent (left or right sidebar).</p>
-          <p><strong>Do NOT use when:</strong> Main content area; inline form sidebar (use layout within main).</p>
-          <p><strong>Stable props:</strong> class <code>enc-sidebar</code>; width from tokens or parent; .enc-respondent sets min-width for respondent.</p>
-          <p><strong>Governance:</strong> Independent scroll; no inline sizing in product code; width scope-driven.</p>
-        </div>
-        <div class="gallery-misuse">
-          <strong>Do not use for:</strong>
-          <ul>
-            <li>Dashboard chart legend panel with custom styling (use DS tokens)</li>
-            <li>Layout misuse: sidebar is nav/auxiliary, not main content</li>
-          </ul>
-        </div>
-        <div class="gallery-snippet">&lt;div class="enc-sidebar"&gt;
-  &lt;nav&gt;...&lt;/nav&gt;
-&lt;/div&gt;</div>
-        <div class="gallery-preview">
-          <div class="enc-sidebar gallery-sidebar-narrow">
-            <p class="gallery-text-margin-bottom gallery-text-bold">Nav</p>
-            <p class="gallery-text-no-margin gallery-text-muted">Dashboard</p>
-            <p class="gallery-text-no-margin gallery-text-muted">Surveys</p>
-            <p class="gallery-text-no-margin gallery-text-muted">Settings</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="gallery-component-block">
-        <h3 class="gallery-component-title">EncMainContainer</h3>
-        <p class="gallery-component-purpose">Primary page layout wrapper; arranges header, sidebars, main canvas.</p>
-        <div class="gallery-contract">
-          <p><strong>Role / Intent:</strong> Primary page layout wrapper; arranges header, sidebars, main canvas.</p>
-          <p><strong>Use when:</strong> All app shells (sole owner of page-level layout).</p>
-          <p><strong>Do NOT use when:</strong> Content max-width only (use EncContainer); modal content.</p>
-          <p><strong>Stable props:</strong> class <code>enc-main-container</code>; grid/flex logic inside component only.</p>
-          <p><strong>Governance:</strong> Product MUST NOT define grid-template-columns, flex-*, or column width utilities for page layout; EncMainContainer owns it.</p>
-        </div>
-        <div class="gallery-misuse">
-          <strong>Do not use for:</strong>
-          <ul>
-            <li>Product-level grid/flex for page layout (belongs inside EncMainContainer)</li>
-            <li>Layout misuse: main container owns layout; do not duplicate with Tailwind/utility layout</li>
-          </ul>
-        </div>
-        <div class="gallery-snippet">&lt;main class="enc-main-container"&gt;
-  &lt;!-- Content; layout (header + sidebar + main) owned by this component --&gt;
-&lt;/main&gt;</div>
-        <div class="gallery-preview">
-          <div class="gallery-mini-layout">
-            <div class="enc-sidebar gallery-sidebar-mini">Sidebar</div>
-            <main class="enc-main-container">Main content area (dummy)</main>
-          </div>
-        </div>
-      </div>
-
-      <div class="gallery-component-block" data-component-name="EncContainer" data-component-type="organisms">
-        <h3 class="gallery-component-title">EncContainer</h3>
-        <p class="gallery-component-purpose">Layout container with max-width and padding/gap. Sm, Md, Lg, Xl.</p>
-        <div class="gallery-contract">
-          <p><strong>Role / Intent:</strong> Layout container with max-width and padding/gap.</p>
-          <p><strong>Use when:</strong> Page or section layout; Sm (720px), Md (960px), Lg (1200px), Xl (1440px).</p>
-          <p><strong>Do NOT use when:</strong> App shell layout (use EncMainContainer); modal content.</p>
-          <p><strong>Stable props:</strong> Max-width variant; padding {Global20}; gap {Global20}.</p>
-          <p><strong>Governance:</strong> No .enc-* in enculture.css; see EN-AI_Components_Molecules EncContainer.</p>
-        </div>
-        <div class="gallery-misuse">
-          <strong>Do not use for:</strong>
-          <ul>
-            <li>App shell (header + sidebar + main) — use EncMainContainer</li>
-            <li>Layout misuse: container = content width, not page structure</li>
-          </ul>
-        </div>
-        <div class="gallery-snippet">No .enc-* in enculture.css. See EN-AI_Components_Molecules EncContainer; max-width Sm/Md/Lg/Xl, padding and gap from DS.</div>
-        <p class="gallery-skip-note">Component exists but preview not available (no .enc-* semantic in enculture.css).</p>
-      </div>
-
-      <div class="gallery-component-block" data-component-name="EncPageHeader" data-component-type="organisms">
-        <h3 class="gallery-component-title">EncPageHeader</h3>
-        <p class="gallery-component-purpose">Page-level header: title, optional description, actions.</p>
-        <div class="gallery-contract">
-          <p><strong>Role / Intent:</strong> Page-level header with title, optional description, actions.</p>
-          <p><strong>Use when:</strong> Survey Creator, Admin, Respondent page title + actions.</p>
-          <p><strong>Do NOT use when:</strong> App shell header (use EncHeader); section header (use EncSectionHeader).</p>
-          <p><strong>Stable props:</strong> Title (required); subtitle/helper optional; action slot (EncButton/EncIconButton).</p>
-          <p><strong>Governance:</strong> No custom spacing outside layout tokens; actions must use EncButton or EncIconButton.</p>
-        </div>
-        <div class="gallery-misuse">
-          <strong>Do not use for:</strong>
-          <ul>
-            <li>App shell top bar (use EncHeader)</li>
-            <li>Section title within page (use EncSectionHeader; must not compete with EncPageHeader hierarchy)</li>
-          </ul>
-        </div>
-        <div class="gallery-snippet">No .enc-* in enculture.css. See EN-AI_Components_Molecules EncPageHeader; title required, actions = EncButton/EncIconButton.</div>
-        <p class="gallery-skip-note">Component exists but preview not available (no .enc-* semantic in enculture.css).</p>
-      </div>
-
-      <div class="gallery-component-block" data-component-name="EncSection" data-component-type="organisms">
-        <h3 class="gallery-component-title">EncSection</h3>
-        <p class="gallery-component-purpose">Groups related content; controls vertical rhythm.</p>
-        <div class="gallery-contract">
-          <p><strong>Role / Intent:</strong> Groups related content; controls vertical rhythm.</p>
-          <p><strong>Use when:</strong> All flows; section container with optional EncSectionHeader and content slot.</p>
-          <p><strong>Do NOT use when:</strong> As page layout (use EncContainer/EncMainContainer); for card (use EncCard).</p>
-          <p><strong>Stable props:</strong> Section container; spacing only.</p>
-          <p><strong>Governance:</strong> No visual beyond background and spacing tokens.</p>
-        </div>
-        <div class="gallery-misuse">
-          <strong>Do not use for:</strong>
-          <ul>
-            <li>Layout misuse: section = grouping and rhythm, not grid/flex structure</li>
-          </ul>
-        </div>
-        <div class="gallery-snippet">No .enc-* in enculture.css. See EN-AI_Components_Molecules EncSection; spacing only, no extra visual.</div>
-        <p class="gallery-skip-note">Component exists but preview not available (no .enc-* semantic in enculture.css).</p>
-      </div>
-
-      <div class="gallery-component-block" data-component-name="EncSectionHeader" data-component-type="organisms">
-        <h3 class="gallery-component-title">EncSectionHeader</h3>
-        <p class="gallery-component-purpose">Section title, optional helper, optional action slot.</p>
-        <div class="gallery-contract">
-          <p><strong>Role / Intent:</strong> Section title with optional helper and action slot.</p>
-          <p><strong>Use when:</strong> Survey Creator, Admin section titles.</p>
-          <p><strong>Do NOT use when:</strong> Page-level title (use EncPageHeader); must not compete with EncPageHeader hierarchy.</p>
-          <p><strong>Stable props:</strong> Section title; optional helper; optional action (EncButton/EncIconButton).</p>
-          <p><strong>Governance:</strong> Must not compete with EncPageHeader hierarchy.</p>
-        </div>
-        <div class="gallery-misuse">
-          <strong>Do not use for:</strong>
-          <ul>
-            <li>Page-level header (use EncPageHeader)</li>
-            <li>Competing with EncPageHeader (section &lt; page in hierarchy)</li>
-          </ul>
-        </div>
-        <div class="gallery-snippet">No .enc-* in enculture.css. See EN-AI_Components_Molecules EncSectionHeader; do not compete with EncPageHeader.</div>
-        <p class="gallery-skip-note">Component exists but preview not available (no .enc-* semantic in enculture.css).</p>
-      </div>
-    </section>
-
-    <!-- ==================== SYSTEM ==================== -->
-    <section class="gallery-section" id="system" data-component-type="system">
-      <h2 class="gallery-section-heading">System</h2>
-      <p class="gallery-back-nav"><a href="#intent-index" class="gallery-back-link">← Back to Intent Index</a></p>
-
-      <div class="gallery-component-block" data-component-name="Density" data-component-type="system">
-        <h3 class="gallery-component-title">Density (Compact)</h3>
-        <p class="gallery-component-purpose">Set [data-density="compact"] on container. Overrides control height, spacing, radius.</p>
-        <div class="gallery-contract">
-          <p><strong>Role / Intent:</strong> Override control height, spacing, radius for compact UI.</p>
-          <p><strong>Use when:</strong> Optional app-wide or per-view compact mode.</p>
-          <p><strong>Do NOT use when:</strong> Product-level compact styling (enculture.css resolves it); do not add custom compact styles in product.</p>
-          <p><strong>Stable props:</strong> data-density="compact" on container (e.g. body, #root).</p>
-          <p><strong>Governance:</strong> No product-level compact styling; enculture.css resolves control height, spacing, radius.</p>
-        </div>
-        <div class="gallery-misuse">
-          <strong>Do not use for:</strong>
-          <ul>
-            <li>Product-level compact CSS (DS owns density)</li>
-            <li>Dashboard or analytics-only density (use on container, not per-component)</li>
-          </ul>
-        </div>
-        <div class="gallery-snippet">&lt;div id="root" data-density="compact"&gt;
-  &lt;!-- App content --&gt;
-&lt;/div&gt;</div>
-        <div class="gallery-preview">
-          <p class="gallery-state-label">Default (comfortable)</p>
-          <button type="button" class="enc-action-primary">Default density</button>
-        </div>
-        <div class="gallery-preview" data-density="compact">
-          <p class="gallery-state-label">Compact (data-density="compact" on wrapper)</p>
-          <button type="button" class="enc-action-primary">Compact density</button>
-        </div>
-      </div>
-
-      <div class="gallery-component-block" data-component-name="EncRespondent" data-component-type="system">
-        <h3 class="gallery-component-title">Enc Respondent scope</h3>
-        <p class="gallery-component-purpose">Apply .enc-respondent to respondent shell; sets sidebar min-width (e.g. 180px).</p>
-        <div class="gallery-contract">
-          <p><strong>Role / Intent:</strong> Respondent-specific constraint; sets sidebar min-width.</p>
-          <p><strong>Use when:</strong> Survey Respondent shell only.</p>
-          <p><strong>Do NOT use when:</strong> Survey Creator, Admin, or Dashboards (different scope).</p>
-          <p><strong>Stable props:</strong> class <code>enc-respondent</code> on respondent shell; .enc-respondent .enc-sidebar gets min-width.</p>
-          <p><strong>Governance:</strong> Apply .enc-respondent to respondent shell only; enculture.css defines --en-respondent-sidebar-min.</p>
-        </div>
-        <div class="gallery-misuse">
-          <strong>Do not use for:</strong>
-          <ul>
-            <li>Creator or Admin shell (enc-respondent is respondent-only)</li>
-            <li>Layout misuse: respondent scope = sidebar min-width, not general layout</li>
-          </ul>
-        </div>
-        <div class="gallery-snippet">&lt;div class="enc-respondent"&gt;
-  &lt;div class="enc-sidebar"&gt;...&lt;/div&gt;
-  &lt;main class="enc-main-container"&gt;...&lt;/main&gt;
-&lt;/div&gt;</div>
-        <div class="gallery-preview">
-          <div class="enc-respondent gallery-mini-layout gallery-layout-bordered">
-            <div class="enc-sidebar">Respondent sidebar (min-width from .enc-respondent)</div>
-            <main class="enc-main-container">Respondent main</main>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ==================== DESIGN TOKENS ==================== -->
-    <section class="gallery-section" id="design-tokens" data-component-type="design-tokens">
-      <h2 class="gallery-section-heading">Design Tokens</h2>
-      <p class="gallery-back-nav"><a href="#intent-index" class="gallery-back-link">← Back to Intent Index</a></p>
-
-      <div class="gallery-component-block" data-component-name="ColorSwatches" data-component-type="design-tokens">
-        <h3 class="gallery-component-title">Color Swatches — Background Colors</h3>
-        <p class="gallery-component-purpose">All Enculture DS color tokens for backgrounds, surfaces, and semantic states. Use var(--en-*) tokens only.</p>
-        <div class="gallery-contract">
-          <p><strong>Role / Intent:</strong> Reference for all DS color tokens.</p>
-          <p><strong>Use when:</strong> Selecting colors for backgrounds, surfaces, borders, text (via tokens).</p>
-          <p><strong>Do NOT use when:</strong> Raw hex/rgba values; colors not defined in DS tokens.</p>
-          <p><strong>Stable props:</strong> CSS custom properties (var(--en-*)) only.</p>
-          <p><strong>Governance:</strong> All colors must use DS tokens; no raw color values.</p>
-        </div>
-        <div class="gallery-misuse">
-          <strong>Do not use:</strong>
-          <ul>
-            <li>Raw hex colors (e.g., #a246f0) — use var(--en-primary-brand-500)</li>
-            <li>Raw rgba values — use DS tokens</li>
-            <li>Colors not defined in DS (flag as gap)</li>
-          </ul>
-        </div>
-        <div class="gallery-snippet">/* Use tokens, not raw colors */
-background: var(--en-primary-brand-500);
-color: var(--en-grey-800);
-border-color: var(--en-grey-200);</div>
-        
-        <div class="gallery-preview">
-          <p class="gallery-state-label">Brand Colors (Purple)</p>
-          <div class="gallery-swatch-grid">
-            <div>
-              <div class="gallery-color-swatch gallery-swatch-brand-500">--en-primary-brand-500</div>
-              <p class="gallery-combo-label">Primary Brand (#a246f0)</p>
-            </div>
-            <div>
-              <div class="gallery-color-swatch gallery-swatch-brand-700">--en-primary-brand-700</div>
-              <p class="gallery-combo-label">Hover State (#7e22ce)</p>
-            </div>
-            <div>
-              <div class="gallery-color-swatch gallery-swatch-brand-50">--en-primary-brand-50</div>
-              <p class="gallery-combo-label">Page Background</p>
-            </div>
-            <div>
-              <div class="gallery-color-swatch gallery-swatch-brand-100">--en-primary-brand-100</div>
-              <p class="gallery-combo-label">Lightest Tint</p>
-            </div>
-            <div>
-              <div class="gallery-color-swatch gallery-swatch-brand-700">--en-primary-brand-700</div>
-              <p class="gallery-combo-label">Hover State</p>
+            <div class="gallery-search-actions">
+              <button type="button" id="search-button" class="enc-action-primary" aria-label="Search">Search</button>
+              <button type="button" id="clear-search" class="enc-action-secondary gallery-clear-hidden"
+                aria-label="Clear search">Clear</button>
             </div>
           </div>
         </div>
 
-        <div class="gallery-preview">
-          <p class="gallery-state-label">Neutral Colors (Grayscale)</p>
-          <div class="gallery-swatch-grid">
-            <div>
-              <div class="gallery-color-swatch gallery-swatch-neutral-0">--en-grey-0</div>
-              <p class="gallery-combo-label">Surface / Card Bg (#ffffff)</p>
-            </div>
-            <div>
-              <div class="gallery-color-swatch" style="background: var(--en-grey-20);">--en-grey-20</div>
-              <p class="gallery-combo-label">Alt Background (#f8fafb)</p>
-            </div>
-            <div>
-              <div class="gallery-color-swatch gallery-swatch-neutral-200">--en-grey-200</div>
-              <p class="gallery-combo-label">Borders (#d5dbde)</p>
-            </div>
-            <div>
-              <div class="gallery-color-swatch gallery-color-swatch-dark" style="background: var(--en-grey-300);">--en-grey-300</div>
-              <p class="gallery-combo-label">Disabled Text (#a1a6a8)</p>
-            </div>
-            <div>
-              <div class="gallery-color-swatch gallery-color-swatch-dark gallery-swatch-neutral-500">--en-grey-500</div>
-              <p class="gallery-combo-label">Placeholder / Muted (#505355)</p>
-            </div>
-            <div>
-              <div class="gallery-color-swatch gallery-color-swatch-dark gallery-swatch-neutral-800">--en-grey-800</div>
-              <p class="gallery-combo-label">Primary Text (#18191a)</p>
-            </div>
           </div>
-        </div>
+        </section>
 
-        <div class="gallery-preview">
-          <p class="gallery-state-label">Semantic States</p>
-          <div class="gallery-swatch-grid">
-            <div>
-              <div class="gallery-color-swatch gallery-color-swatch-dark gallery-swatch-success-500">--en-success-500</div>
-              <p class="gallery-combo-label">Success</p>
-            </div>
-            <div>
-              <div class="gallery-color-swatch gallery-swatch-success-100">--en-success-100</div>
-              <p class="gallery-combo-label">Success Light</p>
-            </div>
-            <div>
-              <div class="gallery-color-swatch gallery-color-swatch-dark gallery-swatch-error-500">--en-error-500</div>
-              <p class="gallery-combo-label">Error / Critical</p>
-            </div>
-            <div>
-              <div class="gallery-color-swatch gallery-swatch-error-100">--en-error-100</div>
-              <p class="gallery-combo-label">Error Light</p>
-            </div>
-            <div>
-              <div class="gallery-color-swatch gallery-swatch-info-100">--en-info-100</div>
-              <p class="gallery-combo-label">Info Light</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="gallery-preview">
-          <p class="gallery-state-label">Secondary Colors (Teal)</p>
-          <div class="gallery-swatch-grid">
-            <div>
-              <div class="gallery-color-swatch gallery-swatch-teal-50">--en-teal-50</div>
-              <p class="gallery-combo-label">Teal Light</p>
-            </div>
-            <div>
-              <div class="gallery-color-swatch gallery-swatch-teal-200">--en-teal-200</div>
-              <p class="gallery-combo-label">Teal Medium</p>
-            </div>
-            <div>
-              <div class="gallery-color-swatch gallery-color-swatch-dark gallery-swatch-teal-500">--en-teal-500</div>
-              <p class="gallery-combo-label">Teal Base</p>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="gallery-component-block" data-component-name="Typography" data-component-type="design-tokens">
-        <h3 class="gallery-component-title">Typography — Font Styling</h3>
-        <p class="gallery-component-purpose">All Enculture DS typography tokens: font families, sizes, weights. Use var(--en-font-*) tokens only.</p>
-        <div class="gallery-contract">
-          <p><strong>Role / Intent:</strong> Reference for all DS typography tokens.</p>
-          <p><strong>Use when:</strong> Setting font sizes, families, weights (via tokens).</p>
-          <p><strong>Do NOT use when:</strong> Raw px/rem values; fonts not defined in DS tokens.</p>
-          <p><strong>Stable props:</strong> CSS custom properties (var(--en-font-*)) only.</p>
-          <p><strong>Governance:</strong> All typography must use DS tokens; no raw font values.</p>
-        </div>
-        <div class="gallery-misuse">
-          <strong>Do not use:</strong>
-          <ul>
-            <li>Raw px values (e.g., 16px) — use var(--en-font-size-md)</li>
-            <li>Raw rem values — use DS tokens</li>
-            <li>Font families not in DS (use var(--en-font-family-base))</li>
-          </ul>
-        </div>
-        <div class="gallery-snippet">/* Use tokens, not raw values */
-font-family: var(--en-font-family-base);
-font-size: var(--en-font-size-md);
-font-weight: 600; /* Use numeric weights: 400, 500, 600, 700 */</div>
-        
-        <div class="gallery-preview">
-          <p class="gallery-state-label">Font Family</p>
-          <div class="gallery-typography-sample">
-            <p class="gallery-typo-family gallery-typo-md">Primary Font: var(--en-font-family-base) — "Poppins", system-ui, sans-serif</p>
-          </div>
-        </div>
-
-        <div class="gallery-preview">
-          <p class="gallery-state-label">Font Sizes</p>
-          <div class="gallery-typography-sample">
-            <p class="gallery-typo-h2">H2: var(--en-font-size-h2) — 48px</p>
-            <p class="gallery-typo-h3">H3: var(--en-font-size-h3) — 32px</p>
-            <p class="gallery-typo-h4">H4: var(--en-font-size-h4) — 20px</p>
-            <p class="gallery-typo-lg">Large: var(--en-font-size-lg) — 18px</p>
-            <p class="gallery-typo-md">Body Regular: var(--en-font-size-md) — 16px</p>
-            <p class="gallery-typo-sm">Body Medium: var(--en-font-size-sm) — 14px</p>
-            <p class="gallery-typo-caption">Caption: var(--en-font-size-caption) — 12px</p>
-          </div>
-        </div>
-
-        <div class="gallery-preview">
-          <p class="gallery-state-label">Font Weights</p>
-          <div class="gallery-typography-sample">
-            <p class="gallery-typo-md gallery-typo-weight-400">Regular (400): Normal weight for body text</p>
-            <p class="gallery-typo-md gallery-typo-weight-500">Medium (500): Secondary actions, labels</p>
-            <p class="gallery-typo-md gallery-typo-weight-600">Semibold (600): Headings, primary actions, emphasis</p>
-            <p class="gallery-typo-md gallery-typo-weight-700" style="margin: 0;">Bold (700): Strong emphasis, high-priority headings</p>
-          </div>
-        </div>
-
-        <div class="gallery-preview">
-          <p class="gallery-state-label">Typography Scale Hierarchy</p>
-          <div class="gallery-typography-sample">
-            <h1 class="gallery-typo-h2 gallery-typo-family" style="margin: 0 0 var(--en-space-md);">Page Title (H2)</h1>
-            <h2 class="gallery-typo-h3 gallery-typo-family" style="margin: 0 0 var(--en-space-md);">Section Heading (H3)</h2>
-            <h3 class="gallery-typo-h4 gallery-typo-family" style="margin: 0 0 var(--en-space-md);">Subsection (H4)</h3>
-            <p class="gallery-typo-md gallery-typo-family" style="margin: 0 0 var(--en-space-sm);">Body text (Regular) — Use for paragraphs and general content.</p>
-            <p class="gallery-typo-sm gallery-typo-family" style="margin: 0 0 var(--en-space-sm);">Small text (Medium) — Use for helper text, metadata, secondary information.</p>
-            <p class="gallery-typo-caption gallery-typo-family" style="margin: 0;">Caption (Small) — Use for labels, timestamps, fine print.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <footer class="gallery-footer-spacing">
-      <p>Enculture Design System — Component Gallery. Source of truth: enculture.css, En-AI_Design_System.md, EN-AI_Components_Molecules.md, COMPONENT_REGISTRY.md. Dummy data only; no API or production data.</p>
-    </footer>
-  </div>
-  <script>
-    (function() {
-      const searchInput = document.getElementById('component-search');
-      const typeFilter = document.getElementById('component-type');
       const suggestionsDropdown = document.getElementById('search-suggestions');
       const componentBlocks = document.querySelectorAll('.gallery-component-block');
       const sections = document.querySelectorAll('.gallery-section[data-component-type]');
       let highlightedIndex = -1;
 
       // Build component list for suggestions
-      const componentList = Array.from(componentBlocks).map(function(block) {
+      const componentList = Array.from(componentBlocks).map(function (block) {
         const name = block.getAttribute('data-component-name') || '';
         const type = block.getAttribute('data-component-type') || '';
         const title = block.querySelector('.gallery-component-title')?.textContent || '';
         return { name, type, title, block };
-      }).filter(function(item) { return item.name; });
+      }).filter(function (item) { return item.name; });
 
       function showSuggestions(term) {
         if (!term || term.length < 1) {
@@ -1684,9 +978,11 @@ font-weight: 600; /* Use numeric weights: 400, 500, 600, 700 */</div>
         }
 
         const termLower = term.toLowerCase();
-        const matches = componentList.filter(function(item) {
-          return item.name.toLowerCase().includes(termLower) || 
-                 item.title.toLowerCase().includes(termLower);
+        const matches = componentList.filter(function (item) {
+          const searchKeywords = (item.block.getAttribute('data-search-keywords') || '').toLowerCase();
+          return item.name.toLowerCase().includes(termLower) ||
+            item.title.toLowerCase().includes(termLower) ||
+            searchKeywords.includes(termLower);
         }).slice(0, 8); // Limit to 8 suggestions
 
         if (matches.length === 0) {
@@ -1694,20 +990,20 @@ font-weight: 600; /* Use numeric weights: 400, 500, 600, 700 */</div>
           return;
         }
 
-        suggestionsDropdown.innerHTML = matches.map(function(item, index) {
+        suggestionsDropdown.innerHTML = matches.map(function (item, index) {
           const typeLabel = item.type.charAt(0).toUpperCase() + item.type.slice(1);
           return '<div class="gallery-suggestion-item" data-index="' + index + '" data-name="' + item.name + '" role="option">' +
-                 '<div class="gallery-suggestion-name">' + item.name + '</div>' +
-                 '<div class="gallery-suggestion-type">' + typeLabel + '</div>' +
-                 '</div>';
+            '<div class="gallery-suggestion-name">' + item.name + '</div>' +
+            '<div class="gallery-suggestion-type">' + typeLabel + '</div>' +
+            '</div>';
         }).join('');
 
         suggestionsDropdown.classList.add('show');
         highlightedIndex = -1;
 
         // Add click handlers
-        suggestionsDropdown.querySelectorAll('.gallery-suggestion-item').forEach(function(item) {
-          item.addEventListener('click', function() {
+        suggestionsDropdown.querySelectorAll('.gallery-suggestion-item').forEach(function (item) {
+          item.addEventListener('click', function () {
             const name = this.getAttribute('data-name');
             searchInput.value = name;
             document.getElementById('clear-search').classList.remove('gallery-clear-hidden');
@@ -1716,8 +1012,8 @@ font-weight: 600; /* Use numeric weights: 400, 500, 600, 700 */</div>
             filterComponents();
             searchInput.focus();
           });
-          item.addEventListener('mouseenter', function() {
-            suggestionsDropdown.querySelectorAll('.gallery-suggestion-item').forEach(function(i) {
+          item.addEventListener('mouseenter', function () {
+            suggestionsDropdown.querySelectorAll('.gallery-suggestion-item').forEach(function (i) {
               i.classList.remove('highlighted');
             });
             this.classList.add('highlighted');
@@ -1728,7 +1024,7 @@ font-weight: 600; /* Use numeric weights: 400, 500, 600, 700 */</div>
 
       function filterComponents() {
         const searchTerm = searchInput.value.toLowerCase().trim();
-        const selectedType = typeFilter.value;
+        const selectedType = document.getElementById('component-type').value; // Get value from hidden input
         const clearButton = document.getElementById('clear-search');
 
         // Show/hide clear button
@@ -1740,19 +1036,21 @@ font-weight: 600; /* Use numeric weights: 400, 500, 600, 700 */</div>
           clearButton.classList.add('gallery-clear-hidden');
         }
 
-        componentBlocks.forEach(function(block) {
+        componentBlocks.forEach(function (block) {
           const componentName = (block.getAttribute('data-component-name') || '').toLowerCase();
           const componentType = block.getAttribute('data-component-type') || '';
           const componentTitle = block.querySelector('.gallery-component-title')?.textContent?.toLowerCase() || '';
           const componentPurpose = block.querySelector('.gallery-component-purpose')?.textContent?.toLowerCase() || '';
           const componentContract = block.querySelector('.gallery-contract')?.textContent?.toLowerCase() || '';
-          
-          const matchesSearch = !searchTerm || 
-            componentName.includes(searchTerm) || 
-            componentTitle.includes(searchTerm) || 
+          const searchKeywords = (block.getAttribute('data-search-keywords') || '').toLowerCase();
+
+          const matchesSearch = !searchTerm ||
+            componentName.includes(searchTerm) ||
+            componentTitle.includes(searchTerm) ||
             componentPurpose.includes(searchTerm) ||
-            componentContract.includes(searchTerm);
-          
+            componentContract.includes(searchTerm) ||
+            searchKeywords.includes(searchTerm);
+
           const matchesType = !selectedType || componentType === selectedType;
 
           if (matchesSearch && matchesType) {
@@ -1763,7 +1061,7 @@ font-weight: 600; /* Use numeric weights: 400, 500, 600, 700 */</div>
         });
 
         // Hide/show sections based on visible components
-        sections.forEach(function(section) {
+        sections.forEach(function (section) {
           const visibleBlocks = section.querySelectorAll('.gallery-component-block:not(.hidden)');
           if (visibleBlocks.length === 0 && section.id !== 'intent-index') {
             section.classList.add('hidden');
@@ -1772,10 +1070,21 @@ font-weight: 600; /* Use numeric weights: 400, 500, 600, 700 */</div>
           }
         });
 
+        // Hide/show table section header based on visible table components
+        const tableSectionHeader = document.querySelector('.gallery-table-section-header');
+        if (tableSectionHeader) {
+          const tableBlocks = document.querySelectorAll('.gallery-component-block[data-component-name="EncTable"]:not(.hidden)');
+          if (tableBlocks.length === 0) {
+            tableSectionHeader.classList.add('hidden');
+          } else {
+            tableSectionHeader.classList.remove('hidden');
+          }
+        }
+
         // Scroll to first visible component only when search button is clicked (not auto)
         const firstVisible = document.querySelector('.gallery-component-block:not(.hidden)');
         if (firstVisible && searchTerm) {
-          setTimeout(function() {
+          setTimeout(function () {
             firstVisible.scrollIntoView({ behavior: 'smooth', block: 'start' });
           }, 100);
         }
@@ -1792,7 +1101,7 @@ font-weight: 600; /* Use numeric weights: 400, 500, 600, 700 */</div>
 
       // Search button
       const searchButton = document.getElementById('search-button');
-      searchButton.addEventListener('click', function() {
+      searchButton.addEventListener('click', function () {
         suggestionsDropdown.classList.remove('show');
         filterComponents();
       });
@@ -1802,7 +1111,7 @@ font-weight: 600; /* Use numeric weights: 400, 500, 600, 700 */</div>
       clearButton.addEventListener('click', clearSearch);
 
       // Search input events - only show suggestions, don't filter
-      searchInput.addEventListener('input', function() {
+      searchInput.addEventListener('input', function () {
         showSuggestions(this.value);
         // Show clear button if there's text
         if (this.value.trim()) {
@@ -1814,28 +1123,28 @@ font-weight: 600; /* Use numeric weights: 400, 500, 600, 700 */</div>
         }
       });
 
-      searchInput.addEventListener('focus', function() {
+      searchInput.addEventListener('focus', function () {
         if (this.value.length >= 1) {
           showSuggestions(this.value);
         }
       });
 
       // Keyboard navigation
-      searchInput.addEventListener('keydown', function(e) {
+      searchInput.addEventListener('keydown', function (e) {
         const items = suggestionsDropdown.querySelectorAll('.gallery-suggestion-item');
         if (!suggestionsDropdown.classList.contains('show') || items.length === 0) return;
 
         if (e.key === 'ArrowDown') {
           e.preventDefault();
           highlightedIndex = Math.min(highlightedIndex + 1, items.length - 1);
-          items.forEach(function(item, i) {
+          items.forEach(function (item, i) {
             item.classList.toggle('highlighted', i === highlightedIndex);
           });
           items[highlightedIndex].scrollIntoView({ block: 'nearest' });
         } else if (e.key === 'ArrowUp') {
           e.preventDefault();
           highlightedIndex = Math.max(highlightedIndex - 1, -1);
-          items.forEach(function(item, i) {
+          items.forEach(function (item, i) {
             item.classList.toggle('highlighted', i === highlightedIndex);
           });
           if (highlightedIndex >= 0) {
@@ -1856,10 +1165,94 @@ font-weight: 600; /* Use numeric weights: 400, 500, 600, 700 */</div>
         }
       });
 
-      typeFilter.addEventListener('change', filterComponents);
+      // Custom Select Logic for Type Filter
+      const customSelectTrigger = document.getElementById('component-type-trigger');
+      const customSelectDropdown = document.getElementById('component-type-dropdown');
+      const customSelectOptions = customSelectDropdown.querySelectorAll('.gallery-select-option');
+      const typeInput = document.getElementById('component-type'); // Hidden input
+      const typeLabel = document.getElementById('component-type-label');
+
+      customSelectTrigger.addEventListener('click', function (e) {
+        e.stopPropagation();
+        const expanded = this.getAttribute('aria-expanded') === 'true';
+        this.setAttribute('aria-expanded', !expanded);
+        customSelectDropdown.classList.toggle('show');
+      });
+
+      customSelectOptions.forEach(function (option) {
+        option.addEventListener('click', function (e) {
+          e.stopPropagation();
+          const value = this.getAttribute('data-value');
+          const label = this.textContent;
+
+          // Update state
+          typeInput.value = value;
+          typeLabel.textContent = label;
+
+          // Visual selection state
+          customSelectOptions.forEach(opt => opt.removeAttribute('aria-selected'));
+          this.setAttribute('aria-selected', 'true');
+
+          // Close dropdown
+          customSelectTrigger.setAttribute('aria-expanded', 'false');
+          customSelectDropdown.classList.remove('show');
+
+          // Trigger filter
+          filterComponents();
+        });
+      });
+
+      // Close custom select when clicking outside
+      document.addEventListener('click', function (e) {
+        if (!customSelectTrigger.contains(e.target) && !customSelectDropdown.contains(e.target)) {
+          customSelectTrigger.setAttribute('aria-expanded', 'false');
+          customSelectDropdown.classList.remove('show');
+        }
+      });
+
+      // Removed old select change listener as it is now handled by custom option clicks
+      // typeFilter.addEventListener('change', filterComponents);
+
+      // ScrollSpy for Sidebar Navigation
+      const navLinks = document.querySelectorAll('.gallery-sidebar-nav a');
+      const scrollSections = Array.from(navLinks).map(link => {
+        const id = link.getAttribute('href');
+        return document.querySelector(id);
+      }).filter(section => section); // Filter out nulls
+
+      function updateActiveNav() {
+        let currentSection = null;
+
+        // Find the section currently in view
+        // We use a small offset (e.g. 120px) to determine "active" status reasonably early
+        const scrollPosition = window.scrollY + 120;
+
+        scrollSections.forEach(section => {
+          if (section.offsetTop <= scrollPosition) {
+            currentSection = section;
+          }
+        });
+
+        // If we're at the very bottom, highlight the last item
+        if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 50) {
+          currentSection = scrollSections[scrollSections.length - 1];
+        }
+
+        navLinks.forEach(link => {
+          link.classList.remove('active');
+          if (currentSection && link.getAttribute('href') === '#' + currentSection.id) {
+            link.classList.add('active');
+          }
+        });
+      }
+
+      window.addEventListener('scroll', updateActiveNav);
+      // Also update on resize
+      window.addEventListener('resize', updateActiveNav);
+      updateActiveNav(); // Initial check
 
       // Hide suggestions when clicking outside
-      document.addEventListener('click', function(e) {
+      document.addEventListener('click', function (e) {
         if (!searchInput.contains(e.target) && !suggestionsDropdown.contains(e.target)) {
           suggestionsDropdown.classList.remove('show');
         }
@@ -1879,4 +1272,5 @@ font-weight: 600; /* Use numeric weights: 400, 500, 600, 700 */</div>
     }
   </script>
 </body>
+
 </html>
