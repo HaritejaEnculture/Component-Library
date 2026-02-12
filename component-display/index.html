@@ -1,284 +1,187 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Enculture Design System — Component Index</title>
+  <title>Enculture Design System</title>
   <link rel="stylesheet" href="../Enculture Ds/enculture.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
-    /* Enculture DS — token-only. Display bindings for semantic anchors. */
-    .enc-action-primary {
-      background: var(--en-brand-primary-500);
-      color: var(--en-neutral-0);
-      border: none;
-      padding: var(--en-space-sm) var(--en-space-lg);
-      border-radius: var(--en-radius-md);
-      font-size: var(--en-font-size-sm);
-      font-weight: 600;
-      cursor: pointer;
+    /* Landing page specific overrides */
+    :root {
+      /* Brand colors from En-AI_Design_System.md */
+      --en-primary-brand-50: #faf5ff;
+      --en-primary-brand-100: #f3e8ff;
+      --en-primary-brand-500: #a246f0;
+      --en-primary-brand-600: #7c3aed;
+      --en-primary-brand-700: #6d28d9;
+
+      --en-font-size-h1: 64px;
+      --en-font-size-h2: 48px;
+      --en-font-size-lg: 18px;
+
+      --en-radius-lg: 12px;
+      --en-radius-md: 8px;
     }
-    .enc-action-secondary {
-      background: var(--en-neutral-0);
-      color: var(--en-neutral-800);
-      border: var(--en-divider-thickness) solid var(--en-neutral-200);
-      padding: var(--en-space-sm) var(--en-space-lg);
-      border-radius: var(--en-radius-md);
-      font-size: var(--en-font-size-sm);
-      font-weight: 500;
-      cursor: pointer;
-    }
-    .enc-card {
-      background: var(--en-neutral-0);
-      border: var(--en-divider-thickness) solid var(--en-neutral-200);
-      border-radius: var(--en-radius-lg);
-      padding: var(--en-space-lg);
-      box-shadow: var(--en-shadow-sm);
-    }
-    .enc-tag {
-      display: inline-block;
-      padding: var(--en-space-xs) var(--en-space-sm);
-      border-radius: var(--en-radius-md);
-      font-size: var(--en-font-size-caption);
-      font-weight: 500;
-      background: var(--en-neutral-50);
-      color: var(--en-neutral-800);
-      border: var(--en-divider-thickness) solid var(--en-neutral-200);
-    }
-    .enc-avatar {
-      width: var(--en-icon-size-xl);
-      height: var(--en-icon-size-xl);
-      border-radius: var(--en-radius-full);
-      background: var(--en-neutral-200);
+
+    body {
+      margin: 0;
+      padding: 0;
+      background: var(--en-primary-brand-50);
+      font-family: 'Poppins', sans-serif;
+      color: #18191a;
       display: flex;
+      flex-direction: column;
+      min-height: 100vh;
       align-items: center;
       justify-content: center;
-      font-size: var(--en-font-size-sm);
-      color: var(--en-neutral-500);
-      flex-shrink: 0;
     }
-    .enc-icon-button {
-      width: var(--en-icon-size-lg);
-      height: var(--en-icon-size-lg);
-      min-width: var(--en-icon-size-lg);
-      min-height: var(--en-icon-size-lg);
-      border-radius: var(--en-radius-md);
-      border: var(--en-divider-thickness) solid var(--en-neutral-200);
-      background: var(--en-neutral-0);
+
+    .landing-container {
+      max-width: 800px;
+      padding: 40px;
+      text-align: center;
+    }
+
+    .logo {
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--en-primary-brand-600);
+      margin-bottom: 24px;
+      display: inline-block;
+      padding: 8px 16px;
+      background: #fff;
+      border-radius: 99px;
+      box-shadow: 0 4px 12px rgba(124, 58, 237, 0.08);
+      /* Shadow CEO */
+    }
+
+    h1 {
+      font-size: var(--en-font-size-h1);
+      font-weight: 700;
+      line-height: 1.1;
+      margin: 0 0 24px 0;
+      background: linear-gradient(135deg, var(--en-primary-brand-600) 0%, var(--en-primary-brand-500) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      letter-spacing: -1px;
+    }
+
+    p.subtitle {
+      font-size: var(--en-font-size-lg);
+      color: #505355;
+      /* Grey 500 equivalent */
+      margin: 0 auto 48px auto;
+      max-width: 600px;
+      line-height: 1.6;
+    }
+
+    .cta-button {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      cursor: pointer;
-      color: var(--en-neutral-800);
+      height: 56px;
+      padding: 0 32px;
+      background: var(--en-primary-brand-500);
+      color: #ffffff;
+      font-weight: 600;
+      font-size: 18px;
+      /* Slightly larger than standard button */
+      border-radius: var(--en-radius-lg);
+      text-decoration: none;
+      transition: all 0.2s ease;
+      border: none;
+      box-shadow: 0 4px 12px rgba(162, 70, 240, 0.3);
     }
-    .enc-list-row {
-      padding: var(--en-space-sm) var(--en-space-md);
-      border-radius: var(--en-radius-md);
-      border: var(--en-divider-thickness) solid var(--en-neutral-200);
-      margin-bottom: var(--en-space-xs);
-      display: flex;
-      align-items: center;
-      gap: var(--en-space-md);
+
+    .cta-button:hover {
+      background: var(--en-primary-brand-600);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(162, 70, 240, 0.4);
     }
-    .enc-toggle {
-      padding: var(--en-space-xs) var(--en-space-sm);
-      border-radius: var(--en-radius-md);
-      border: var(--en-divider-thickness) solid var(--en-neutral-200);
-      background: var(--en-neutral-0);
-      color: var(--en-neutral-800);
-      font-size: var(--en-font-size-sm);
-      cursor: pointer;
+
+    .links-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 24px;
+      margin-top: 64px;
+      text-align: left;
     }
-    .enc-header {
-      padding: var(--en-space-md) var(--en-space-lg);
-      border-bottom: var(--en-divider-thickness) solid var(--en-neutral-200);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: var(--en-space-md);
+
+    .link-card {
+      background: #ffffff;
+      padding: 24px;
+      border-radius: var(--en-radius-lg);
+      border: 1px solid #e5e7eb;
+      text-decoration: none;
+      color: inherit;
+      transition: all 0.2s ease;
+      display: block;
     }
-    .enc-main-container {
-      padding: var(--en-space-lg);
-      margin: 0 auto;
-      max-width: 56.25rem;
+
+    .link-card:hover {
+      border-color: var(--en-primary-brand-300);
+      box-shadow: 0 12px 32px rgba(124, 58, 237, 0.08);
+      /* Shadow CEO */
+      transform: translateY(-2px);
     }
-    .enc-sidebar {
-      padding: var(--en-space-lg);
-      border-right: var(--en-divider-thickness) solid var(--en-neutral-200);
-      background: var(--en-neutral-50);
+
+    .link-card h3 {
+      margin: 0 0 8px 0;
+      font-size: 18px;
+      font-weight: 600;
+      color: #111827;
     }
-    .enc-page-title { font-size: var(--en-font-size-h3); margin: 0; color: var(--en-neutral-800); font-weight: 600; }
-    .enc-page-subtitle { font-size: var(--en-font-size-sm); color: var(--en-neutral-500); margin: var(--en-space-xs) 0 0; }
-    .enc-section-title { font-size: var(--en-font-size-h4); margin: 0 0 var(--en-space-sm); color: var(--en-neutral-800); font-weight: 600; }
-    .enc-text-muted { font-size: var(--en-font-size-sm); color: var(--en-neutral-500); }
-    .enc-text-strong { font-size: var(--en-font-size-sm); font-weight: 600; color: var(--en-neutral-800); }
-    .enc-divider-spaced { margin: var(--en-space-sm) 0; }
-    .enc-stack-xs { display: flex; flex-wrap: wrap; gap: var(--en-space-xs); align-items: center; }
-    .enc-stack-sm { display: flex; flex-wrap: wrap; gap: var(--en-space-sm); align-items: center; }
-    .enc-stack-md { display: flex; flex-wrap: wrap; gap: var(--en-space-md); align-items: center; }
-    .enc-stack-lg { display: flex; flex-wrap: wrap; gap: var(--en-space-lg); align-items: center; }
-    .enc-grid-2 { display: grid; gap: var(--en-space-lg); }
-    @media (min-width: 40rem) { .enc-grid-2 { grid-template-columns: 1fr 1fr; } }
-    .enc-input-wrap + .enc-input-wrap { margin-top: var(--en-space-sm); }
-    .enc-footer {
-      margin-top: var(--en-space-lg);
-      padding-top: var(--en-space-md);
-      border-top: var(--en-divider-thickness) solid var(--en-neutral-200);
-      font-size: var(--en-font-size-caption);
-      color: var(--en-neutral-500);
+
+    .link-card p {
+      margin: 0;
+      font-size: 14px;
+      color: #6b7280;
     }
-    .enc-footer a { color: var(--en-brand-primary-500); }
-    .enc-card-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: var(--en-space-md); }
-    .enc-list-row .enc-text-strong { flex: 1; min-width: 0; }
-    .swatch-row { display: flex; flex-wrap: wrap; gap: var(--en-space-sm); align-items: center; margin-top: var(--en-space-xs); }
-    .swatch { width: var(--en-space-lg); height: var(--en-space-lg); min-width: var(--en-space-lg); min-height: var(--en-space-lg); border-radius: var(--en-radius-md); border: var(--en-divider-thickness) solid var(--en-neutral-200); }
-    .swatch-label { font-size: var(--en-font-size-caption); color: var(--en-neutral-500); margin-left: var(--en-space-xs); }
-    .enc-nav-link { font-size: var(--en-font-size-sm); color: var(--en-neutral-500); text-decoration: none; }
-    .enc-nav-link:hover { color: var(--en-neutral-800); }
-    .enc-hero { margin-bottom: var(--en-space-lg); }
-    .enc-hero .enc-page-subtitle { margin-top: var(--en-space-xs); }
-    .enc-hero-actions { margin-top: var(--en-space-md); }
-    .enc-mt-lg { margin-top: var(--en-space-lg); }
-    .enc-mt-md { margin-top: var(--en-space-md); }
-    .enc-mb-xs { margin-bottom: var(--en-space-xs); }
-    .enc-label-block { display: block; margin-bottom: var(--en-space-xs); }
-    .enc-row-center { align-items: center; flex-wrap: nowrap; }
-    /* Dashboard swatches: En Dashboard Pastels reference */
-    .swatch-done { background: #34D399; }
-    .swatch-progress { background: #F4C430; }
-    .swatch-pending { background: #EC4899; }
-    .swatch-g1 { background: #A7F3D0; }
-    .swatch-g2 { background: #6EE7B7; }
-    .swatch-g3 { background: #34D399; }
-    .swatch-g4 { background: #10B981; }
-    .swatch-g5 { background: #059669; }
-    .swatch-g6 { background: #047857; }
+
+    footer {
+      margin-top: auto;
+      padding: 24px;
+      color: #9ca3af;
+      font-size: 14px;
+    }
   </style>
 </head>
+
 <body>
-  <header class="enc-header">
-    <div>
-      <h1 class="enc-page-title">Enculture</h1>
-      <p class="enc-page-subtitle">Design System — Component Index</p>
+
+  <div class="landing-container">
+    <div class="logo">Enculture AI</div>
+
+    <h1>Design System</h1>
+    <p class="subtitle">The single source of truth for Enculture's UI. Built with precision tokens, accessibility, and
+      dynamic density.</p>
+
+    <a href="component-gallery.html" class="cta-button">View Component Gallery →</a>
+
+    <div class="links-grid">
+      <a href="../Enculture Ds/EN-AI_Components_Molecules.md" class="link-card" target="_blank">
+        <h3>Documentation</h3>
+        <p>Read the atomic design rules and component specifications.</p>
+      </a>
+      <a href="../Enculture Ds/enculture.css" class="link-card" target="_blank">
+        <h3>Variables</h3>
+        <p>Explore the CSS tokens that power the system.</p>
+      </a>
+      <a href="component-gallery.html#dashboard" class="link-card">
+        <h3>Dashboards</h3>
+        <p>View data visualization guidelines and pastel palettes.</p>
+      </a>
     </div>
-    <nav class="enc-stack-md" aria-label="Main">
-      <a href="#overview" class="enc-nav-link">Overview</a>
-      <a href="#components" class="enc-nav-link">Components</a>
-      <a href="#dashboard" class="enc-nav-link">Dashboard</a>
-      <a href="component-gallery.html" class="enc-nav-link">Component Gallery</a>
-    </nav>
-    <div class="enc-stack-sm">
-      <button type="button" class="enc-action-secondary">Sign in</button>
-      <button type="button" class="enc-action-primary">Get started</button>
-      <div class="enc-avatar" aria-label="Account">JD</div>
-    </div>
-  </header>
+  </div>
 
-  <main class="enc-main-container">
-    <section class="enc-hero">
-      <h2 class="enc-section-title">Welcome back, Alex</h2>
-      <p class="enc-page-subtitle">Here’s what’s happening with your surveys and team. All components use Enculture DS tokens only.</p>
-      <div class="enc-stack-sm enc-hero-actions">
-        <button type="button" class="enc-action-primary">New survey</button>
-        <button type="button" class="enc-action-secondary">View reports</button>
-      </div>
-    </section>
+  <footer>
+    &copy; 2026 Enculture AI. All rights reserved.
+  </footer>
 
-    <div class="enc-grid-2">
-      <section class="enc-card" id="components">
-        <div class="enc-card-header">
-          <h3 class="enc-section-title">Team &amp; surveys</h3>
-          <button type="button" class="enc-icon-button" aria-label="Add">+</button>
-        </div>
-        <div class="enc-divider enc-divider-spaced"></div>
-        <div class="enc-list-row">
-          <div class="enc-avatar" aria-hidden="true">MK</div>
-          <span class="enc-text-strong">Culture Pulse Q1 2026</span>
-          <span class="enc-tag">Completed</span>
-        </div>
-        <div class="enc-list-row">
-          <div class="enc-avatar" aria-hidden="true">SR</div>
-          <span class="enc-text-strong">Onboarding Feedback</span>
-          <span class="enc-tag">In progress</span>
-        </div>
-        <div class="enc-list-row">
-          <div class="enc-avatar" aria-hidden="true">JP</div>
-          <span class="enc-text-strong">Manager Effectiveness</span>
-          <span class="enc-tag">Pending</span>
-        </div>
-      </section>
-
-      <section class="enc-card">
-        <div class="enc-card-header">
-          <h3 class="enc-section-title">Profile</h3>
-        </div>
-        <div class="enc-divider enc-divider-spaced"></div>
-        <div class="enc-input-wrap">
-          <label for="name" class="enc-text-muted enc-label-block">Full name</label>
-          <input type="text" id="name" class="enc-input-field" placeholder="Alex Morgan" aria-label="Full name" value="Alex Morgan">
-        </div>
-        <div class="enc-input-wrap">
-          <label for="email" class="enc-text-muted enc-label-block">Email</label>
-          <input type="email" id="email" class="enc-input-field" placeholder="alex@company.com" aria-label="Email" value="alex@company.com">
-        </div>
-        <div class="enc-stack-sm enc-mt-md">
-          <button type="button" class="enc-action-primary">Save changes</button>
-          <button type="button" class="enc-action-secondary">Cancel</button>
-        </div>
-      </section>
-    </div>
-
-    <section class="enc-card enc-mt-lg">
-      <div class="enc-card-header">
-        <h3 class="enc-section-title">Settings</h3>
-      </div>
-      <div class="enc-divider enc-divider-spaced"></div>
-      <div class="enc-stack-md enc-row-center">
-        <span class="enc-text-strong">Email notifications</span>
-        <button type="button" class="enc-toggle" role="switch" aria-checked="true" aria-label="Toggle email notifications">On</button>
-      </div>
-      <div class="enc-divider enc-divider-spaced"></div>
-      <div class="enc-stack-md enc-row-center">
-        <span class="enc-text-strong">Weekly digest</span>
-        <button type="button" class="enc-toggle" role="switch" aria-checked="false" aria-label="Toggle weekly digest">Off</button>
-      </div>
-    </section>
-
-    <section class="enc-card enc-mt-lg" id="dashboard">
-      <h3 class="enc-section-title">Dashboard status (eye-safe ≥400)</h3>
-      <p class="enc-text-muted enc-divider-spaced">Completed → Green 500 · In progress → Yellow 400 · Pending → Coral 500</p>
-      <div class="enc-divider enc-divider-spaced"></div>
-      <div class="enc-stack-md">
-        <div class="enc-stack-xs">
-          <div class="swatch swatch-done" title="Completed"></div>
-          <span class="enc-text-muted">Completed</span>
-        </div>
-        <div class="enc-stack-xs">
-          <div class="swatch swatch-progress" title="In progress"></div>
-          <span class="enc-text-muted">In progress</span>
-        </div>
-        <div class="enc-stack-xs">
-          <div class="swatch swatch-pending" title="Pending"></div>
-          <span class="enc-text-muted">Pending</span>
-        </div>
-      </div>
-      <p class="enc-text-muted enc-mt-md enc-mb-xs">Heatmap scale (single family 200→600)</p>
-      <div class="swatch-row">
-        <div class="swatch swatch-g1"></div>
-        <div class="swatch swatch-g2"></div>
-        <div class="swatch swatch-g3"></div>
-        <div class="swatch swatch-g4"></div>
-        <div class="swatch swatch-g5"></div>
-        <div class="swatch swatch-g6"></div>
-      </div>
-    </section>
-
-    <footer class="enc-footer">
-      <p>Enculture Design System — Component Index. Governed by <a href="../Enculture Ds/COMPONENT_REGISTRY.md">COMPONENT_REGISTRY.md</a>, <code>enculture.css</code>, and En Dashboard Pastels. All styling uses DS tokens only.</p>
-    </footer>
-  </main>
 </body>
+
 </html>
