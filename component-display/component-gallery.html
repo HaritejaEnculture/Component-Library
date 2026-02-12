@@ -3826,69 +3826,59 @@
               </div>
 
               <div class="gallery-preview">
-                <p class="gallery-state-label">Neutral Scale (Runtime Tokens from enculture.css)</p>
-                <p class="gallery-component-purpose" style="margin-bottom: var(--en-space-md);">Runtime neutral tokens
+                <p class="gallery-state-label">Natural Palette (Source Tokens)</p>
+                <p class="gallery-component-purpose" style="margin-bottom: var(--en-space-md);">Base neutral tokens
                   from
-                  enculture.css. These are the minimal set used by enculture.css primitives. For full palette, use
-                  --en-grey-*
-                  theme tokens above.</p>
+                  enculture.css. Used to derive the semantic <code>--en-grey-*</code> aliases.</p>
                 <div class="gallery-swatch-grid">
                   <div>
                     <div class="gallery-color-swatch"
-                      style="background: var(--en-neutral-0); border: 1px solid var(--en-grey-200);">--en-neutral-0
+                      style="background: var(--en-natural-white); border: 1px solid var(--en-grey-200);">
+                      --en-natural-white
                     </div>
                     <p class="gallery-combo-label">White (#ffffff)</p>
-                    <p class="gallery-combo-label" style="font-size: 10px; color: var(--en-grey-500);">Use: Base
-                      surfaces,
-                      cards</p>
+                    <p class="gallery-combo-label" style="font-size: 10px; color: var(--en-grey-500);">Base Surface</p>
                   </div>
                   <div>
-                    <div class="gallery-color-swatch" style="background: var(--en-neutral-50);">--en-neutral-50</div>
-                    <p class="gallery-combo-label">Light (#f9fafb)</p>
-                    <p class="gallery-combo-label" style="font-size: 10px; color: var(--en-grey-500);">Use: Disabled
-                      backgrounds</p>
+                    <div class="gallery-color-swatch" style="background: var(--en-natural-50);">--en-natural-50</div>
+                    <p class="gallery-combo-label">Natural 50 (#fafafa)</p>
+                    <p class="gallery-combo-label" style="font-size: 10px; color: var(--en-grey-500);">Mapped to:
+                      Grey-10</p>
                   </div>
                   <div>
-                    <div class="gallery-color-swatch" style="background: var(--en-neutral-200);">--en-neutral-200</div>
-                    <p class="gallery-combo-label">Border (#e5e7eb)</p>
-                    <p class="gallery-combo-label" style="font-size: 10px; color: var(--en-grey-500);">Use: Borders,
-                      dividers
-                    </p>
+                    <div class="gallery-color-swatch" style="background: var(--en-natural-200);">--en-natural-200</div>
+                    <p class="gallery-combo-label">Natural 200 (#e5e5e5)</p>
+                    <p class="gallery-combo-label" style="font-size: 10px; color: var(--en-grey-500);">Mapped to:
+                      Grey-100</p>
                   </div>
                   <div>
                     <div class="gallery-color-swatch gallery-color-swatch-dark"
-                      style="background: var(--en-neutral-400);">
-                      --en-neutral-400</div>
-                    <p class="gallery-combo-label">Disabled (#9ca3af)</p>
-                    <p class="gallery-combo-label" style="font-size: 10px; color: var(--en-grey-500);">Use: Disabled
-                      text
-                    </p>
+                      style="background: var(--en-natural-400);">
+                      --en-natural-400</div>
+                    <p class="gallery-combo-label">Natural 400 (#a3a3a3)</p>
+                    <p class="gallery-combo-label" style="font-size: 10px; color: var(--en-grey-500);">Mapped to:
+                      Grey-300</p>
                   </div>
                   <div>
                     <div class="gallery-color-swatch gallery-color-swatch-dark"
-                      style="background: var(--en-neutral-500);">
-                      --en-neutral-500</div>
-                    <p class="gallery-combo-label">Muted (#6b7280)</p>
-                    <p class="gallery-combo-label" style="font-size: 10px; color: var(--en-grey-500);">Use: Placeholder
-                      text
-                    </p>
+                      style="background: var(--en-natural-600);">
+                      --en-natural-600</div>
+                    <p class="gallery-combo-label">Natural 600 (#525252)</p>
+                    <p class="gallery-combo-label" style="font-size: 10px; color: var(--en-grey-500);">Mapped to:
+                      Grey-500</p>
                   </div>
                   <div>
                     <div class="gallery-color-swatch gallery-color-swatch-dark"
-                      style="background: var(--en-neutral-800);">
-                      --en-neutral-800</div>
-                    <p class="gallery-combo-label">Primary Text (#1f2937)</p>
-                    <p class="gallery-combo-label" style="font-size: 10px; color: var(--en-grey-500);">Use: Body text,
-                      headings</p>
+                      style="background: var(--en-natural-900);">
+                      --en-natural-900</div>
+                    <p class="gallery-combo-label">Natural 900 (#171717)</p>
+                    <p class="gallery-combo-label" style="font-size: 10px; color: var(--en-grey-500);">Mapped to:
+                      Grey-800</p>
                   </div>
                 </div>
                 <div class="gallery-contract" style="margin-top: var(--en-space-lg);">
-                  <p><strong>Note:</strong> <code>--en-neutral-*</code> tokens are runtime tokens from enculture.css
-                    (minimal
-                    set for primitives). <code>--en-grey-*</code> tokens are the complete theme palette from
-                    En-AI_Design_System.md. Use <code>--en-grey-*</code> for product pages; <code>--en-neutral-*</code>
-                    are
-                    used internally by enculture.css primitives.</p>
+                  <p><strong>Note:</strong> <code>--en-natural-*</code> tokens are the source palette in enculture.css.
+                    The system exposes <code>--en-grey-*</code> as the primary semantic aliases for UI development.</p>
                 </div>
               </div>
 
@@ -4138,8 +4128,8 @@
               style="border: 1px dashed var(--en-grey-300); background: var(--en-grey-10);">
               <!-- Page Header -->
               <div style="margin-bottom: var(--en-space-lg);">
-                <h2 class="enc-page-title">User Directory</h2>
-                <p class="enc-page-subtitle">Manage system access, roles, and permissions for all organization members.
+                <h2 class="enc-page-title">Active Surveys</h2>
+                <p class="enc-page-subtitle">Monitor ongoing culture surveys and response rates across the organization.
                 </p>
               </div>
 
@@ -4150,20 +4140,21 @@
                 <div class="enc-card">
                   <div
                     style="display: flex; align-items: start; justify-content: space-between; margin-bottom: var(--en-space-md);">
-                    <div class="enc-avatar">JD</div>
+                    <div class="enc-avatar"
+                      style="background: var(--en-primary-brand-100); color: var(--en-primary-brand-700);">Q1</div>
                     <span class="enc-tag"
-                      style="background: var(--en-success-100); color: #0a7a3d; border-color: var(--en-success-500);">Active</span>
+                      style="background: var(--en-success-50); color: var(--en-success-500); border-color: var(--en-success-100);">Active</span>
                   </div>
-                  <h4 style="margin: 0 0 var(--en-space-xs); font-size: var(--en-font-size-md); font-weight: 600;">John
-                    Doe</h4>
+                  <h4 style="margin: 0 0 var(--en-space-xs); font-size: var(--en-font-size-md); font-weight: 600;">Q1
+                    Culture Pulse</h4>
                   <p
                     style="margin: 0 0 var(--en-space-md); font-size: var(--en-font-size-sm); color: var(--en-grey-500);">
-                    Senior Developer</p>
+                    Ends in 3 days • 85% Participation</p>
                   <div style="display: flex; gap: var(--en-space-sm);">
+                    <button class="enc-action-primary"
+                      style="flex: 1; height: 32px; font-size: var(--en-font-size-caption);">View Report</button>
                     <button class="enc-action-secondary"
-                      style="flex: 1; height: 32px; font-size: var(--en-font-size-caption);">Edit</button>
-                    <button class="enc-action-secondary"
-                      style="flex: 1; height: 32px; font-size: var(--en-font-size-caption);">Profile</button>
+                      style="flex: 1; height: 32px; font-size: var(--en-font-size-caption);">Settings</button>
                   </div>
                 </div>
 
@@ -4171,20 +4162,20 @@
                 <div class="enc-card">
                   <div
                     style="display: flex; align-items: start; justify-content: space-between; margin-bottom: var(--en-space-md);">
-                    <div class="enc-avatar">AS</div>
+                    <div class="enc-avatar">ON</div>
                     <span class="enc-tag"
-                      style="background: var(--en-warning-100); color: #b8860b; border-color: #b8860b;">Pending</span>
+                      style="background: var(--en-grey-100); color: var(--en-grey-600); border-color: var(--en-grey-200);">Draft</span>
                   </div>
-                  <h4 style="margin: 0 0 var(--en-space-xs); font-size: var(--en-font-size-md); font-weight: 600;">Alice
-                    Smith</h4>
+                  <h4 style="margin: 0 0 var(--en-space-xs); font-size: var(--en-font-size-md); font-weight: 600;">
+                    Onboarding Feedback</h4>
                   <p
                     style="margin: 0 0 var(--en-space-md); font-size: var(--en-font-size-sm); color: var(--en-grey-500);">
-                    Product Manager</p>
+                    Scheduled for Mar 1st • All New Hires</p>
                   <div style="display: flex; gap: var(--en-space-sm);">
                     <button class="enc-action-secondary"
-                      style="flex: 1; height: 32px; font-size: var(--en-font-size-caption);">Edit</button>
+                      style="flex: 1; height: 32px; font-size: var(--en-font-size-caption);">Edit Survey</button>
                     <button class="enc-action-secondary"
-                      style="flex: 1; height: 32px; font-size: var(--en-font-size-caption);">Profile</button>
+                      style="flex: 1; height: 32px; font-size: var(--en-font-size-caption);">Preview</button>
                   </div>
                 </div>
 
@@ -4192,20 +4183,20 @@
                 <div class="enc-card">
                   <div
                     style="display: flex; align-items: start; justify-content: space-between; margin-bottom: var(--en-space-md);">
-                    <div class="enc-avatar">MK</div>
+                    <div class="enc-avatar" style="background: var(--en-teal-100); color: var(--en-teal-700);">DE</div>
                     <span class="enc-tag"
-                      style="background: var(--en-grey-100); color: var(--en-grey-600); border-color: var(--en-grey-300);">Inactive</span>
+                      style="background: var(--en-grey-100); color: var(--en-grey-600); border-color: var(--en-grey-300);">Closed</span>
                   </div>
-                  <h4 style="margin: 0 0 var(--en-space-xs); font-size: var(--en-font-size-md); font-weight: 600;">Mike
-                    K</h4>
+                  <h4 style="margin: 0 0 var(--en-space-xs); font-size: var(--en-font-size-md); font-weight: 600;">DEI
+                    Annual Review</h4>
                   <p
                     style="margin: 0 0 var(--en-space-md); font-size: var(--en-font-size-sm); color: var(--en-grey-500);">
-                    Designer</p>
+                    Closed on Jan 15 • 92% Participation</p>
                   <div style="display: flex; gap: var(--en-space-sm);">
                     <button class="enc-action-secondary"
-                      style="flex: 1; height: 32px; font-size: var(--en-font-size-caption);">Edit</button>
+                      style="flex: 1; height: 32px; font-size: var(--en-font-size-caption);">Results</button>
                     <button class="enc-action-secondary"
-                      style="flex: 1; height: 32px; font-size: var(--en-font-size-caption);">Profile</button>
+                      style="flex: 1; height: 32px; font-size: var(--en-font-size-caption);">Export</button>
                   </div>
                 </div>
               </div>
@@ -4226,7 +4217,7 @@
                 <div style="display: flex; gap: var(--en-space-sm); align-items: center; width: 100%;">
                   <!-- Search Input -->
                   <div style="position: relative; max-width: 320px; width: 100%;">
-                    <input type="text" class="enc-input-field" placeholder="Search employees..."
+                    <input type="text" class="enc-input-field" placeholder="Search departments..."
                       style="width: 100%; padding-left: 36px;">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
                       stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
@@ -4252,7 +4243,7 @@
                     <line x1="12" y1="5" x2="12" y2="19"></line>
                     <line x1="5" y1="12" x2="19" y2="12"></line>
                   </svg>
-                  Add User
+                  New Cycle
                 </button>
               </div>
 
@@ -4262,9 +4253,9 @@
                 <span
                   style="font-size: var(--en-font-size-caption); font-weight: 600; color: var(--en-grey-500); text-transform: uppercase;">Active
                   Filters:</span>
-                <span class="enc-tag" style="background: var(--en-grey-0);">Role: Engineering <button
+                <span class="enc-tag" style="background: var(--en-grey-0);">Region: North America <button
                     style="border: none; background: none; cursor: pointer; margin-left: 4px; color: var(--en-grey-500);">✕</button></span>
-                <span class="enc-tag" style="background: var(--en-grey-0);">Status: Active <button
+                <span class="enc-tag" style="background: var(--en-grey-0);">Status: In Progress <button
                     style="border: none; background: none; cursor: pointer; margin-left: 4px; color: var(--en-grey-500);">✕</button></span>
                 <button
                   style="border: none; background: none; cursor: pointer; font-size: var(--en-font-size-caption); color: var(--en-primary-brand-600); font-weight: 500;">Clear
@@ -4279,11 +4270,11 @@
                       <th style="width: 48px; text-align: center;">
                         <input type="checkbox" class="enc-checkbox">
                       </th>
-                      <th>User</th>
-                      <th>Role</th>
                       <th>Department</th>
-                      <th class="status">Status</th>
-                      <th class="numeric">Last Active</th>
+                      <th>Lead</th>
+                      <th>Status</th>
+                      <th class="numeric">Participation</th>
+                      <th class="numeric">eNPS</th>
                       <th style="text-align: center;">Actions</th>
                     </tr>
                   </thead>
@@ -4292,17 +4283,18 @@
                       <td style="text-align: center;"><input type="checkbox" class="enc-checkbox"></td>
                       <td>
                         <div style="display: flex; align-items: center; gap: 12px;">
-                          <div class="enc-avatar" style="width: 32px; height: 32px; font-size: 12px;">JD</div>
                           <div>
-                            <div style="font-weight: 500; color: var(--en-grey-800);">John Doe</div>
-                            <div style="font-size: 12px; color: var(--en-grey-500);">john@company.com</div>
+                            <div style="font-weight: 500; color: var(--en-grey-800);">Engineering</div>
+                            <div style="font-size: 12px; color: var(--en-grey-500);">142 Employees</div>
                           </div>
                         </div>
                       </td>
-                      <td>Senior Developer</td>
-                      <td>Engineering</td>
-                      <td><span class="enc-tag" data-tone="success">Active</span></td>
-                      <td class="numeric">2 mins ago</td>
+                      <td>Sarah Chen</td>
+                      <td><span class="enc-tag"
+                          style="background: var(--en-success-50); color: var(--en-success-500); border-color: var(--en-success-100);">On
+                          Track</span></td>
+                      <td class="numeric">88%</td>
+                      <td class="numeric"><span style="color: var(--en-success-500); font-weight: 600;">+42</span></td>
                       <td style="text-align: center;">
                         <button class="enc-icon-button" style="width: 32px; height: 32px;">
                           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
@@ -4318,17 +4310,19 @@
                       <td style="text-align: center;"><input type="checkbox" class="enc-checkbox" checked></td>
                       <td>
                         <div style="display: flex; align-items: center; gap: 12px;">
-                          <div class="enc-avatar" style="width: 32px; height: 32px; font-size: 12px;">AS</div>
                           <div>
-                            <div style="font-weight: 500; color: var(--en-grey-800);">Alice Smith</div>
-                            <div style="font-size: 12px; color: var(--en-grey-500);">alice@company.com</div>
+                            <div style="font-weight: 500; color: var(--en-grey-800);">Product Design</div>
+                            <div style="font-size: 12px; color: var(--en-grey-500);">28 Employees</div>
                           </div>
                         </div>
                       </td>
-                      <td>Product Manager</td>
-                      <td>Product</td>
-                      <td><span class="enc-tag" data-tone="warning">Away</span></td>
-                      <td class="numeric">2 hours ago</td>
+                      <td>Marcus Johnson</td>
+                      <td><span class="enc-tag"
+                          style="background: var(--en-warning-50); color: var(--en-sentiment-neutral); border-color: var(--en-warning-100);">At
+                          Risk</span></td>
+                      <td class="numeric">64%</td>
+                      <td class="numeric"><span style="color: var(--en-sentiment-neutral); font-weight: 600;">+12</span>
+                      </td>
                       <td style="text-align: center;">
                         <button class="enc-icon-button" style="width: 32px; height: 32px;">
                           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
@@ -4344,17 +4338,19 @@
                       <td style="text-align: center;"><input type="checkbox" class="enc-checkbox"></td>
                       <td>
                         <div style="display: flex; align-items: center; gap: 12px;">
-                          <div class="enc-avatar" style="width: 32px; height: 32px; font-size: 12px;">RM</div>
                           <div>
-                            <div style="font-weight: 500; color: var(--en-grey-800);">Robert Miller</div>
-                            <div style="font-size: 12px; color: var(--en-grey-500);">robert@company.com</div>
+                            <div style="font-weight: 500; color: var(--en-grey-800);">Customer Success</div>
+                            <div style="font-size: 12px; color: var(--en-grey-500);">56 Employees</div>
                           </div>
                         </div>
                       </td>
-                      <td>Designer</td>
-                      <td>Design</td>
-                      <td><span class="enc-tag" data-tone="negative">Offline</span></td>
-                      <td class="numeric">2 days ago</td>
+                      <td>Emily Zhang</td>
+                      <td><span class="enc-tag"
+                          style="background: var(--en-error-50); color: var(--en-sentiment-negative); border-color: var(--en-error-100);">Critical</span>
+                      </td>
+                      <td class="numeric">48%</td>
+                      <td class="numeric"><span
+                          style="color: var(--en-sentiment-negative); font-weight: 600;">-08</span></td>
                       <td style="text-align: center;">
                         <button class="enc-icon-button" style="width: 32px; height: 32px;">
                           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
@@ -4374,7 +4370,7 @@
               <div
                 style="padding: var(--en-space-sm) var(--en-space-md); background: var(--en-grey-0); border-top: 1px solid var(--en-grey-200); display: flex; justify-content: space-between; align-items: center;">
                 <div style="font-size: var(--en-font-size-sm); color: var(--en-grey-600);">
-                  Showing <strong>1-3</strong> of <strong>248</strong>
+                  Showing <strong>1-3</strong> of <strong>12</strong> Departments
                 </div>
                 <div style="display: flex; gap: var(--en-space-xs);">
                   <button class="enc-icon-button" disabled style="width: 32px; height: 32px;">
@@ -4386,7 +4382,6 @@
                   <button class="enc-icon-button"
                     style="width: 32px; height: 32px; background: var(--en-primary-brand-50); color: var(--en-primary-brand-600); border-color: var(--en-primary-brand-200);">1</button>
                   <button class="enc-icon-button" style="width: 32px; height: 32px; border: none;">2</button>
-                  <button class="enc-icon-button" style="width: 32px; height: 32px; border: none;">3</button>
                   <button class="enc-icon-button" style="width: 32px; height: 32px;">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
                       stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -4401,39 +4396,39 @@
 
           <!-- DASHBOARD COMPOSITION -->
           <section id="comp-dashboard" class="gallery-section">
-            <h2 class="gallery-section-heading">Executive Dashboard</h2>
-            <p class="gallery-subtitle">Example dashboard layout showing key metrics and separate chart regions.</p>
+            <h2 class="gallery-section-heading">Cultural Health Dashboard</h2>
+            <p class="gallery-subtitle">Example dashboard layout showing key cultural metrics and engagement trends.</p>
 
             <div
               style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: var(--en-space-lg); margin-bottom: var(--en-space-lg);">
               <!-- Metric Card -->
               <div class="enc-card">
-                <p style="font-size: var(--en-font-size-sm); color: var(--en-grey-500); margin: 0 0 4px 0;">Total
-                  Revenue</p>
+                <p style="font-size: var(--en-font-size-sm); color: var(--en-grey-500); margin: 0 0 4px 0;">
+                  Participation Rate</p>
                 <div style="display: flex; align-items: baseline; gap: 8px;">
-                  <h3 style="font-size: var(--en-font-size-h3); font-weight: 600; margin: 0;">$24,000</h3>
-                  <span class="enc-tag"
-                    style="background: var(--en-success-50); color: var(--en-success-500); border: none;">+12%</span>
-                </div>
-              </div>
-              <!-- Metric Card -->
-              <div class="enc-card">
-                <p style="font-size: var(--en-font-size-sm); color: var(--en-grey-500); margin: 0 0 4px 0;">Active Users
-                </p>
-                <div style="display: flex; align-items: baseline; gap: 8px;">
-                  <h3 style="font-size: var(--en-font-size-h3); font-weight: 600; margin: 0;">1,240</h3>
+                  <h3 style="font-size: var(--en-font-size-h3); font-weight: 600; margin: 0;">88%</h3>
                   <span class="enc-tag"
                     style="background: var(--en-success-50); color: var(--en-success-500); border: none;">+5%</span>
                 </div>
               </div>
               <!-- Metric Card -->
               <div class="enc-card">
-                <p style="font-size: var(--en-font-size-sm); color: var(--en-grey-500); margin: 0 0 4px 0;">Churn Rate
+                <p style="font-size: var(--en-font-size-sm); color: var(--en-grey-500); margin: 0 0 4px 0;">eNPS Score
                 </p>
                 <div style="display: flex; align-items: baseline; gap: 8px;">
-                  <h3 style="font-size: var(--en-font-size-h3); font-weight: 600; margin: 0;">2.1%</h3>
+                  <h3 style="font-size: var(--en-font-size-h3); font-weight: 600; margin: 0;">+42</h3>
                   <span class="enc-tag"
-                    style="background: var(--en-error-50); color: var(--en-error-500); border: none;">+0.2%</span>
+                    style="background: var(--en-success-50); color: var(--en-success-500); border: none;">+3 pts</span>
+                </div>
+              </div>
+              <!-- Metric Card -->
+              <div class="enc-card">
+                <p style="font-size: var(--en-font-size-sm); color: var(--en-grey-500); margin: 0 0 4px 0;">Completion
+                  Rate</p>
+                <div style="display: flex; align-items: baseline; gap: 8px;">
+                  <h3 style="font-size: var(--en-font-size-h3); font-weight: 600; margin: 0;">92%</h3>
+                  <span class="enc-tag"
+                    style="background: var(--en-success-50); color: var(--en-success-500); border: none;">+2%</span>
                 </div>
               </div>
             </div>
