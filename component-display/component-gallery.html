@@ -73,7 +73,7 @@
       --en-font-size-md: 16px;
       --en-font-size-sm: 14px;
       --en-font-size-caption: 12px;
-      
+
       /* Density tokens for input size enforcement per Input size enforcement_CANONICAL.md */
       --en-density-control-height: 48px;
       /* Comfortable mode */
@@ -1697,9 +1697,8 @@
 
     /* Input size enforcement per Input size enforcement_CANONICAL.md */
     /* Inputs (including select dropdowns and search) MUST bind to density tokens ONLY */
-    /* Height, padding, radius MUST resolve from Enculture density tokens - NO Shadcn sizing, NO Tailwind h-*/
-    py-*,
-    NO per-input sizing */ .enc-main-container .enc-input-field,
+    /* Height, padding, radius MUST resolve from Enculture density tokens - NO Shadcn sizing, NO Tailwind h-*, py-*, NO per-input sizing */
+    .enc-main-container .enc-input-field,
     .enc-main-container select.enc-input-field,
     .enc-main-container input.enc-input-field,
     .gallery-preview .enc-input-field,
