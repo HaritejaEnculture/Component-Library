@@ -1,261 +1,543 @@
-/*
-===============================================================================
-ENCULTURE DESIGN SYSTEM — RUNTIME CSS (GOVERNED)
-Authority:
-- En-AI_Design_System.md
-- EN-AI_Components_Molecules.md
-- Governance logic rules.md
+/* ============================================================================
+   COLOR PRIMITIVES
+============================================================================ */
 
-Role:
-- Semantic anchors only
-- Token-backed primitives only
-- Cursor-compatible
-===============================================================================
+/* ================= PRIMARY BRAND (PURPLE) ================= */
+/*
+Purpose:
+- Primary CTAs
+- Focus rings
+- Interactive emphasis
+- Brand identity surfaces
+
+Never use in charts.
+Never use for neutral backgrounds.
 */
 
-/* ============================================================================
-1. DESIGN TOKENS (EXISTING + REQUIRED BINDINGS)
-============================================================================ */
-
 :root {
-  /* Brand */
-  --en-brand-primary-500: #a147f0;
+   --en-primary-brand-50: #f5f3ff;
+   /* Very light brand tint – soft surfaces */
+   --en-primary-brand-100: #ede9fe;
+   /* Subtle brand background */
+   --en-primary-brand-200: #ddd6fe;
+   /* Hover background (soft) */
+   --en-primary-brand-300: #c4b5fd;
+   /* Accent background */
+   --en-primary-brand-400: #a78bfa;
+   /* Elevated accent */
+   --en-primary-brand-500: #a246f0;
+   /* Core brand color */
+   --en-primary-brand-600: #7c3aed;
+   /* Primary button background */
+   --en-primary-brand-700: #6d28d9;
+   /* Hover state for primary */
+   --en-primary-brand-800: #5b21b6;
+   /* Active/pressed state */
+   --en-primary-brand-900: #2e1065;
+   /* Rare deep brand surface */
 
-  /* Neutral */
-  --en-neutral-0: #ffffff;
-  --en-neutral-50: #f9fafb;
-  --en-neutral-200: #e5e7eb;
-  --en-neutral-400: #9ca3af;
-  --en-neutral-500: #6b7280;
-  --en-neutral-800: #1f2937;
 
-  /* Spacing */
-  --en-space-xs: 4px;
-  --en-space-sm: 8px;
-  --en-space-md: 16px;
-  --en-space-lg: 24px;
+   /* ================= SECONDARY — TEAL ================= */
+   /*
+  Purpose:
+  - Secondary emphasis
+  - Feature highlight
+  - Non-primary CTA
+  - Complementary UI accents
 
-  /* Radius */
-  --en-radius-md: 8px;
-  --en-radius-lg: 16px;
-  --en-radius-full: 9999px;
+  Never replace primary brand.
+  */
 
-  /* Elevation */
-  --en-shadow-sm: 0 2px 4px rgba(0,0,0,0.06);
-  --en-shadow-md: 0 6px 16px rgba(0,0,0,0.08);
+   --en-teal-50: #ecfeff;
+   /* Light teal background */
+   --en-teal-100: #cffafe;
+   /* Soft highlight */
+   --en-teal-200: #a5f3fc;
+   /* Accent background */
+   --en-teal-300: #67e8f9;
+   /* Informational accent */
+   --en-teal-400: #22d3ee;
+   /* Interactive highlight */
+   --en-teal-500: #308282;
+   /* Core teal accent */
+   --en-teal-600: #0e7490;
+   /* Hover teal */
+   --en-teal-700: #155e75;
+   /* Strong teal */
+   --en-teal-800: #164e63;
+   /* Deep teal */
+   --en-teal-900: #083344;
+   /* Rare deep surface */
 
-  /* Typography scale (En-AI_Design_System.md, EN-AI_Components_Molecules.md) */
-  --en-font-family-base: "Poppins", system-ui, sans-serif;
-  --en-font-size-caption: 12px;
-  --en-font-size-sm: 14px;
-  --en-font-size-md: 16px;
-  --en-font-size-lg: 18px;
-  --en-font-size-h4: 20px;
-  --en-font-size-h3: 32px;
-  --en-font-size-h2: 48px;
-  /* Legacy alias */
-  --en-font-size-xs: 12px;
 
-  /* Icon size tokens (binding only, no usage yet) */
-  --en-icon-size-sm: 16px;
-  --en-icon-size-md: 20px;
-  --en-icon-size-lg: 24px;
-  --en-icon-size-xl: 32px;
+   /* ================= NATURAL (PURE NEUTRAL) ================= */
+   /*
+  Purpose:
+  - Pure neutral surfaces
+  - Cards
+  - Layout backgrounds
+  - Structural separation
+  - White/Black references
 
-  /* Divider token */
-  --en-divider-thickness: 1px;
+  Never conveys semantic meaning.
+  */
+
+   --en-natural-50: #fafafa;
+   /* Light neutral surface */
+   --en-natural-100: #f5f5f5;
+   /* Soft card background */
+   --en-natural-200: #e5e5e5;
+   /* Divider background */
+   --en-natural-300: #d4d4d4;
+   /* Border subtle */
+   --en-natural-400: #a3a3a3;
+   /* Disabled text */
+   --en-natural-500: #737373;
+   /* Secondary text */
+   --en-natural-600: #525252;
+   /* Strong text */
+   --en-natural-700: #404040;
+   /* Heading contrast */
+   --en-natural-800: #262626;
+   /* Deep surface */
+   --en-natural-900: #171717;
+   /* High contrast surface */
+   --en-natural-white: #ffffff;
+   /* Base background */
+   --en-natural-black: #000000;
+   /* Absolute contrast */
+
+
+   /* ================= THEME (VIOLET-TINTED SURFACE) ================= */
+   /*
+  Purpose:
+  - Default UI background
+  - Themed structural surfaces
+  - Input borders
+  - Page-level elevation transitions
+
+  Preferred structural neutral.
+  */
+
+   --en-theme-50: #faf5ff;
+   /* Page background tint */
+   --en-theme-100: #e7e1f2;
+   /* Card surface */
+   --en-theme-200: #e7e2f3;
+   /* Border default */
+   --en-theme-300: #d4cfe3;
+   /* Divider */
+   --en-theme-400: #b1acc4;
+   /* Disabled text */
+   --en-theme-500: #8c869e;
+   /* Placeholder text */
+   --en-theme-600: #6a647a;
+   /* Secondary text */
+   --en-theme-700: #484354;
+   /* Primary body text */
+   --en-theme-800: #292630;
+   /* Strong heading */
+   --en-theme-900: #16141a;
+   /* Main text emphasis */
+
+
+   /* ================= SUCCESS ================= */
+   /*
+  Purpose:
+  - Positive feedback
+  - Validation success
+  - Confirmations
+
+  Never used in charts.
+  */
+
+   --en-success-50: #f0fdf4;
+   /* Success background */
+   --en-success-100: #dcfce7;
+   /* Soft success surface */
+   --en-success-500: #22c55e;
+   /* Success indicator */
+
+
+   /* ================= WARNING ================= */
+   /*
+  Purpose:
+  - Caution states
+  - Warning banners
+  */
+
+   --en-warning-50: #fffbeb;
+   /* Warning background */
+   --en-warning-100: #fef3c7;
+   /* Soft warning */
+   --en-warning-500: #f59e0b;
+   /* Warning indicator */
+
+
+   /* ================= ERROR ================= */
+   /*
+  Purpose:
+  - Validation errors
+  - Critical alerts
+  */
+
+   --en-error-50: #fff1f2;
+   /* Error background */
+   --en-error-100: #ffe4e6;
+   /* Soft error */
+   --en-error-500: #f43f5e;
+   /* Error indicator */
+
+
+   /* ================= INFO ================= */
+   /*
+  Purpose:
+  - Informational banners
+  - System notifications
+  */
+
+   --en-info-50: #f0f9ff;
+   /* Info background */
+   --en-info-100: #e0f2fe;
+   /* Soft info */
+   --en-info-500: #0ea5e9;
+   /* Info indicator */
+
+
+   /* ================= SENTIMENT ================= */
+   /*
+  Purpose:
+  - Fixed 3-tier sentiment heatmap only
+  - NPS
+  - Promoter / Passive / Detractor
+
+  Never used outside heatmap model.
+  */
+
+   --en-sentiment-positive: #10b981;
+   --en-sentiment-neutral: #f59e0b;
+   --en-sentiment-negative: #f43f5e;
+
+   /* ================= TYPOGRAPHY SCALE ================= */
+   --en-font-size-h1: 64px;
+   --en-font-size-h2: 48px;
+   --en-font-size-h3: 32px;
+   --en-font-size-h4: 20px;
+   --en-font-size-lg: 18px;
+   --en-font-size-md: 16px;
+   --en-font-size-sm: 14px;
+   --en-font-size-caption: 12px;
+   --en-font-family-base: 'Poppins', sans-serif;
+
+   /* ================= SPACING & RADIUS ================= */
+   --en-space-2xs: 2px;
+   --en-space-xs: 4px;
+   --en-space-sm: 8px;
+   --en-space-md: 12px;
+   --en-space-lg: 16px;
+   --en-space-xl: 32px;
+   --en-space-2xl: 48px;
+
+   --en-radius-sm: 4px;
+   --en-radius-md: 8px;
+   --en-radius-lg: 12px;
+   --en-radius-full: 9999px;
+
+   /* ================= ICONS & SHADOWS ================= */
+   --en-icon-size-sm: 16px;
+   --en-icon-size-md: 20px;
+   --en-icon-size-lg: 24px;
+   --en-icon-size-xl: 32px;
+
+   --en-shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+   --en-shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+   --en-shadow-ceo: 0 12px 32px 0 rgba(124, 58, 237, 0.08);
+
+   /* ================= MAPPED COLORS (ALIASES) ================= */
+   --en-grey-0: var(--en-natural-white);
+   --en-grey-10: var(--en-natural-50);
+   --en-grey-20: var(--en-natural-100);
+   --en-grey-100: var(--en-natural-200);
+   --en-grey-200: var(--en-natural-300);
+   --en-grey-300: var(--en-natural-400);
+   --en-grey-400: var(--en-natural-500);
+   --en-grey-500: var(--en-natural-600);
+   --en-grey-600: var(--en-natural-700);
+   --en-grey-800: var(--en-natural-900);
+
+   /* ================= DENSITY TOKENS ================= */
+   /* Comfortable (Default) */
+   --en-density-control-height: 48px;
+   --en-density-space-sm: 12px;
+   --en-density-space-md: 16px;
+   --en-density-space-lg: 24px;
+   --en-density-radius: var(--en-radius-lg);
+
+   /* Compact Mode Constants */
+   --en-density-compact-control-height: 40px;
+   --en-density-compact-space-sm: 8px;
+   --en-density-compact-space-md: 12px;
+   --en-density-compact-space-lg: 16px;
+   --en-density-compact-radius: var(--en-radius-md);
+
+   /* Glass Surface */
+   --en-surface-glass-70: rgba(255, 255, 255, 0.7);
+}
+
+/* ================= COMPACT MODE ================= */
+[data-density="compact"] {
+   --en-density-control-height: var(--en-density-compact-control-height);
+   --en-density-space-sm: var(--en-density-compact-space-sm);
+   --en-density-space-md: var(--en-density-compact-space-md);
+   --en-density-space-lg: var(--en-density-compact-space-lg);
+   --en-density-radius: var(--en-density-compact-radius);
 }
 
 /* ============================================================================
-2. GLOBAL BASELINE
+   COMPONENT CLASSES (SYSTEM MIRROR)
+   These classes implement the Enculture Design System specifications.
 ============================================================================ */
 
-html,
-body {
-  font-family: var(--en-font-family-base);
-  background: var(--en-neutral-0);
-  color: var(--en-neutral-800);
+/* ================= BUTTONS ================= */
+.enc-action-primary {
+   background: var(--en-primary-brand-500);
+   color: var(--en-grey-0);
+   border: none;
+   height: var(--en-density-control-height);
+   padding: 0 20px;
+   /* SpaceLg (20px) fixed per spec */
+   border-radius: var(--en-radius-md);
+   font-size: var(--en-font-size-sm);
+   font-weight: 600;
+   line-height: 1.4;
+   cursor: pointer;
+   display: inline-flex;
+   align-items: center;
+   justify-content: center;
+   transition: background-color 0.2s;
+   font-family: var(--en-font-family-base);
+   text-decoration: none;
 }
 
-button,
-input,
-select,
-textarea {
-  font-family: inherit;
+.enc-action-primary:hover {
+   background: var(--en-primary-brand-700);
 }
 
-/* ============================================================================
-3. SEMANTIC ANCHORS (NO LAYOUT / NO STATES)
-============================================================================ */
-
-/* Structural */
-.enc-header {}
-.enc-sidebar {}
-.enc-main-container {}
-.enc-card {}
-.enc-list-row {}
-
-/* Utility */
-.enc-divider {
-  background-color: var(--en-neutral-200);
-  height: var(--en-divider-thickness);
+.enc-action-primary:focus-visible {
+   outline: 2px solid var(--en-primary-brand-500);
+   outline-offset: 2px;
 }
 
-/* Actions */
-.enc-action-primary {}
-.enc-action-secondary {}
-.enc-icon-button {}
-.enc-toggle {}
+.enc-action-primary:disabled {
+   opacity: 0.6;
+   cursor: not-allowed;
+   background: var(--en-grey-200);
+}
 
-/* Metadata */
-.enc-tag {}
-.enc-avatar {}
+.enc-action-secondary {
+   background: var(--en-grey-0);
+   color: var(--en-grey-800);
+   border: 1px solid var(--en-grey-200);
+   height: var(--en-density-control-height);
+   padding: 0 20px;
+   /* SpaceLg (20px) fixed per spec */
+   border-radius: var(--en-radius-md);
+   font-size: var(--en-font-size-sm);
+   font-weight: 500;
+   line-height: 1.4;
+   cursor: pointer;
+   display: inline-flex;
+   align-items: center;
+   justify-content: center;
+   transition: background-color 0.2s, border-color 0.2s;
+   font-family: var(--en-font-family-base);
+   text-decoration: none;
+}
 
-/* ============================================================================
-4. INPUT PRIMITIVE (SINGLE APPROVED SEMANTIC)
-============================================================================ */
+.enc-action-secondary:hover {
+   background: var(--en-grey-20);
+   border-color: var(--en-grey-400);
+}
 
+.enc-action-secondary:focus-visible {
+   outline: 2px solid var(--en-primary-brand-500);
+   outline-offset: 2px;
+}
+
+.enc-action-secondary:disabled {
+   opacity: 0.6;
+   cursor: not-allowed;
+}
+
+.enc-icon-button {
+   width: var(--en-icon-size-lg);
+   height: var(--en-icon-size-lg);
+   min-width: var(--en-icon-size-lg);
+   min-height: var(--en-icon-size-lg);
+   border-radius: var(--en-radius-md);
+   border: 1px solid var(--en-grey-200);
+   background: var(--en-grey-0);
+   display: inline-flex;
+   align-items: center;
+   justify-content: center;
+   cursor: pointer;
+   color: var(--en-grey-800);
+}
+
+.enc-icon-button:hover {
+   background: var(--en-grey-20);
+}
+
+.enc-icon-button:focus-visible {
+   outline: 2px solid var(--en-primary-brand-500);
+   outline-offset: 2px;
+}
+
+.enc-icon-button:disabled {
+   opacity: 0.6;
+   cursor: not-allowed;
+}
+
+/* ================= CONTAINERS & CARDS ================= */
+.enc-main-container {
+   max-width: 1200px;
+   margin: 0 auto;
+   padding: var(--en-space-md);
+   background: var(--en-grey-0);
+   font-family: var(--en-font-family-base);
+   box-sizing: border-box;
+}
+
+@media (min-width: 960px) {
+   .enc-main-container {
+      padding: 20px;
+   }
+}
+
+@media (max-width: 767px) {
+   .enc-main-container {
+      padding: var(--en-density-compact-space-md, 12px);
+   }
+}
+
+.enc-card {
+   background: var(--en-grey-0);
+   border: 1px solid var(--en-grey-200);
+   border-radius: var(--en-radius-lg);
+   padding: var(--en-space-lg);
+   box-shadow: var(--en-shadow-sm);
+}
+
+/* ================= TAGS ================= */
+.enc-tag {
+   display: inline-block;
+   padding: var(--en-space-xs) var(--en-space-sm);
+   border-radius: var(--en-radius-md);
+   font-size: var(--en-font-size-caption);
+   font-weight: 500;
+   background: var(--en-grey-100);
+   color: var(--en-grey-800);
+   border: 1px solid var(--en-grey-200);
+   font-family: var(--en-font-family-base);
+}
+
+/* ================= AVATAR ================= */
+.enc-avatar {
+   width: var(--en-icon-size-xl);
+   height: var(--en-icon-size-xl);
+   border-radius: var(--en-radius-full);
+   background: var(--en-grey-200);
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   font-size: var(--en-font-size-sm);
+   color: var(--en-grey-500);
+   flex-shrink: 0;
+   font-family: var(--en-font-family-base);
+}
+
+/* ================= LIST ROWS ================= */
+.enc-list-row {
+   padding: var(--en-space-sm) var(--en-space-md);
+   border-radius: var(--en-radius-md);
+   border: 1px solid var(--en-grey-200);
+   margin-bottom: var(--en-space-xs);
+   display: flex;
+   align-items: center;
+   gap: var(--en-space-md);
+   background: var(--en-grey-0);
+}
+
+.enc-list-row:hover {
+   background: var(--en-grey-20);
+}
+
+/* ================= TOGGLE ================= */
+.enc-toggle {
+   padding: var(--en-space-xs) var(--en-space-sm);
+   border-radius: var(--en-radius-md);
+   border: 1px solid var(--en-grey-200);
+   background: var(--en-grey-0);
+   color: var(--en-grey-800);
+   font-size: var(--en-font-size-sm);
+   cursor: pointer;
+   font-family: var(--en-font-family-base);
+}
+
+.enc-toggle[aria-checked="true"] {
+   background: var(--en-grey-200);
+}
+
+/* ================= FORM ELEMENTS ================= */
 .enc-input-field {
-  width: 100%;
-  font-size: var(--en-font-size-md);
-  border-radius: var(--en-radius-md);
-  border: 1px solid var(--en-neutral-200);
-  background: var(--en-neutral-0);
-  color: var(--en-neutral-800);
+   height: var(--en-density-control-height);
+   padding: 0 var(--en-space-md);
+   border: 1px solid var(--en-grey-200);
+   border-radius: var(--en-radius-lg);
+   /* var(--en-density-radius) preferred if context allows */
+   font-size: var(--en-font-size-sm);
+   font-family: var(--en-font-family-base);
+   color: var(--en-grey-800);
+   background: var(--en-grey-0);
+   box-sizing: border-box;
+}
+
+.enc-input-field:focus {
+   outline: 2px solid var(--en-primary-brand-500);
+   outline-offset: -1px;
+   border-color: var(--en-primary-brand-500);
 }
 
 .enc-input-field::placeholder {
-  color: var(--en-neutral-500);
+   color: var(--en-grey-500);
 }
 
-.enc-input-field:disabled {
-  background: var(--en-neutral-50);
-  color: var(--en-neutral-400);
+.enc-label {
+   display: block;
+   font-size: var(--en-font-size-sm);
+   font-weight: 500;
+   color: var(--en-grey-800);
+   margin-bottom: var(--en-space-xs);
 }
 
-/* ============================================================================
-5. RESPONDENT-SCOPED CONSTRAINT (APPROVED)
-============================================================================ */
-
-.enc-respondent {
-  --en-respondent-sidebar-min: 180px;
+/* ================= HEADINGS ================= */
+.enc-page-title {
+   font-size: var(--en-font-size-h3);
+   margin: 0;
+   color: var(--en-grey-800);
+   font-weight: 600;
+   line-height: 1.2;
 }
 
-.enc-respondent .enc-sidebar {
-  min-width: var(--en-respondent-sidebar-min);
+.enc-page-subtitle {
+   font-size: var(--en-font-size-sm);
+   color: var(--en-grey-500);
+   margin: var(--en-space-xs) 0 0;
 }
 
-/* ============================================================================
-6. DENSITY — COMPACT MODE
-Set [data-density="compact"] on container (e.g. body or #root). No product-level
-compact styling; enculture.css resolves control height, spacing, radius.
-============================================================================ */
-
-[data-density="compact"] {
-  --control-height: 40px;
-  --en-space-xs: 4px;
-  --en-space-sm: 8px;
-  --en-space-md: 12px;
-  --en-space-lg: 16px;
-  --en-radius-md: 6px;
+.enc-section-title {
+   font-size: var(--en-font-size-h4);
+   margin: 0 0 var(--en-space-sm);
+   color: var(--en-grey-800);
+   font-weight: 600;
 }
-
-/* ============================================================================
-ADD-ON: Secondary & Reference Color Tokens
-Reason: Remove hex colors from product-level CSS
-============================================================================ */
-
-:root {
-  /* Secondary Teal */
-  --en-teal-50: #e0f2f1;
-  --en-teal-200: #80cbc4;
-  --en-teal-500: #009688;
-
-  /* Reference / Soft Surfaces */
-  --en-ref-surface-soft: #f9f8fd;
-  --en-ref-surface-brand-soft: #8c50ff;
-
-  /* Brand extension (already used by product) */
-  --en-brand-primary-600: #7c2dd1;
-}
-
-
-/* ============================================================================
-ADD-ON: Shadow Tokens
-Reason: Remove rgba() shadows from product CSS
-============================================================================ */
-
-:root {
-  /* Neutral elevation */
-  --en-shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.04);
-  --en-shadow-sm: 0 2px 6px rgba(0, 0, 0, 0.08);
-  --en-shadow-md: 0 6px 16px rgba(0, 0, 0, 0.12);
-
-  /* Brand elevation */
-  --en-shadow-brand-sm: 0 4px 12px rgba(124, 58, 237, 0.15);
-  --en-shadow-brand-md: 0 12px 32px rgba(124, 58, 237, 0.25);
-}
-
-
-/* ============================================================================
-ADD-ON: Translucent Surface Tokens
-Reason: Remove rgba overlays from product CSS
-============================================================================ */
-
-:root {
-  --en-surface-glass-70: rgba(255, 255, 255, 0.7);
-  --en-surface-overlay-08: rgba(0, 0, 0, 0.08);
-}
-
-
-/* ============================================================================
-7. RESPONSIVE TYPOGRAPHY — Font scaling for responsive UI
-Governance: Preserve typography scale hierarchy at all viewport sizes.
-Breakpoints aligned with EncContainer (Sm 720, Md 960, Lg 1200).
-============================================================================ */
-
-/* Tablet and below (≤1024px): slight scale down */
-@media (max-width: 1024px) {
-  :root {
-    --en-font-size-caption: 11px;
-    --en-font-size-sm: 13px;
-    --en-font-size-md: 15px;
-    --en-font-size-lg: 17px;
-    --en-font-size-h4: 19px;
-    --en-font-size-h3: 30px;
-    --en-font-size-h2: 44px;
-    --en-font-size-xs: 11px;
-  }
-}
-
-/* Mobile (≤768px): further scale down */
-@media (max-width: 768px) {
-  :root {
-    --en-font-size-caption: 11px;
-    --en-font-size-sm: 13px;
-    --en-font-size-md: 14px;
-    --en-font-size-lg: 16px;
-    --en-font-size-h4: 18px;
-    --en-font-size-h3: 28px;
-    --en-font-size-h2: 40px;
-    --en-font-size-xs: 11px;
-  }
-}
-
-/* Small mobile (≤480px): minimum readable scale */
-@media (max-width: 480px) {
-  :root {
-    --en-font-size-caption: 10px;
-    --en-font-size-sm: 12px;
-    --en-font-size-md: 14px;
-    --en-font-size-lg: 15px;
-    --en-font-size-h4: 17px;
-    --en-font-size-h3: 24px;
-    --en-font-size-h2: 32px;
-    --en-font-size-xs: 10px;
-  }
-}
-
-/* ============================================================================
-END OF FILE
-============================================================================ */
