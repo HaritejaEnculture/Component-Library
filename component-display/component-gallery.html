@@ -63,6 +63,17 @@
       --en-radius-sm: 4px;
       /* Surface tokens from enculture.css */
       --en-surface-glass-70: rgba(255, 255, 255, 0.7);
+
+      /* Typography Scale from EN-AI_Components_Molecules.md */
+      --en-font-size-h1: 64px;
+      --en-font-size-h2: 48px;
+      --en-font-size-h3: 32px;
+      --en-font-size-h4: 20px;
+      --en-font-size-lg: 18px;
+      --en-font-size-md: 16px;
+      --en-font-size-sm: 14px;
+      --en-font-size-caption: 12px;
+      
       /* Density tokens for input size enforcement per Input size enforcement_CANONICAL.md */
       --en-density-control-height: 48px;
       /* Comfortable mode */
@@ -947,7 +958,7 @@
       /* #a246f0 - MAIN BRAND COLOR per En-AI_Design_System.md */
       color: var(--en-grey-0);
       border: none;
-      height: 48px;
+      height: var(--en-density-control-height, 48px);
       padding: 0 20px;
       /* SpaceLg (20px) per EN-AI_Components_Molecules.md - not a standard token, but required by spec */
       border-radius: var(--en-radius-md);
@@ -992,7 +1003,7 @@
       /* Primary Text per En-AI_Design_System.md */
       border: 1px solid var(--en-grey-200);
       /* Borders per En-AI_Design_System.md */
-      height: 48px;
+      height: var(--en-density-control-height, 48px);
       padding: 0 20px;
       /* SpaceLg (20px) per EN-AI_Components_Molecules.md - not a standard token, but required by spec */
       border-radius: var(--en-radius-md);
